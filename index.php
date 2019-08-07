@@ -70,42 +70,44 @@
         </div>
     </section>
     
-    
+    <section class="planos-container">
+        <div class="container">
+            <h2 class="planos">Nossos Planos</h2>
+            <div class="row">
+                <div class="col-4 text center icone">
+                    <i class="fas fa-users"></i><br>Familiar/Individual
+                    <div class="botao">
+                        Faça uma cotação
+                    </div>
+                </div>
+                <div class="col-4 text center icone"><i class="fas fa-building"></i><br>Empresarial</div>
+                <div class="col-4 text center icone"><i class="fas fa-tooth"></i><br>Odontológicos</div>
+            </div>
+        </div>
+    </section>
+
     <footer>
 
     <div class="center">
             <div class="row">
-                <div class="col-4 text center footer"><h3 class="sobre">Sobre Nós</h3><p class="sobre">ddddd</p></div>
-                <div class="col-4 text center footer">d</div>
-                <div class="col-4 text center footer">dd</div>
-            </div>
-        </div>
-        
-        <div class="sobre">
-            <div class="logo">logo</div>
-            <p class="telefone"><i class="fas fa-phone-square"></i>(16) 3454-3456</p>
-            <p class="email"><i class="fas fa-envelope-square"></i>clinicaabc@abc.com.br</p>
-            <h3><i class="fab fa-facebook"></i></h3>
-            <h3><i class="fab fa-twitter-square"></i></h3>
-            <h3><i class="fab fa-instagram"></i></h3>
-        </div><!--sobre-->
-        <div class="facebook">
-            <h3>Convênios</h3>
-            <h3>icone1</h3>
-            <h3>icone2</h3>
-            <h3>icone3</h3>
-            <h3>icone4</h3>
-        </div><!--facebook-->
-        <div class="endereco">
-            <h3>Endereço</h3>
+                <div class="col-4 text center footer">
+                    <h3 class="sobre">Sobre Nós</h3>
+                    <p class="sobre">Nossa clínica criada para atender as necessidades específicas na área de saúde, com soluções inovadoras, práticas e ofertando o melhor custo/benefício do mercado para nossos clientes.</p>
+                </div>
+                <div class="col-4 text center footer">
+                    <h3><i class="fab fa-facebook"></i></h3>
+                    <h3><i class="fab fa-twitter-square"></i></h3>
+                    <h3><i class="fab fa-instagram"></i></h3>
+                </div>
+                <div class="col-4 text center footer"><h3>Endereço</h3>
             <p class="endereco">Rua rua numero 1</p>
             <p class="endereco">Bairro vila</p>
             <p class="endereco">Cidade São Carlos</p>
-            <p class="endereco">CEP 12344-456</p>
-        </div><!--endereco-->
-        <div class="fale-conosco">
-            fale conosco
-        </div><!--face-conosco-->
+            <p class="endereco">CEP 12344-456</p></div>
+            </div>
+        </div>
+        
+        
         
     </footer>
 </body>
