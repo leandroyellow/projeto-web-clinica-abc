@@ -76,14 +76,17 @@
             <div class="row">
                 <div class="col-4 text center icone">
                     <i class="fas fa-users"></i><br>Familiar/Individual<br>
+                    <p>A partir de R$ 79,90</p>
                     <button type="button" class="btn btn-success btn-md">Faça sua cotação</button>
                 </div>
                 <div class="col-4 text center icone">
                     <i class="fas fa-building"></i><br>Empresarial<br>
+                    <p>A partir de R$ 39,90</p>
                     <button type="button" class="btn btn-success btn-md">Faça sua cotação</button>
                 </div>
                 <div class="col-4 text center icone">
                     <i class="fas fa-tooth"></i><br>Odontológicos<br>
+                    <p>A partir de R$ 59,90</p>
                     <button type="button" class="btn btn-success btn-md">Faça sua cotação</button>
                 </div>
             </div>
