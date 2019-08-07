@@ -75,16 +75,16 @@
             <h2 class="planos">Nossos Planos</h2>
             <div class="row">
                 <div class="col-4 text center icone">
-                    <i class="fas fa-users"></i><br>Familiar/Individual
-                    <div class="botao">
-                        Faça uma cotação
-                    </div>
+                    <i class="fas fa-users"></i><br>Familiar/Individual<br>
+                    <button type="button" class="btn btn-success btn-md">Faça sua cotação</button>
                 </div>
                 <div class="col-4 text center icone">
-                    <i class="fas fa-building"></i><br>Empresarial
+                    <i class="fas fa-building"></i><br>Empresarial<br>
+                    <button type="button" class="btn btn-success btn-md">Faça sua cotação</button>
                 </div>
                 <div class="col-4 text center icone">
-                    <i class="fas fa-tooth"></i><br>Odontológicos
+                    <i class="fas fa-tooth"></i><br>Odontológicos<br>
+                    <button type="button" class="btn btn-success btn-md">Faça sua cotação</button>
                 </div>
             </div>
         </div>
