@@ -99,9 +99,10 @@
                     <p class="sobre">Nossa clínica criada para atender as necessidades específicas na área de saúde, com soluções inovadoras, práticas e ofertando o melhor custo/benefício do mercado para nossos clientes.</p>
                 </div>
                 <div class="col-4 text center footer">
-                    <h3><i class="fab fa-facebook"></i></h3>
-                    <h3><i class="fab fa-twitter-square"></i></h3>
-                    <h3><i class="fab fa-instagram"></i></h3>
+                    <h3>Siga nos nas redes sociais</h3>
+                    <h3 class="icone"><i class="fab fa-facebook rede">Facebook</i></h3>
+                    <h3 class="icone"><i class="fab fa-twitter-square rede">Twitter</i></h3>
+                    <h3 class="icone"><i class="fab fa-instagram rede"></i>Instagran</h3>
                 </div>
                 <div class="col-4 text center footer"><h3>Endereço</h3>
                     <p class="endereco">Rua rua numero 1</p>

@@ -194,9 +194,19 @@ section.planos-container{
     background-color: rgba(50, 50, 50, 0.1);
 }
 
-.botao{
-    border:1px solid #6ebf6b;
-}
+
 
 /*footer*/
 
+footer{
+    background: #6ebf6b;
+}
+
+div.footer h3 i.rede{
+    font-size: 30px;
+    
+}
+
+div.footer h3.icone{
+    text-align: left;
+}
