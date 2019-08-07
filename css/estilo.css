@@ -186,16 +186,13 @@ h2.planos{
     color: #646464;
     text-align: center;
     padding-top: 40px;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
 }
 
 section.planos-container{
     text-align: center;
     background-color: rgba(50, 50, 50, 0.1);
-}
-
-.botao{
-    border:1px solid #6ebf6b;
+    padding-bottom: 30px;
 }
 
 /*footer*/
