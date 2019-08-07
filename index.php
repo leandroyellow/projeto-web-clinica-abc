@@ -80,15 +80,19 @@
                         Faça uma cotação
                     </div>
                 </div>
-                <div class="col-4 text center icone"><i class="fas fa-building"></i><br>Empresarial</div>
-                <div class="col-4 text center icone"><i class="fas fa-tooth"></i><br>Odontológicos</div>
+                <div class="col-4 text center icone">
+                    <i class="fas fa-building"></i><br>Empresarial
+                </div>
+                <div class="col-4 text center icone">
+                    <i class="fas fa-tooth"></i><br>Odontológicos
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
 
-    <div class="center">
+        <div class="center">
             <div class="row">
                 <div class="col-4 text center footer">
                     <h3 class="sobre">Sobre Nós</h3>
@@ -100,10 +104,11 @@
                     <h3><i class="fab fa-instagram"></i></h3>
                 </div>
                 <div class="col-4 text center footer"><h3>Endereço</h3>
-            <p class="endereco">Rua rua numero 1</p>
-            <p class="endereco">Bairro vila</p>
-            <p class="endereco">Cidade São Carlos</p>
-            <p class="endereco">CEP 12344-456</p></div>
+                    <p class="endereco">Rua rua numero 1</p>
+                    <p class="endereco">Bairro vila</p>
+                    <p class="endereco">Cidade São Carlos</p>
+                    <p class="endereco">CEP 12344-456</p>
+                </div>
             </div>
         </div>
         
