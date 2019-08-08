@@ -101,8 +101,12 @@ section.agenda form input[type=submit]{
 }
 
 /*Serviços container*/
+section div.icone{
+    font-size: 25px;
+    color: #808080;
+}
 
-div.icone i{
+section div.icone i{
     color: #6ebf6b;
     font-size: 80px;
     padding-top: 40px;
@@ -113,11 +117,6 @@ h2.servicos{
     text-align: center;
     padding-top: 10px;
     color: #646464;
-}
-
-.icone{
-    font-size: 25px;
-    color: #808080;
 }
 
 section.servicos-container {
@@ -195,19 +194,34 @@ section.planos-container{
     padding-bottom: 30px;
 }
 
+section.planos-container .btn{
+    background-color: #6ebf6b;
+}
+
 
 
 /*footer*/
-
 footer{
-    background: #6ebf6b;
+    background: #011a00;
+    padding-top: 20px;
+    color: #fff;
 }
 
-div.footer h3 i.rede{
+footer h3 i.rede{
     font-size: 30px;
-    
 }
 
-div.footer h3.icone{
-    text-align: left;
+footer div.icone {
+    justify-content: flex-end;
 }
+footer div.icone span i{
+    color: #fff;
+    font-size: 32px;
+    margin-right: 10px;
+}
+
+div p.endereco{
+    padding: 0px;
+    margin: 0px;
+}
+

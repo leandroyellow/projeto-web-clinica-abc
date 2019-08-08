@@ -43,14 +43,14 @@
         <div class="container">
             <h2 class="servicos">Serviços Oferecidos</h2>
             <div class="row">
-                <div class="col-4 text-center icone"><i class="fas fa-user-md"></i><br>Médicos especializados</div>
-                <div class="col-4 text-center icone"><i class="fas fa-ambulance"></i><br>Serviço leva e traz</div>
-                <div class="col-4 text-center icone"><i class="fas fa-book-medical"></i><br>Agendamento online</div>
+                <div class="col-sm-4 text-center icone"><i class="fas fa-user-md"></i><br>Médicos especializados</div>
+                <div class="col-sm-4 text-center icone"><i class="fas fa-ambulance"></i><br>Serviço leva e traz</div>
+                <div class="col-sm-4 text-center icone"><i class="fas fa-book-medical"></i><br>Agendamento online</div>
             </div>
             <div class="row">
-                <div class="col-4 text-center icone"><i class="fas fa-briefcase-medical"></i><br>Serviço de urgência e emergência </div>
-                <div class="col-4 text-center icone"><i class="fab fa-accessible-icon"></i><br>Acessibilidade</div>
-                <div class="col-4 text-center icone"><i class="fas fa-user-nurse"></i><br>Enfermagem a domicílio</div>
+                <div class="col-sm-4 text-center icone"><i class="fas fa-briefcase-medical"></i><br>Serviço de urgência e emergência </div>
+                <div class="col-sm-4 text-center icone"><i class="fab fa-accessible-icon"></i><br>Acessibilidade</div>
+                <div class="col-sm-4 text-center icone"><i class="fas fa-user-nurse"></i><br>Enfermagem a domicílio</div>
             </div>
         </div>
     </section><!--servicos-container-->
@@ -63,9 +63,9 @@
         <div class="center">
             <h2 class="equipe">Equipe Médica</h2>
             <div class="row">
-                <div class="col-4 text center medicos"><img class="img-medico img-fluid" src="imagens/medico1.png"><h3 class="nome">Dr. Grey</h3><p class="esp">Cardiologista</p></div>
-                <div class="col-4 text center medicos"><img class="img-medico img-fluid" src="imagens/medico2.png"><h3 class="nome">Dra.2</h3><p class="esp">Pediatra</p></div>
-                <div class="col-4 text center medicos"><img class="img-medico img-fluid" src="imagens/medico3.png"><h3 class="nome">Dr.3</h3><p class="esp">Neurologista</p></div>
+                <div class="col-sm-4 text center medicos"><img class="img-medico img-fluid" src="imagens/medico1.png"><h3 class="nome">Dr. Grey</h3><p class="esp">Cardiologista</p></div>
+                <div class="col-sm-4 text center medicos"><img class="img-medico img-fluid" src="imagens/medico2.png"><h3 class="nome">Dra.2</h3><p class="esp">Pediatra</p></div>
+                <div class="col-sm-4 text center medicos"><img class="img-medico img-fluid" src="imagens/medico3.png"><h3 class="nome">Dr.3</h3><p class="esp">Neurologista</p></div>
             </div>
         </div>
     </section>
@@ -74,17 +74,17 @@
         <div class="container">
             <h2 class="planos">Nossos Planos</h2>
             <div class="row">
-                <div class="col-4 text center icone">
+                <div class="col-sm-4 text center icone">
                     <i class="fas fa-users"></i><br>Familiar/Individual<br>
                     <p>A partir de R$ 79,90</p>
                     <button type="button" class="btn btn-success btn-md">Faça sua cotação</button>
                 </div>
-                <div class="col-4 text center icone">
+                <div class="col-sm-4 text center icone">
                     <i class="fas fa-building"></i><br>Empresarial<br>
                     <p>A partir de R$ 39,90</p>
                     <button type="button" class="btn btn-success btn-md">Faça sua cotação</button>
                 </div>
-                <div class="col-4 text center icone">
+                <div class="col-sm-4 text center icone">
                     <i class="fas fa-tooth"></i><br>Odontológicos<br>
                     <p>A partir de R$ 59,90</p>
                     <button type="button" class="btn btn-success btn-md">Faça sua cotação</button>
@@ -94,25 +94,29 @@
     </section>
 
     <footer>
-
-        <div class="center">
+        <div class="container">
             <div class="row">
-                <div class="col-4 text center footer">
+                <div class="col-sm-4 text center footer">
                     <h3 class="sobre">Sobre Nós</h3>
                     <p class="sobre">Nossa clínica criada para atender as necessidades específicas na área de saúde, com soluções inovadoras, práticas e ofertando o melhor custo/benefício do mercado para nossos clientes.</p>
                 </div>
-                <div class="col-4 text center footer">
-                    <h3>Siga nos nas redes sociais</h3>
-                    <h3 class="icone"><i class="fab fa-facebook rede">Facebook</i></h3>
-                    <h3 class="icone"><i class="fab fa-twitter-square rede">Twitter</i></h3>
-                    <h3 class="icone"><i class="fab fa-instagram rede"></i>Instagran</h3>
+                <div class="col-sm-4 text center footer">
+                    <h3>Clínica ABC</h3>
+                    
+                    
                 </div>
-                <div class="col-4 text center footer"><h3>Endereço</h3>
+                <div class="col-sm-4 text center footer"><h3>Endereço</h3>
                     <p class="endereco">Rua rua numero 1</p>
                     <p class="endereco">Bairro vila</p>
                     <p class="endereco">Cidade São Carlos</p>
                     <p class="endereco">CEP 12344-456</p>
                 </div>
+            </div>
+
+            <div class="row icone">
+                <span><i class="fab fa-facebook rede"></i></span>
+                <span><i class="fab fa-twitter-square rede"></i></span>
+                <span><i class="fab fa-instagram rede"></i></span>
             </div>
         </div>
         
