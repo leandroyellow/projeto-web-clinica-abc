@@ -106,17 +106,18 @@
                     
                 </div>
                 <div class="col-sm-4 text center footer"><h3>Endereço</h3>
-                    <p class="endereco">Rua rua numero 1</p>
-                    <p class="endereco">Bairro vila</p>
-                    <p class="endereco">Cidade São Carlos</p>
-                    <p class="endereco">CEP 12344-456</p>
+                    <p class="endereco"> R. Episcopal, 700 </p>
+                    <p class="endereco">Centro</p>
+                    <p class="endereco">São Carlos</p>
+                    <p class="endereco">CEP: 13560-570</p>
+                    <p class="endereco">Telefone: (16) 2107-1055</p>
                 </div>
             </div>
 
             <div class="row icone">
-                <span><i class="fab fa-facebook rede"></i></span>
-                <span><i class="fab fa-twitter-square rede"></i></span>
-                <span><i class="fab fa-instagram rede"></i></span>
+                <a href="https://www.facebook.com/senacsaopaulo" target="_blank"><span><i class="fab fa-facebook rede"></i></span></a>
+                <a href="https://twitter.com/intent/follow?source=followbutton&variant=1.0&screen_name=senacsaopaulo" target="_blank"><span><i class="fab fa-twitter-square rede"></i></span></a>
+                <a href="https://www.instagram.com/senacsaopaulo/" target="_blank"><span><i class="fab fa-instagram rede"></i></span></a>
             </div>
         </div>
         
