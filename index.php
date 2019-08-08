@@ -102,7 +102,7 @@
                 </div>
                 <div class="col-sm-4 text center footer">
                     <h3>Clínica ABC</h3>
-                    
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1467.8128232850986!2d-47.89236099469048!3d-22.02446608013968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b87722afe006bb%3A0x4a8b254e7543696!2sSenac+S%C3%A3o+Carlos!5e0!3m2!1spt-BR!2sbr!4v1565271751253!5m2!1spt-BR!2sbr" width="100%" height="auto" frameborder="0" style="border:0" allowfullscreen></iframe>
                     
                 </div>
                 <div class="col-sm-4 text center footer"><h3>Endereço</h3>
