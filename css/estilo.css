@@ -238,3 +238,7 @@ div p.endereco{
     margin: 0px;
 }
 
+div.teste{
+    width: 300px;
+    background: red;
+}
