@@ -36,8 +36,9 @@
             <form>
                 <h2>Agende sua consulta online</h2>
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Especialidades</label>
+                    <label for="exampleFormControlSelect1"></label>
                     <select class="form-control" id="exampleFormControlSelect1">
+                        <option>Escolha uma especialidade</option>
                         <option>Clínico Geral</option>
                         <option>Giicologista</option>
                         <option>Pediatra</option>
@@ -45,7 +46,7 @@
                         <option>Dentista</option>
                     </select>
                 </div>
-                <input type="submit" name="acao" value="Agendar">
+                <button type="button" class="btn btn-block">Agendar</button>
             </form>
         </div><!--center-->
     </section><!--agenda-->
