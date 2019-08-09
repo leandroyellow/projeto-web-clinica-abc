@@ -79,7 +79,7 @@
         $dados=$db->usuario();
 
         foreach ($dados as $dado ) {
-            if($dado['permissao'] == 0){
+            if($dado['tipo'] == 0){
                 ?>
     
                 <div class="teste">
@@ -90,7 +90,7 @@
             }
             else{
                 ?>
-                <div class="teste">
+                <div>
                     passou
                 </div>
                 <?php
