@@ -23,7 +23,7 @@
                         <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link" href="#">Planos</a>
                         <a class="nav-item nav-link" href="#">Contato</a>
-                        <a class="nav-item nav-link" href="#">Entrar</a>
+                        <a class="nav-item nav-link" href="login.php">Entrar</a>
                     </div>
                 </div>
             </div>
