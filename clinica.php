@@ -1,21 +1,16 @@
-<?php
-    require_once('config.php'); 
-
-    
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/estilo.css">
     <link rel="stylesheet" href="css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>login</title>
+    <title>Clínica ABC (Administração)</title>
 </head>
 <body>
     <header>
@@ -30,7 +25,7 @@
                         <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link" href="#">Planos</a>
                         <a class="nav-item nav-link" href="#">Contato</a>
-                        <a class="nav-item nav-link" href="login.php">Entrar</a>
+                        <a class="nav-item nav-link" href="medico.php">Cadastro</a>
                     </div>
                 </div>
             </div>
@@ -38,53 +33,6 @@
     </header>
 
 
-    <div class="cor">
-        <h3 class="titulo">Cadastre seu email e senha para continuar</h3>
-        <div class="container" id="tamanhoContainer">
-            <form>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" placeholder="Digite seu email" autocomplete="off" required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Senha</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" placeholder="Digite sua senha" autocomplete="off" required>
-                    </div>
-                </div>
-                <div id="rigth">
-                    <button type="submit" class="btn" id="botao">Login</button>
-                </div>            
-            </form>
-        </div>
-    </div>
-
-    
-
-    <?php
-        $dados=$db->usuario();
-
-        foreach ($dados as $dado ) {
-            if($dado['tipo'] == 0){
-                ?>
-    
-                <div class="teste">
-                    teste
-                </div>
-                <?php
-    
-            }
-            else{
-                ?>
-                <div>
-                    passou
-                </div>
-                <?php
-            }
-        }
-    ?>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

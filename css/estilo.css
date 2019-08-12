@@ -19,6 +19,26 @@ h2{
     font-weight: bold;
 }
 
+div.cor{
+    background: #f2f2f2;
+    padding-top: 20px;
+}
+
+#tamanhoContainer{
+    width: 500px;
+    
+}
+
+#botao{
+    
+    background-color: #6ebf6b;
+    
+}
+
+#rigth{
+    text-align: right;
+}
+
 
 
 /**Estilização do site**/
@@ -241,4 +261,15 @@ div p.endereco{
 div.teste{
     width: 300px;
     background: red;
+}
+
+/*formulario*/
+
+h3.titulo{
+    text-align: center;
+    color: #808080;
+}
+
+form.formulario{
+    margin-top: 40px;
 }
