@@ -43,15 +43,15 @@
         <div class="container" id="tamanhoContainer">
             <form>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Email</label>
+                    <label for="campoemail" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" placeholder="Digite seu email" autocomplete="off" required>
+                        <input type="email" id="campoemail" class="form-control" placeholder="Digite seu email" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Senha</label>
+                    <label for="camposenha" class="col-sm-2 col-form-label">Senha</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" placeholder="Digite sua senha" autocomplete="off" required>
+                        <input type="password" id="camposenha" class="form-control" placeholder="Digite sua senha" autocomplete="off" required>
                     </div>
                 </div>
                 <div id="rigth">
