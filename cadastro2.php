@@ -1,3 +1,24 @@
+<?php
+
+
+    require_once('config.php');
+
+    if(isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['tipo']) && isset($_POST['nome']) && isset($_POST['celular']) && isset($_POST['registro']) && isset($_POST['especialidade'])) {
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
+        $tipo = $_POST['tipo'];
+        $usuario = $db->usuario()->insert(array('email'=>$email, 'senha'=>$senha, 'tipo'=>$tipo));
+        $nome = $_POST['nome'];
+        $celular = $_POST['celular'];
+        $registro = $_POST['registro'];
+        $especialidade = $_POST['especialidade'];
+        $db->profissional()->insert(array('nome'=>$nome, 'celulcar'=>$celular, 'registro'=>$registro, 'especialidade'=>$especialidade, 'login_id'=>$usuario));
+        header("location: clinica.php");
+    }
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -10,7 +31,7 @@
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Clínica ABC (Administração)</title>
+    <title>Document</title>
 </head>
 <body>
     <header>
@@ -31,6 +52,48 @@
             </div>
         </nav>
     </header>
+
+    <div class="cor">
+        <div class="container">
+            <form class="formulario" method="post">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="campoNome">Nome</label>
+                        <input type="text" class="form-control" id="campoNome" name="nome" placeholder="Digite seu nome completo">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="campoCelular">Celular</label>
+                        <input type="number" class="form-control" id="campoCelular" name="celular" placeholder="Digite seu celular">
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="campoEspecialidade">Especialidade</label>
+                        <input type="text" class="form-control" id="campoEspecialidade" name="especialidade" placeholder="Digite sua especialidade">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="campoRegistro">Registro</label>
+                        <input type="number" class="form-control" id="campoRegistro" name="registro" placeholder="Digite seu Registro ou CPF">
+                    </div>
+
+                </div>
+
+
+                <div id="rigth">
+                    <button type="submit" id="botao" class="btn">Cadastrar</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+
+
+
+
 
 
 
@@ -63,7 +126,6 @@
             </div>
         </div>
     </footer>
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

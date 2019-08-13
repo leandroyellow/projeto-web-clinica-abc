@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -10,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Clínica ABC (Administração)</title>
+    <title>Clínica ABC (Cadastro)</title>
 </head>
 <body>
     <header>
@@ -32,10 +36,37 @@
         </nav>
     </header>
 
+    <div class="cor">
+        <h3 class="titulo">Cadastro do Profissional</h3>
+        <div class="container" id="tamanhoContainer">
+            
+            <form class="formulario" action="cadastro2.php" method="post">
+                
+                <div class="form-group">
+                    <label for="campoEmail">Email</label>
+                    <input type="email" id="campoEmail" class="form-control" name="email" placeholder="Digite seu Email" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="campoSenha">Senha</label>
+                    <input type="password" id="campoSenha" class="form-control" name="senha" placeholder="Digite sua Senha" autocomplete="off" required>
+                </div>
 
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="radioAdm" name="tipo" class="custom-control-input" value="1" required>
+                    <label class="custom-control-label" for="radioAdm">Administração</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="radioMedico" name="tipo" class="custom-control-input" value="2" required>
+                    <label class="custom-control-label" for="radioMedico">Médico</label>
+                </div>
 
-
-
+                <div id="rigth">
+                    <button type="submit" class="btn" id="botao">Próximo</button>
+                </div>
+                
+            </form>
+        </div>
+    </div><!--cor-->
 
     <footer>
         <div class="container">
@@ -47,6 +78,7 @@
                 <div class="col-sm-4 text center footer">
                     <h3>Clínica ABC</h3>
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1467.8128232850986!2d-47.89236099469048!3d-22.02446608013968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b87722afe006bb%3A0x4a8b254e7543696!2sSenac+S%C3%A3o+Carlos!5e0!3m2!1spt-BR!2sbr!4v1565271751253!5m2!1spt-BR!2sbr" width="100%" height="auto" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    
                 </div>
                 <div class="col-sm-4 text center footer"><h3>Endereço</h3>
                     <p class="endereco"> R. Episcopal, 700 </p>
@@ -56,12 +88,16 @@
                     <p class="endereco">Telefone: (16) 2107-1055</p>
                 </div>
             </div>
+
             <div class="row icone">
                 <a href="https://www.facebook.com/senacsaopaulo" target="_blank"><span><i class="fab fa-facebook rede"></i></span></a>
                 <a href="https://twitter.com/intent/follow?source=followbutton&variant=1.0&screen_name=senacsaopaulo" target="_blank"><span><i class="fab fa-twitter-square rede"></i></span></a>
                 <a href="https://www.instagram.com/senacsaopaulo/" target="_blank"><span><i class="fab fa-instagram rede"></i></span></a>
             </div>
         </div>
+        
+        
+        
     </footer>
 
 
