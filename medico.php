@@ -4,8 +4,8 @@
     if(isset($_POST['email']) && isset($_POST['senha'])) {
         $email = $_POST['email'];
         $senha = $_POST['senha'];
-        $db->usuario()->insert(array('email'=>$email, 'senha'=>$senha, 'tipo'=>'1'));
-        header('location: medico_cadastro.php');
+        $usuario = $db->usuario()->insert(array('email'=>$email, 'senha'=>$senha, 'tipo'=>'1'));
+        header("location: medico_cadastro.php?id=$usuario[id]");
     }
 ?>
 
