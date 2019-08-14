@@ -59,7 +59,30 @@
                     <input type="radio" id="radioMedico" name="tipo" class="custom-control-input" value="2" required>
                     <label class="custom-control-label" for="radioMedico">Médico</label>
                 </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="campoNome">Nome</label>
+                        <input type="text" class="form-control" id="campoNome" name="nome" placeholder="Digite seu nome completo">
+                    </div>
 
+                    <div class="form-group col-md-6">
+                        <label for="campoCelular">Celular</label>
+                        <input type="number" class="form-control" id="campoCelular" name="celular" placeholder="Digite seu celular">
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="campoEspecialidade">Especialidade</label>
+                        <input type="text" class="form-control" id="campoEspecialidade" name="especialidade" placeholder="Digite sua especialidade">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="campoRegistro">Registro</label>
+                        <input type="number" class="form-control" id="campoRegistro" name="registro" placeholder="Digite seu Registro ou CPF">
+                    </div>
+
+                </div>
                 <div id="rigth">
                     <button type="submit" class="btn" id="botao">Próximo</button>
                 </div>
