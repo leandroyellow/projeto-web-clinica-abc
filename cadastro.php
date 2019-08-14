@@ -51,7 +51,7 @@
                     </div>
 
                 </div>
-                <div id="rigth">
+                <div class="text-right">
                     <button type="submit" class="btn" id="botao">Próximo</button>
                 </div>
                 

@@ -23,8 +23,9 @@
                         <input type="password" id="camposenha" class="form-control" placeholder="Digite sua senha" autocomplete="off" required>
                     </div>
                 </div>
-                <div id="rigth">
-                    <button type="submit" class="btn" id="botao">Login</button>
+                <div class="text-right">
+                    <a href="paciente_cadastro.php" id="botao" class="btn" >Quero me cadastrar</a>
+                    <button type="submit" class="btn" id="botao">Entrar</button>
                 </div>            
             </form>
         </div>

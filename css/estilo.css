@@ -19,6 +19,10 @@ h2{
     font-weight: bold;
 }
 
+h1{
+    padding: 20px;
+}
+
 div.cor{
     background: #f2f2f2;
     padding-top: 20px;
@@ -35,8 +39,8 @@ div.cor{
     
 }
 
-#rigth{
-    text-align: right;
+form div.text-right{
+    
     padding-bottom: 50px;
 }
 
