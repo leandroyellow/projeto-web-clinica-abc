@@ -4,7 +4,7 @@
     
 ?>
 
-<?php include("header.php"); ?>
+<?php include("header_paciente.php"); ?>
 
 
     <div class="cor">

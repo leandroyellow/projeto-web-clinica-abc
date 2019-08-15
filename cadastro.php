@@ -2,7 +2,7 @@
 
 
 
-<?php include("header.php"); ?>
+<?php include("header_administrador.php"); ?>
 
     <div class="cor">
         <h3 class="titulo">Cadastro do Profissional</h3>

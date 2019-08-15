@@ -23,7 +23,7 @@
 
 ?>
 
-<?php include("header.php"); ?>
+<?php include("header_administrador.php"); ?>
 
     <div class="cor">
         <div class="container">

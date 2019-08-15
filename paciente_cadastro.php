@@ -1,4 +1,5 @@
-<?php include("header.php"); ?>
+<?php include("header_paciente.php"); ?>
+    
     <div class="cor">
         <div class="container">
             <h1 class="text-center">Cadastro</h1>
@@ -20,16 +21,16 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="campoCpf">CPF</label>
-                        <input type="number" class="form-control"  name="cpf" id="campoCpf" placeholder="Digite seu CPF" autocomplete="off" required>
+                        <input class="form-control"  name="cpf" id="campoCpf" placeholder="Digite seu CPF" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="sexo" id="campoSexo" value="M" required>
-                    <label class="form-check-label" for="campoSexo">Masculino</label>
+                    <input class="form-check-input" type="radio" name="sexo" id="campoSexoM" value="M" required>
+                    <label class="form-check-label" for="campoSexoM">Masculino</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="sexo" id="campoSexo" value="F" required>
-                    <label class="form-check-label" for="campoSexo">Feminino</label>
+                    <input class="form-check-input" type="radio" name="sexo" id="campoSexoF" value="F" required>
+                    <label class="form-check-label" for="campoSexoF">Feminino</label>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
@@ -42,7 +43,50 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="campoCelular">Celular</label>
-                        <input type="number" class="form-control"  name="celular" id="campoCelular" placeholder="Digite seu celular" autocomplete="off" required>
+                        <input class="form-control"  name="celular" id="campoCelular" placeholder="Digite seu celular" autocomplete="off" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="campoCep">CEP</label>
+                        <input class="form-control" id="campoCep" name="cep" autocomplete="off" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="campoCidade">Cidade</label>
+                        <input type="text" class="form-control cep" id="campoCidade" name="cidade" id="campoCidade" placeholder="Digite sua cidade" autocomplete="off" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="campoEstado">Estado</label>
+                        <select id="campoEstado" class="form-control cep" name="estado" autocomplete="off" required>
+                            <option selected>Selecione o estado</option>
+                            <option>AC</option>
+                            <option>AL</option>
+                            <option>AP</option>
+                            <option>AM</option>
+                            <option>BA</option>
+                            <option>CE</option>
+                            <option>DF</option>
+                            <option>ES</option>
+                            <option>GO</option>
+                            <option>MA</option>
+                            <option>MT</option>
+                            <option>MS</option>
+                            <option>MG</option>
+                            <option>PA</option>
+                            <option>PB</option>
+                            <option>PR</option>
+                            <option>PE</option>
+                            <option>PI</option>
+                            <option>RJ</option>
+                            <option>RN</option>
+                            <option>RS</option>
+                            <option>RO</option>
+                            <option>RR</option>
+                            <option>SC</option>
+                            <option>SP</option>
+                            <option>SE</option>
+                            <option>TO</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-row">
@@ -59,35 +103,6 @@
                         <input type="text" class="form-control cep"  name="bairro" id="campoBairro" placeholder="Digite seu bairro" autocomplete="off" required>
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="campoCidade">Cidade</label>
-                        <input type="text" class="form-control cep" id="campoCidade" name="cidade" id="campoCidade" placeholder="Digite sua cidade" autocomplete="off" required>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="campoEstado">Estado</label>
-                        <select id="campoEstado" class="form-control cep" name="estado" autocomplete="off" required>
-                            <option selected>Selecione o estado</option>
-                            <option>AC</option>
-                            <option>AL</option>
-                            <option>AP</option>
-                            <option>AM</option>
-                            <option>BA</option>
-                            <option>CE</option>
-                            <option>ES</option>
-                            <option>AC</option>
-                            <option>AC</option>
-                            <option>AC</option>
-                            <option>AC</option>
-                            <option>AC</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="campoCep">CEP</label>
-                        <input class="form-control" id="campoCep" name="cep" autocomplete="off" required>
-                    </div>
-                </div>
-                
                 <div class="text-right">
                 <a href="index.php" id="botao" class="btn" >Voltar</a>
                     <button type="submit" class="btn" id="botao">Cadastrar</button>
@@ -99,29 +114,30 @@
 <?php include("footer.php"); ?>
 
 <script>
-		$(document).ready(function(){
-			$('#campoCep').on('blur', function(){
-				var cep = $(this).val().replace(/\D/g, '');
-				if (cep != '') {
-					var validaCEP = /^[0-9]{8}$/;
-					if (validaCEP.test(cep)) {
-						$(":input.cep").val("...");
-						$.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(data){
-                                $(":input.cep").val("");
-								if (!("erro" in data)) {
-									$("#campoEndereco").val(data.logradouro);
-									$("#campoBairro").val(data.bairro);
-									$("#campoCidade").val(data.localidade);
-									$("#campoEstado").val(data.uf);
-								} else {
-									alert("CEP não encontrado");
-								}
-							});
-					}
-				}
-			});
-			
-			$("#campoCep").mask("00000-000", {placeholder: "_____-___"});
-            $("#campoTelefone").mask("(00) 0000-0000", {placeholder: "(__) ____-____"});
-		});
+    $(document).ready(function(){
+        $('#campoCep').on('blur', function(){
+            var cep = $(this).val().replace(/\D/g, '');
+            if (cep != '') {
+                var validaCEP = /^[0-9]{8}$/;
+                if (validaCEP.test(cep)) {
+                    $(":input.cep").val("...");
+                    $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(data){
+                        $(":input.cep").val("");
+                        if (!("erro" in data)) {
+                            $("#campoEndereco").val(data.logradouro);
+                            $("#campoBairro").val(data.bairro);
+                            $("#campoCidade").val(data.localidade);
+                            $("#campoEstado").val(data.uf);
+                        } else {
+                            alert("CEP não encontrado");
+                        }
+                    });
+                }
+            }
+        });
+        $("#campoCep").mask("00000-000", {placeholder: "_____-___"});
+        $("#campoTelefone").mask("(00) 0000-0000", {placeholder: "(__) ____-____"});
+        $("#campoCelular").mask("(00) 00000-0000", {placeholder: "(__) _____-____"});
+        $("#campoCpf").mask("000.000.000-00", {placeholder: "___.___.___-__"});
+    });
 	</script>
