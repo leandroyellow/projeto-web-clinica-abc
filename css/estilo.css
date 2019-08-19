@@ -30,7 +30,7 @@ div.cor{
 
 #tamanhoContainer{
     width: 500px;
-    
+    padding: 65px;
 }
 
 #botao{
@@ -273,8 +273,34 @@ div.teste{
 h3.titulo{
     text-align: center;
     color: #808080;
+    padding: 30px;
 }
 
 form.formulario{
     margin-top: 40px;
 }
+
+div.cadastro{
+   padding: 50px;
+   
+}
+
+h1.sucesso{
+    color: #646464;
+    padding: 80px;
+}
+
+h2.sucesso{
+    color: #646464;
+    padding-top: 50px;
+    font-size: 60px;
+    
+}
+
+img.cadastro{
+    border: 1px solid #6ebf6b;
+    border-radius: 100px;
+    box-shadow: 0px 10px 20px 0px #646464;
+    
+}
+

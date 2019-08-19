@@ -2,7 +2,7 @@
     
     <div class="cor">
         <div class="container">
-            <h1 class="text-center">Cadastro</h1>
+            <h2 class="text-center sucesso">Cadastro</h2>
             <form class="formulario" action="paciente_cadastro2.php" method="post">
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -12,6 +12,16 @@
                     <div class="form-group col-md-6">
                         <label for="campoSenha">Senha</label>
                         <input type="password" class="form-control"  name="senha" id="campoSenha" placeholder="Digite uma senha" autocomplete="off" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="campoEmail">Repitir email</label>
+                        <input type="email" class="form-control" name="email" id="campoEmail" placeholder="Repita seu email" autocomplete="off" required oninput="validaEmail(this)">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="campoSenha">Repitir Senha</label>
+                        <input type="password" class="form-control"  name="senha" id="campoSenha" placeholder="Digite uma senha" autocomplete="off" required oninput="validaSenha(this)">
                     </div>
                 </div>
                 <div class="form-row">
@@ -35,7 +45,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="campoNascimento">Nascimento</label>
-                        <input type="date" class="form-control" name="nascimento" id="campoNascimento" placeholder="Digite seu nascimento" autocomplete="off" required>
+                        <input class="form-control" name="nascimento" id="campoNascimento" placeholder="Digite seu nascimento" autocomplete="off" required>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="campoTelefone">Telefone</label>
@@ -139,5 +149,24 @@
         $("#campoTelefone").mask("(00) 0000-0000", {placeholder: "(__) ____-____"});
         $("#campoCelular").mask("(00) 00000-0000", {placeholder: "(__) _____-____"});
         $("#campoCpf").mask("000.000.000-00", {placeholder: "___.___.___-__"});
+        $("#campoNascimento").mask("00/00/0000", {placeholder: "__/__/____"});
     });
-	</script>
+</script>
+
+<script>
+    function validaSenha (input){ 
+	    if (input.value != document.getElementById('campoSenha').value) {
+            input.setCustomValidity('Repita a senha corretamente');
+        } else {
+            input.setCustomValidity('');
+        }
+    } 
+
+    function validaEmail (input){ 
+	    if (input.value != document.getElementById('campoEmail').value) {
+            input.setCustomValidity('Repita o email corretamente');
+        } else {
+            input.setCustomValidity('');
+        }
+    } 
+</script>

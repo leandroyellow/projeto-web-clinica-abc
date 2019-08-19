@@ -2,8 +2,8 @@
     
     <div class="cor">
         <div class="container">
-            <h1 class="text-center">Cadastro</h1>
-            <form class="formulario" action="paciente_cadastro2.php" method="post">
+            <h2 class="text-center sucesso">Cadastro do Paciente</h2>
+            <form class="formulario" action="paciente_cadastro_clinica2.php" method="post">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="campoEmail">Email</label>
@@ -45,7 +45,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="campoNascimento">Nascimento</label>
-                        <input type="date" class="form-control" name="nascimento" id="campoNascimento" placeholder="Digite seu nascimento" autocomplete="off" required>
+                        <input  class="form-control" name="nascimento" id="campoNascimento" placeholder="Digite seu nascimento" autocomplete="off" required>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="campoTelefone">Telefone</label>
@@ -149,6 +149,7 @@
         $("#campoTelefone").mask("(00) 0000-0000", {placeholder: "(__) ____-____"});
         $("#campoCelular").mask("(00) 00000-0000", {placeholder: "(__) _____-____"});
         $("#campoCpf").mask("000.000.000-00", {placeholder: "___.___.___-__"});
+        $("#campoNascimento").mask("00/00/0000", {placeholder: "__/__/____"});
     });
 </script>
 
