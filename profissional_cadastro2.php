@@ -16,7 +16,7 @@
         $celular = $_POST['celular'];
         $registro = $_POST['registro'];
         $especialidade = $_POST['especialidade'];
-        $db->profissional()->insert(array('nome'=>$nome, 'celular'=>$celular, 'registro'=>$registro, 'especialidade'=>$especialidade, 'login_id'=>$usuario));
+        $db->profissional()->insert(array('nome'=>$nome, 'celular'=>$celular, 'registro'=>$registro, 'especialidade'=>$especialidade, 'usuario_id'=>$usuario));
         header("location: clinica.php");
     }
 
