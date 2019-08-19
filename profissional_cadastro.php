@@ -6,17 +6,29 @@
 
     <div class="cor">
         <h3 class="titulo">Cadastro do Profissional</h3>
-        <div class="container" id="tamanhoContainer">
+        <div class="container tamanhoContainer">
             
-            <form class="formulario" action="cadastro2.php" method="post">
+            <form class="formulario" action="profissional_cadastro2.php" method="post">
                 
-                <div class="form-group">
-                    <label for="campoEmail">Email</label>
-                    <input type="email" id="campoEmail" class="form-control" name="email" placeholder="Digite seu Email" autocomplete="off" required>
+            <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="campoEmail">Email</label>
+                        <input type="email" class="form-control" name="email" id="campoEmail" placeholder="Digite seu email" autocomplete="off" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="campoSenha">Senha</label>
+                        <input type="password" class="form-control"  name="senha" id="campoSenha" placeholder="Digite uma senha" autocomplete="off" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="campoSenha">Senha</label>
-                    <input type="password" id="campoSenha" class="form-control" name="senha" placeholder="Digite sua Senha" autocomplete="off" required>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="campoEmail2">Repetir email</label>
+                        <input type="email" class="form-control" name="email" id="campoEmail2" placeholder="Repetir seu email" autocomplete="off" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="campoSenha2">Repetir senha</label>
+                        <input type="password" class="form-control"  name="senha" id="campoSenha2" placeholder="Repita sua senha" autocomplete="off" required>
+                    </div>
                 </div>
 
                 <div class="custom-control custom-radio">
