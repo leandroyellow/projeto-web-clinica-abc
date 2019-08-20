@@ -25,7 +25,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ml-auto">
                         <a class="nav-item nav-link active" href="clinica.php">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="editar_cadastro.php">Cadastros</a>
+                        <a class="nav-item nav-link" href="listar_cadastro.php">Cadastros</a>
                         <a class="nav-item nav-link" href="paciente_cadastro_clinica.php">Cadasro do paciente</a>
                         <a class="nav-item nav-link" href="profissional_cadastro.php">Cadastro do profissional</a>
                     </div>

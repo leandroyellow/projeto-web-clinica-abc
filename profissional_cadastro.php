@@ -42,24 +42,24 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="campoNome">Nome</label>
-                        <input type="text" class="form-control" id="campoNome" name="nome" placeholder="Digite seu nome completo">
+                        <input type="text" class="form-control" id="campoNome" name="nome" placeholder="Digite seu nome completo" autocomplete="off" required>
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="campoCelular">Celular</label>
-                        <input  class="form-control" id="campoCelular" name="celular" placeholder="Digite seu celular">
+                        <input  class="form-control" id="campoCelular" name="celular" placeholder="Digite seu celular" autocomplete="off" required>
                     </div>
 
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="campoEspecialidade">Especialidade</label>
-                        <input type="text" class="form-control" id="campoEspecialidade" name="especialidade" placeholder="Digite sua especialidade">
+                        <input type="text" class="form-control" id="campoEspecialidade" name="especialidade" placeholder="Digite sua especialidade" autocomplete="off" required>
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="campoRegistro">Registro</label>
-                        <input type="number" class="form-control" id="campoRegistro" name="registro" placeholder="Digite seu Registro ou CPF">
+                        <input type="number" class="form-control" id="campoRegistro" name="registro" placeholder="Digite seu Registro ou CPF" autocomplete="off" required >
                     </div>
 
                 </div>
@@ -105,6 +105,8 @@
 </script>
 
 <script>
+    
+
     function validaSenha (input){ 
 	    if (input.value != document.getElementById('campoSenha').value) {
             input.setCustomValidity('Repita a senha corretamente');
@@ -120,4 +122,7 @@
             input.setCustomValidity('');
         }
     } 
+
+    
+    
 </script>

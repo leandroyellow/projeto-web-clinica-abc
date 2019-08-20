@@ -31,7 +31,7 @@
                 <td><?php echo $email ?> </td>
                 <td><?php echo $tipo ?> </td>
                 <td><a class="btn btn-warning btn-sm" style="color:#fff" href="editar_pagina.php?id=<?php echo $id ?>" role="button"><i class="far fa-edit"></i>&nbsp;Editar</a> 
-                <a class="btn btn-danger btn-sm" style="color:#fff" href="editar_pagina.php?id=<?php echo $id ?>" role="button"><i class="far fa-trash-alt"></i>&nbsp;Excluir</a> 
+                <a class="btn btn-danger btn-sm" style="color:#fff" href="delete_usuario.php?id=<?php echo $id ?>" role="button"><i class="far fa-trash-alt"></i>&nbsp;Excluir</a> 
                 
                 </td>
 
@@ -39,7 +39,7 @@
 
                 <?php } ?>
         
-
+                
             
         </table>
 
