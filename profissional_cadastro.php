@@ -42,7 +42,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="campoNome">Nome</label>
-                        <input type="text" class="form-control" id="campoNome" name="nome" placeholder="Digite seu nome completo" autocomplete="off" required>
+                        <input type="text" class="form-control" id="campoNome" name="nome" placeholder="Digite seu nome" autocomplete="off" required>
                     </div>
 
                     <div class="form-group col-md-6">

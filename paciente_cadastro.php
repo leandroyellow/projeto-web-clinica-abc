@@ -34,13 +34,13 @@
                         <input class="form-control"  name="cpf" id="campoCpf" placeholder="Digite seu CPF" autocomplete="off" required>
                     </div>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="sexo" id="campoSexoM" value="M" required>
-                    <label class="form-check-label" for="campoSexoM">Masculino</label>
+                <div class="custom-control custom-radio">
+                    <input class="custom-control-input" type="radio" name="sexo" id="campoSexoM" value="M" required>
+                    <label class="custom-control-label" for="campoSexoM">Masculino</label>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="sexo" id="campoSexoF" value="F" required>
-                    <label class="form-check-label" for="campoSexoF">Feminino</label>
+                <div class="custom-control custom-radio">
+                    <input class="custom-control-input" type="radio" name="sexo" id="campoSexoF" value="F" required>
+                    <label class="custom-control-label" for="campoSexoF">Feminino</label>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">

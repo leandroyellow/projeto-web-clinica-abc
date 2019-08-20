@@ -11,7 +11,7 @@
 
         
         <div class="container" id="tamanhoContainer">
-            <h3 class="titulo">Login</h3>
+            <h2 class="text-center sucesso">Login</h2>
             <form form class="formulario" action="validacao.php" method="post">
                 <div class="form-group row">
                     <label for="campoEmail" class="col-sm-2 col-form-label">Email</label>
