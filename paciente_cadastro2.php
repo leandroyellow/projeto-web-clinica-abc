@@ -26,7 +26,7 @@
         $cep = $_POST['cep'];
         
         $db->paciente()->insert(array('nome'=>$nome, 'cpf'=>$cpf, 'sexo'=>$sexo, 'nascimento'=>$nascimento, 'telefone'=>$telefone, 'celular'=>$celular, 'endereco'=>$endereco, 'numero'=>$numero, 'bairro'=>$bairro, 'cidade'=>$cidade, 'estado'=>$estado, 'cep'=>$cep, 'usuario_id'=>$usuario ));
-        header("location: paciente_cadastro2.php");
+        //header("location: paciente_cadastro2.php");
     }
 
 
