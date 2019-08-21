@@ -22,7 +22,7 @@
     $estado = $_POST['estado'];
     $cep = $_POST['cep'];
     
-    $sql = "SELECT registro FROM profissional WHERE registro = $registro";
+    $sql = "SELECT cpf FROM paciente WHERE cpf = $cpf";
     $resultado = $conexao->query($sql);
 
     if($resultado->num_rows > 0){
@@ -31,7 +31,7 @@
 
         <div class="cor">
             <div class="container text-center cadastro">
-                <img class="cadastro" src="imagens/cadastro.png" alt="">
+                <img class="cadastro" src="imagens/aviso.png" alt="">
                 <h1 class="sucesso">Paciente já cadastrado!</h1>
                 <a href="index.php" class="btn" id="botao">Voltar</a>
                 <a href="paciente_cadastro.php" class="btn" id="botao">Fazer outro cadastro</a>
@@ -62,6 +62,9 @@
             </div>
 
             <?php include("footer.php"); 
+        }
+        else{
+            echo "error";
         }
 
 
