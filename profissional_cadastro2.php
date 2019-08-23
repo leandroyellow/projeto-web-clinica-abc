@@ -22,7 +22,7 @@
 
             <div class="cor">
                 <div class="container text-center cadastro">
-                    <img class="cadastro" src="imagens/cadastro.png" alt="">
+                    <img class="cadastro" src="imagens/aviso.png" alt="">
                     <h1 class="sucesso">Já possui cadastro</h1>
                     <a href="clinica.php" class="btn" id="botao">Voltar</a>
                     <a href="profissional_cadastro.php" class="btn" id="botao">Cadastrar outro profissional</a>
@@ -62,7 +62,7 @@
         }
         else {
             
-            echo "não cadastrou";
+            echo "Não cadastrou";
 
         }
     }
