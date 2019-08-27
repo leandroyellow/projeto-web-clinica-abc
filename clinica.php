@@ -3,14 +3,14 @@
     <div class="cor">
         <div class="container">
             <h2 class="text-center sucesso">Agenda</h2>
-            <table class="table" border="1">
+            <table class="table">
                 <caption></caption>
                 <thead>
                     <tr>
-                        <th class="text-center">Data</th>
-                        <th class="text-center">Horário</th>
-                        <th class="text-center">Paciente</th>
-                        <th class="text-center">Médico</th>
+                        <th>Data</th>
+                        <th>Horário</th>
+                        <th>Paciente</th>
+                        <th>Médico</th>
                         <th class="text-center">Situação</th>
                     </tr>        
                 </thead>
