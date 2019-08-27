@@ -54,7 +54,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="campoEspecialidade">Especialidade</label>
-                        <input type="text" class="form-control" id="campoEspecialidade" name="especialidade" placeholder="Digite sua especialidade" autocomplete="off" required>
+                        <select class="form-control" id="campoEspecialidade" name="especialidade" autocomplete="off" required>
+                            <option selected>Selecione a especialidade</option>
+                            <option value="clinico">Clinico Geral</option>
+                            <option value="pediatra">Pediatria</option>
+                        </select>
                     </div>
 
                     <div class="form-group col-md-6">

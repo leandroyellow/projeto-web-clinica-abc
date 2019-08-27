@@ -22,7 +22,7 @@
     $estado = $_POST['estado'];
     $cep = $_POST['cep'];
     
-    $sql = "SELECT cpf FROM paciente WHERE cpf = $cpf";
+    $sql = "SELECT cpf FROM paciente WHERE cpf = '$cpf'";
     $resultado = $conexao->query($sql);
 
     if($resultado->num_rows > 0){
