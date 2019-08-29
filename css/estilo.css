@@ -41,6 +41,12 @@ div.cor{
     
 }
 
+.btn.botao{
+    background-color: #6ebf6b;
+    color: #fff;
+    border-color: #28a745;
+}
+
 form div.text-right{
     
     padding-bottom: 50px;

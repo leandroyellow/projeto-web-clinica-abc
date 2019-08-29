@@ -27,8 +27,8 @@ require_once('conexao.php');
                 </div>
                 <div class="form-group col-md-8">
                     <label for="campoMedico">Médico:</label>
-                    <select class="form-control" name="medico" id="campoMedico" autocomplete="off" required style="display:none">
-                        
+                    <select class="form-control" name="medico" id="campoMedico" autocomplete="off" required disabled="disabled">
+                        <option selected>Selecione o médico</option>
                     </select>
                 </div>
             </div>
@@ -39,13 +39,13 @@ require_once('conexao.php');
                 </div>
                 <div class="form-group col-md-8">
                     <label for="campoNome">Nome:</label>
-                    <select class="form-control"  name="cpf" id="campoNome" autocomplete="off" required style="display:none">
+                    <select class="form-control"  name="cpf" id="campoNome" autocomplete="off" required disabled="disabled">
 
                     </select>
                     
                 </div>
             </div>
-            <a href="paciente_cadastro_clinica.php" id="novoCadastro" class="btn btn-warning btn-block" style="display:none">paciente naocadastrado</a>
+            <a href="paciente_cadastro_clinica.php" id="novoCadastro" class="btn botao" style="display:none">paciente naocadastrado</a>
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="campoHorario">Horário:</label>
@@ -71,15 +71,15 @@ $("#campoEspecialidade").on("change", function(){
         type: 'POST',
         data:{especialidade:especialidadeSelecionada},
         beforeSend: function(){
-            $("#campoMedico").css({'display':'block'});
+            
             $("#campoMedico").html("Carregando....");
         },
         success: function(data){
-            $("#campoMedico").css({'display':'block'});
+            $("#campoMedico").prop("disabled",false);
             $("#campoMedico").html(data);
         },
         error: function(data){
-            $("#campoMedico").css({'display':'block'});
+            
             $("#campoMedico").html("Houve erro ao carregar!!!");
         }
     })
@@ -90,24 +90,25 @@ $("#campoEspecialidade").on("change", function(){
     $(document).ready(function(){
         $('#campoCpf').on('blur', function(){
             var cpfDigitado = $(this).val();
-            
-            $.ajax({
-                url: 'paciente_consulta_cadastro.php',
-                type: 'POST',
-                data:{cpf:cpfDigitado},
-                beforeSend: function(){
-                    $("#campoNome").css({'display':'block'});
-                    $("#campoNome").html("Carregando....");
-                },
-                success: function(data){
-                    $("#campoNome").css({'display':'block'});
-                    $("#campoNome").html(data);
-                },
-                error: function(data){
-                    $("#novoCadastro").css({'display':'block'});
-                    $("#campoNome").html("Houve erro ao carregar!!!");
-                }
-            })
+            if (cpfDigitado.length == 14){
+                $.ajax({
+                    url: 'paciente_consulta_cadastro.php',
+                    type: 'POST',
+                    data:{cpf:cpfDigitado},
+                    beforeSend: function(){
+                    
+                        $("#campoNome").html("Carregando....");
+                    },
+                    success: function(data){
+                        
+                        $("#campoNome").html(data);
+                    },
+                    error: function(data){
+                        $("#novoCadastro").css({'display':'block'});
+                        $("#campoNome").html("Houve erro ao carregar!!!");
+                    }
+                })
+            }
         })
         $("#campoCpf").mask("000.000.000-00", {placeholder: "___.___.___-__"});
     })
