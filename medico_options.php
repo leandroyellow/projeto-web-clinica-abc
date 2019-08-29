@@ -2,6 +2,13 @@
     require_once('config.php');
     require_once('conexao.php');
 
+    $select = "SELECT  id, nome FROM profissional WHERE especialidade = '".$_POST['especialidade']."' ORDER BY nome";
+    $resultado = $conexao->query($select);
+
+    foreach($resultado as $medicos){
+        echo '<option value="'.$medicos['id'].'">'.$medicos['nome'].'</option>';
+    }
+/*
     $categoria = $_REQUEST['especialidade'];
 
     $sql = "SELECT  id, nome FROM profissional WHERE especialidade = '$categoria' ORDER BY nome";
@@ -16,4 +23,5 @@
     
 
     echo(json_encode($medicos));
+    */
 ?>
