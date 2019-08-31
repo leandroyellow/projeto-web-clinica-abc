@@ -5,6 +5,7 @@ require_once('conexao.php');
 
     <div class="cor">
         <div class="container">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="campoEspecialidade">Especialidade:</label>
@@ -37,7 +38,7 @@ require_once('conexao.php');
                 </div>
                 <div class="form-group col-md-8">
                     <label for="campoNome">Nome:</label>
-                    <select class="form-control"  name="cpf" id="campoNome" autocomplete="off" required disabled="disabled">
+                    <select class="form-control"  name="paciente" id="campoNome" autocomplete="off" required disabled="disabled">
 
                     </select>
                     
@@ -48,10 +49,15 @@ require_once('conexao.php');
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="campoDia">Data:</label>
-                    <input class="form-control"  name="cpf" id="campoDia" placeholder="Digite uma data" autocomplete="off" required>
+                    <input class="form-control"  name="dia" id="campoDia" placeholder="Digite uma data" autocomplete="off" required>
+                </div>
+                <div class="form-group col-md-8">
+                    <label>clique para verificar a agenda do médico selecionado</label>
+                    <button type="submit" class="btn botao form-control" id="verificaAgenda">verifica</button>
+                    
                 </div>
             </div>
-
+        </form>
 
 
             <h2 class="text-center sucesso">Agenda</h2>
@@ -59,29 +65,61 @@ require_once('conexao.php');
                 <caption></caption>
                 <thead>
                     <tr>
-                        <th>Data</th>
                         <th>Horário</th>
-                        <th>Paciente</th>
                         <th>Médico</th>
+                        <th>Especialidade</th>
+                        <th>Paciente</th>
                         <th class="text-center">Situação</th>
                     </tr>        
                 </thead>
 
                 <tbody>
                     <?php 
-                        for($j=0 ; $j<10 ; $j++){
+                        $idMedico = filter_input(INPUT_GET, "medico");
+                        $especialidadeMedica = filter_input(INPUT_GET, "especialidade");
+                        $dia = filter_input(INPUT_GET, "dia");
+                        $timestamp = date('Y-m-d',  strtotime(str_replace("/", "-", $dia))); 
+ 
+                        if($idMedico && $especialidadeMedica && $dia){
+                            
+                            $sql = "SELECT agenda.hora, profissional.nome AS medico, profissional.especialidade, paciente.nome AS paciente 
+                            FROM agenda 
+                            INNER JOIN profissional ON profissional.id = agenda.profissional_id 
+                            INNER JOIN paciente ON paciente.id = agenda.paciente_id 
+                            WHERE agenda.dia = '$timestamp' AND profissional.id = $idMedico
+                            UNION 
+                            SELECT intervalo.hora, 'Livre' AS nome, '$especialidadeMedica' AS especialidade, '' AS nome 
+                            FROM intervalo 
+                            WHERE intervalo.hora NOT IN (SELECT agenda.hora FROM agenda INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN paciente ON paciente.id = agenda.paciente_id WHERE agenda.dia = '$timestamp' AND profissional.id = $idMedico) 
+                            ORDER BY hora";
+                            $busca = $conexao->query($sql);
+                            
+                        
+                        
+                        if($busca->num_rows > 0){
+                            while ($leitor = $busca->fetch_assoc()){
+                                $dias = $leitor['hora'];
+                                $medico = $leitor['medico'];
+                                $especialidade = $leitor['especialidade'];
+                                $paciente = $leitor['paciente'];
+
+                        
                     ?>
-                        <tr>
-                            <td>23/08/2019</td>
-                            <td><?php echo $j+8?>:00</td>
-                            <td>Teste</td>
-                            <td>Dr.Teste</td>
-                            <td class="text-center"><a class="btn btn-success btn-sm" style="color:#fff" href="agenda.php" role="button"><i class="fas fa-plus-circle"></i>&nbsp;Adicionar</a> 
-                            </td>
-                        </tr>
-                     <?php 
-                      }
+                    <tr>
+                        <td><?php echo $dias ?> </td>
+                        <td><?php echo $medico ?></td>
+                        <td><?php echo $especialidade ?> </td>
+                        <td><?php echo $paciente ?> </td>
+                        <td class="text-center"><a class="btn btn-success btn-sm" style="color:#fff" href="agenda.php" role="button"><i class="fas fa-plus-circle"></i>&nbsp;Adicionar</a> 
+                        </td>
+                    </tr>
+                            <?php }
+                            }
+                        }else{
+
+                        }
                     ?>
+                     
                 
                 </tbody>  
             
@@ -144,3 +182,4 @@ $("#campoEspecialidade").on("change", function(){
         $("#campoDia").mask("00/00/0000", {placeholder: "__/__/____"});
     })
 </script>
+
