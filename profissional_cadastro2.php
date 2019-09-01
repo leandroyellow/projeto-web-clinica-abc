@@ -13,6 +13,14 @@
     $registro = $_POST['registro'];
     $especialidade = $_POST['especialidade'];
 
+    $extensao = strtolower(substr($_FILES['arquivo']['name'], -4)); //pega a extensao do arquivo
+    $novo_nome = md5(time()) . $extensao; //define o nome do arquivo
+    $diretorio = "upload/"; //define o diretorio para onde enviaremos o arquivo
+    move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio.$novo_nome); //efetua o upload
+
+
+
+
     $sql = "SELECT registro FROM profissional WHERE registro = $registro";
     $resultado = $conexao->query($sql);
 
@@ -36,12 +44,12 @@
     }
     else{
 
-        if(isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['tipo']) && isset($_POST['nome']) && isset($_POST['celular']) && isset($_POST['registro']) && isset($_POST['especialidade'])) {
+        if(isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['tipo']) && isset($_POST['nome']) && isset($_POST['celular']) && isset($_POST['registro']) && isset($_POST['especialidade']) && isset($_FILES['arquivo'])) {
 
             $usuario = $db->usuario()->insert(array('email'=>$email, 'senha'=>$senha, 'tipo'=>$tipo));
                 
                 
-            $db->profissional()->insert(array('nome'=>$nome, 'celular'=>$celular, 'registro'=>$registro, 'especialidade'=>$especialidade, 'usuario_id'=>$usuario));
+            $db->profissional()->insert(array('nome'=>$nome, 'celular'=>$celular, 'registro'=>$registro, 'especialidade'=>$especialidade, 'usuario_id'=>$usuario, 'arquivo'=>$novo_nome));
 
             include("header_administrador.php"); ?>
 

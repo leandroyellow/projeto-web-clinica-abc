@@ -8,7 +8,7 @@
         <h2 class="text-center sucesso">Cadastro do Profissional</h2>
         <div class="container tamanhoContainer">
             
-            <form class="formulario" action="profissional_cadastro2.php" method="post">
+            <form class="formulario" action="profissional_cadastro2.php" method="post" enctype="multipart/form-data">
                 
             <div class="form-row">
                     <div class="form-group col-md-6">
@@ -67,6 +67,12 @@
                     </div>
 
                 </div>
+
+                <div class="form-group">
+                    <label for="fotoMedico">Selecione a foto do médico</label>
+                    <input type="file" class="form-control-file btn botao" id="fotoMedico" name="arquivo" required>
+                </div>
+
                 <div class="text-right">
                     <a href="clinica.php" class="btn" id="botao">Voltar</a>
                     <button type="submit" class="btn" id="botao">Cadastar</button>

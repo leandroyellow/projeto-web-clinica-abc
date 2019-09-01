@@ -4,25 +4,30 @@
     require_once('config.php');
     require_once('conexao.php');
 
-    $nomeMedico = $_POST['medico'];
-    $especialidade = $_POST['especialidade'];
-    $dia = $_POST['dia'];
     
     
-    $sql = "SELECT agenda.hora, profissional.nome, profissional.especialidade, paciente.nome 
-    FROM agenda 
-    INNER JOIN profissional ON profissional.id = agenda.profissional_id 
-    INNER JOIN paciente ON paciente.id = agenda.paciente_id 
-    WHERE agenda.dia = '$dia' AND profissional.id = $nomeMedico
-    UNION 
-    SELECT intervalo.hora, '$especialidade' AS nome, '$especialidade' AS especialidade, '' AS nome 
-    FROM intervalo 
-    WHERE intervalo.hora NOT IN (SELECT agenda.hora FROM agenda INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN paciente ON paciente.id = agenda.paciente_id WHERE agenda.dia = '$dia' AND profissional.id = 1) 
-    ORDER BY hora";
+    
+    $sql = "SELECT profissional.arquivo FROM profissional WHERE profissional.id = 10  ";
     $resultado = $conexao->query($sql);
 
     echo($sql);
-    
+    $diretorio = "upload/";
+    $foto = $diretorio . $resultado['arquivo'];
 
 
 ?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img src="<?php echo($foto) ?>" alt="">
+    
+</body>
+</html>
+
