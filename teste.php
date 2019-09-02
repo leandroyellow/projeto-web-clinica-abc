@@ -7,13 +7,15 @@
     
     
     
-    $sql = "SELECT profissional.arquivo FROM profissional WHERE profissional.id = 10  ";
+    $sql = "SELECT profissional.arquivo FROM profissional WHERE profissional.id > 9  ";
     $resultado = $conexao->query($sql);
+    //$row = mysqli_fetch_assoc($resultado);
 
-    echo($sql);
+    
+    
+    //$foto = $diretorio . $row['arquivo'];
+    
     $diretorio = "upload/";
-    $foto = $diretorio . $resultado['arquivo'];
-
 
 ?>
 
@@ -26,7 +28,16 @@
     <title>Document</title>
 </head>
 <body>
-    <img src="<?php echo($foto) ?>" alt="">
+
+<?php 
+    while($fotos = $resultado->fetch_assoc()){
+        $foto = $fotos['arquivo'];
+    
+        
+    
+    ?>
+    <img src="<?php echo $diretorio . $foto ?>">
+<?php }?>
     
 </body>
 </html>
