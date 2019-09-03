@@ -1,4 +1,13 @@
-<?php include("header_paciente.php") ?>
+<?php 
+include("header_paciente.php"); 
+require_once('config.php');
+require_once('conexao.php');
+
+$diretorio = "upload/";
+
+$sql = "SELECT profissional.arquivo, profissional.nome, profissional.especialidade FROM profissional  ";
+$consulta = $conexao->query($sql);
+?>
 
     <section class="agenda">
         <div class="overlay"></div><!--overlay-->
@@ -38,6 +47,11 @@
     </section><!--servicos-container-->
 
     <section class="quem-somos">
+        <div class="container">
+            <div class="posicao">
+                Teste
+            </div>
+        </div>
         
     </section><!--quem_somos-->
 
@@ -45,9 +59,14 @@
         <div class="center">
             <h2 class="equipe">Equipe Médica</h2>
             <div class="row">
-                <div class="col-sm-4 text center medicos"><img class="img-medico img-fluid" src="imagens/medico1.png"><h3 class="nome">Dr. Grey</h3><p class="esp">Cardiologista</p></div>
-                <div class="col-sm-4 text center medicos"><img class="img-medico img-fluid" src="imagens/medico2.png"><h3 class="nome">Dra.2</h3><p class="esp">Pediatra</p></div>
-                <div class="col-sm-4 text center medicos"><img class="img-medico img-fluid" src="imagens/medico3.png"><h3 class="nome">Dr.3</h3><p class="esp">Neurologista</p></div>
+                <?php 
+                    while($medico = $consulta->fetch_assoc()){
+                        $nome = $medico['nome'];
+                        $especialidade = $medico['especialidade'];
+                        $foto = $medico['arquivo'];
+                ?>
+                <div class="col-sm-4 text center medicos"><img class="img-medico img-fluid" src="<?php echo $diretorio . $foto ?>"><h3 class="nome"><?php echo $nome ?></h3><p class="esp"><?php echo $especialidade ?></p></div>
+                <?php } ?>
             </div>
         </div>
     </section>

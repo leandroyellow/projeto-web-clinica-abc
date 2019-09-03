@@ -11,12 +11,27 @@
     $email = mysqli_real_escape_string($conexao, $_POST['email']);
     $senha = mysqli_real_escape_string($conexao, $_POST['senha']);
 
-    $sql = "SELECT * FROM usuario WHERE email =  $email  AND senha =  $senha" ;
+    $sql = "SELECT * FROM usuario WHERE email =  '$email'  AND senha =  $senha" ;
 
-    $result = mysqli_query($conexao, $sql);
+    $resultado = $conexao->query($sql);
 
     
 
-    echo $result;exit;
-   
+    if($resultado->num_rows > 0){
+        $row = mysqli_fetch_assoc($resultado);
+    
+        if($row['tipo'] == 1){
+            header('Location: clinica.php'); 
+        }
+        elseif($row['tipo'] == 2){
+            header('Location: profissional_cadastro.php'); 
+        }
+        elseif($row['tipo'] == 3 ){
+            header('Location: index.php'); 
+        }
+        
+    
+    }
+
+    echo "senha invalida";
 ?>

@@ -7,8 +7,8 @@
     
     
     
-    $sql = "SELECT profissional.arquivo FROM profissional WHERE profissional.id > 9  ";
-    $resultado = $conexao->query($sql);
+    $sql = "SELECT profissional.arquivo, profissional.nome, profissional.especialidade FROM profissional WHERE profissional.id > 9  ";
+    $consulta = $conexao->query($sql);
     //$row = mysqli_fetch_assoc($resultado);
 
     
@@ -30,13 +30,16 @@
 <body>
 
 <?php 
-    while($fotos = $resultado->fetch_assoc()){
-        $foto = $fotos['arquivo'];
-    
+    while($resultado = $consulta->fetch_assoc()){
+        $foto = $resultado['arquivo'];
+        $nome = $resultado['nome'];
+        $especialidade = $resultado['especialidade'];
         
     
     ?>
     <img src="<?php echo $diretorio . $foto ?>">
+    <p><?php echo $nome ?></p>
+    <p><?php echo $especialidade ?></p>
 <?php }?>
     
 </body>
