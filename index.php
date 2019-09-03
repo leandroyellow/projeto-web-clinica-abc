@@ -48,9 +48,9 @@ $consulta = $conexao->query($sql);
 
     <section class="quem-somos">
         <div class="container">
-            <div class="posicao">
-                Teste
-            </div>
+            
+                <img class="img-fluid" src="imagens/cardiologia2.png" alt="">
+            
         </div>
         
     </section><!--quem_somos-->
@@ -58,20 +58,47 @@ $consulta = $conexao->query($sql);
     <section class="medicos-container">
         <div class="center">
             <h2 class="equipe">Equipe Médica</h2>
-            <div class="row">
-                <?php 
-                    while($medico = $consulta->fetch_assoc()){
-                        $nome = $medico['nome'];
-                        $especialidade = $medico['especialidade'];
-                        $foto = $medico['arquivo'];
-                ?>
-                <div class="col-sm-4 text center medicos"><img class="img-medico img-fluid" src="<?php echo $diretorio . $foto ?>"><h3 class="nome"><?php echo $nome ?></h3><p class="esp"><?php echo $especialidade ?></p></div>
-                <?php } ?>
-            </div>
+            <div class="carousel-inner" role="listbox">
+                <div class="row">
+                    <?php 
+                        while($medico = $consulta->fetch_assoc()){
+                            $nome = $medico['nome'];
+                            $especialidade = $medico['especialidade'];
+                            $foto = $medico['arquivo'];
+                    ?>
+                    <div class="col-sm-4 text center medicos"><img class="img-medico img-fluid" src="<?php echo $diretorio . $foto ?>"><h3 class="nome"><?php echo $nome ?></h3><p class="esp"><?php echo $especialidade ?></p></div>
+                    <?php } ?>
+
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="..." class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="..." class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="..." class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+                </div>
+            </div>               
         </div>
     </section>
     
+    
     <section class="planos-container">
+        <a name="planos"></a>
         <div class="container">
             <h2 class="planos">Nossos Planos</h2>
             <div class="row">

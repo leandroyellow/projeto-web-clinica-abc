@@ -180,8 +180,12 @@ section.quem-somos{
 }
 
  .posicao{
-    background: red;
-    width:  30%;
+    
+    width:  auto;
+    border: 1px solid #6ebf6b;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px 0px #808080;
     
 }
 
@@ -321,3 +325,4 @@ img.cadastro{
     border-radius: 100px;
     box-shadow: 0px 10px 30px 0px #808080;
 }
+

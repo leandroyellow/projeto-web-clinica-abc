@@ -25,8 +25,8 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ml-auto">
                         <a class="nav-item nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="#">Planos</a>
-                        <a class="nav-item nav-link" href="#">Contato</a>
+                        <a class="nav-item nav-link" href="#planos">Planos</a>
+                        <a class="nav-item nav-link" href="#contato">Contato</a>
                         <a class="nav-item nav-link" href="login.php">Entrar</a>
                     </div>
                 </div>

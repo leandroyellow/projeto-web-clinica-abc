@@ -44,7 +44,7 @@ require_once('conexao.php');
                     
                 </div>
             </div>
-            <a href="paciente_cadastro_clinica.php" id="novoCadastro" class="btn botao" style="display:none">paciente naocadastrado</a>
+            <a href="paciente_cadastro_clinica.php" id="novoCadastro" class="btn botao" style="display:none">Paciente não cadastrado</a>
 
             <div class="form-row">
                 <div class="form-group col-md-4">
@@ -52,8 +52,8 @@ require_once('conexao.php');
                     <input class="form-control"  name="dia" id="campoDia" placeholder="Digite uma data" autocomplete="off" required>
                 </div>
                 <div class="form-group col-md-8">
-                    <label>clique para verificar a agenda do médico selecionado</label>
-                    <button type="submit" class="btn botao form-control" id="verificaAgenda">verifica</button>
+                    <label>Clique para verificar a agenda do médico selecionado:</label>
+                    <button type="submit" class="btn botao form-control" id="verificaAgenda">Verificar</button>
                     
                 </div>
             </div>
