@@ -199,11 +199,29 @@ section.quem-somos{
       height: 200px;
     }
   }
+
+.img{
+    border: 1px solid #6ebf6b;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px 0px #808080;
+}
+
+.esp{
+    padding-top: 10px;
+    color: #646464;
+}
+
+.txt{
+    font-size: 25px;
+    color: #808080;
+}
+
 /*medicos-container*/
 
 section.medicos-container{
     background: #f2f2f2;
     padding-bottom: 50px;
+    
 }
 
 h2.equipe{
@@ -285,8 +303,8 @@ div p.endereco{
 }
 
 div.teste{
-    width: 300px;
-    background: red;
+    width: 30%;
+    
 }
 
 /*formulario*/
