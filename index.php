@@ -68,33 +68,40 @@ $consulta = $conexao->query($sql);
                         <div class="carousel-inner">
                             <?php 
                             $controle = 2;
-                            while($medico = $consulta->fetch_assoc()){
-                                $nome = $medico['nome'];
-                                $especialidade = $medico['especialidade'];
-                                $foto = $medico['arquivo'];
-                                
-                                if($controle == 2){
-                            ?>
-                            <div class="carousel-item active">
-                                <div class="row">
-                                    <div class="col-sm-4 text center medicos"><img class="img-medico img-fluid" src="<?php echo $diretorio . $foto ?>"><h3 class="nome"><?php echo $nome ?></h3><p class="esp"><?php echo $especialidade ?></p></div>
-                                </div>
-                            </div>
-                            <?php
-                            $controle = 1; 
-                            }else{ 
-                            ?>
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-sm-4 text center medicos"><img class="img-medico img-fluid" src="<?php echo $diretorio . $foto ?>"><h3 class="nome"><?php echo $nome ?></h3><p class="esp"><?php echo $especialidade ?></p></div>
+                            $arr = array();
 
+                            while($medico = $consulta->fetch_assoc()){
+                                array_push($arr, $medico);
+                            }
+                            
+                            $class = "";
+                            for ($i = 0; $i < count($arr); $i = $i + 3){
+                                if($controle == 2){ 
+                                    $class = "active";
+                                } else {
+                                    $class = "";
+                                } 
+                            ?>
+                            <div class="carousel-item <?= $class ?>">
+                                <div class="row">
+                                    <?php
+                                    for ($u = 0; $u < 3; $u++){
+                                        $arr_index = $i+$u;
+                                        if (array_key_exists($arr_index, $arr)) {
+                                    ?>
+                                    <div class="col-sm-4 text center medicos"><img class="img-medico img-fluid" src="<?php echo $diretorio . $arr[$arr_index]["arquivo"] ?>" alt="1"><h3 class="nome"><?php echo $arr[$arr_index]["nome"] ?></h3><p class="esp"><?php echo $arr[$arr_index]["especialidade"] ?></p></div>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
                                 </div>
                             </div>
                             <?php
-                            }}
+                                $controle = 1;
+                            }
                             ?>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="background-color: #6ebf6b">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>

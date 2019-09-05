@@ -3,8 +3,8 @@
     <div class="cor">
         <div class="container">
             <h2 class="text-center sucesso">Cadastros</h2>
-            <form class="form-inline">
-              <input class="form-control mr-sm-2" type="search" placeholder="Pesquisa por nome" aria-label="Pesquisa">
+            <form class="form-inline" method="POST">
+              <input class="form-control mr-sm-2" name="pesquisa" type="search" placeholder="Pesquisa por nome" aria-label="Pesquisa">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisa</button>
             </form>
             <table class="table" style=margin-top:50px;>
@@ -20,6 +20,12 @@
                 <?php
                     require ('conexao.php');
                     $sql = "SELECT paciente.usuario_id, paciente.nome, usuario.email, usuario.tipo, paciente.cpf, paciente.sexo, paciente.nascimento, paciente.telefone, paciente.celular, paciente.endereco, paciente.numero, paciente.bairro, paciente.cidade, paciente.estado, paciente.cep, ''AS especialidade, '' AS arquivo FROM paciente, usuario WHERE usuario.id = paciente.usuario_id UNION SELECT profissional.usuario_id, profissional.nome, usuario.email, usuario.tipo, profissional.registro AS cpf, '' AS sexo, '' AS nascimento, '' AS telefone, profissional.celular, '' AS endereco, '' AS numero, '' AS bairro, '' AS cidade, '' AS estado, '' AS cep, profissional.especialidade, profissional.arquivo FROM profissional, usuario WHERE usuario.id = profissional.usuario_id";
+
+                    if (array_key_exists('pesquisa', $_POST) && $_POST['pesquisa'] != '') {
+                      $pesquisa = $_POST['pesquisa'];
+                      $sql .= " AND (profissional.nome LIKE '%$pesquisa%')";
+                    }
+
                     $busca = $conexao->query($sql);
                     $diretorio = "upload/";
                     while ($leitor = $busca->fetch_assoc()){
@@ -104,7 +110,7 @@
             </div>
             <div class="form-group col-md-6">
               <label for="campoEmail2">Repetir email</label>
-              <input type="email" class="form-control" name="email" id="campoEmail2" placeholder="Repetir seu email" autocomplete="off" required oninput="validaEmail(this)">
+              <input type="email" class="form-control" name="email" id="campoEmail2" placeholder="Repetir seu email" autocomplete="off" required oninput="validaEmail(this, 'campoEmail')">
             </div>
           </div>
           <div class="form-row">
@@ -217,14 +223,15 @@
       </div>
       <div class="modal-body">
         <form class="formulario" action="profissional_editar.php" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="id" id="id">
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="campoEmail">Email</label>
-              <input type="email" class="form-control" name="email" id="campoEmail" placeholder="Digite seu email" autocomplete="off" required>
+              <input type="email" class="form-control" name="email" id="campoEmailMedico" placeholder="Digite seu email" autocomplete="off" required>
             </div>
             <div class="form-group col-md-6">
               <label for="campoEmail2">Repetir email</label>
-              <input type="email" class="form-control" name="email" id="campoEmail2" placeholder="Repetir seu email" autocomplete="off" required oninput="validaEmail(this)">
+              <input type="email" class="form-control" name="email" id="campoEmailMedico2" placeholder="Repetir seu email" autocomplete="off" required oninput="validaEmail(this, 'campoEmailMedico')">
             </div>
           </div>
           <div class="custom-control custom-radio">
@@ -261,7 +268,7 @@
           </div>
           <div class="form-row">
             <div class="form-goup col-md-6">
-              <img  id="foto" class="modal">
+              <img  id="foto">
             </div>
             <div class="form-group col-md-6">
               <label for="fotoMedico">Selecione a foto do médico</label>
@@ -307,7 +314,7 @@ $('#pacienteModal').on('show.bs.modal', function (event) {
   modal.find('#campoEmail').val(recipient_email)
   modal.find('#campoTipo').val(recipient_tipo)
   modal.find('#campoCpf').val(recipient_cpf)
-  modal.find('#campoSexo').val(recipient_sexo)
+  modal.find('#campoSexo' + recipient_sexo).prop('checked', true)
   modal.find('#campoNascimento').val(recipient_nascimento)
   modal.find('#campoTelefone').val(recipient_telefone)
   modal.find('#campoCelular').val(recipient_celular)
@@ -345,10 +352,10 @@ $('#profissionalModal').on('show.bs.modal', function (event) {
   modal.find('.modal-title').text('ID: ' + recipient_id)
   modal.find('#id').val(recipient_id)
   modal.find('#campoNome').val(recipient_nome)
-  modal.find('#campoEmail').val(recipient_email)
+  modal.find('#campoEmailMedico').val(recipient_email)
   modal.find('#campoTipo').val(recipient_tipo)
   modal.find('#campoRegistro').val(recipient_cpf)
-  modal.find('#campoSexo').val(recipient_sexo)
+  modal.find("[name='campoSexo']").val(recipient_sexo)
   modal.find('#campoNascimento').val(recipient_nascimento)
   modal.find('#campoTelefone').val(recipient_telefone)
   modal.find('#campoCelular').val(recipient_celular)
@@ -359,7 +366,7 @@ $('#profissionalModal').on('show.bs.modal', function (event) {
   modal.find('#campoEstado').val(recipient_estado)
   modal.find('#campoCep').val(recipient_cep)
   modal.find('#campoEspecialidade').val(recipient_especialidade)
-  modal.find('.modal').val(recipient_arquivo)
+  modal.find('#foto').prop('src', recipient_arquivo)
 })</script>
 
 <script>
@@ -393,8 +400,8 @@ $('#profissionalModal').on('show.bs.modal', function (event) {
 </script>
 
 <script>
-    function validaEmail (input){ 
-	    if (input.value != document.getElementById('campoEmail').value) {
+    function validaEmail (input, comp){ 
+	    if (input.value != document.getElementById(comp).value) {
             input.setCustomValidity('Repita o email corretamente');
         } else {
             input.setCustomValidity('');
