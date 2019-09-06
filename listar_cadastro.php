@@ -19,11 +19,11 @@
 
                 <?php
                     require ('conexao.php');
-                    $sql = "SELECT usuario.id, usuario.email, usuario.tipo, profissional.nome AS profissional, profissional.especialidade, profissional.celular, profissional.registro, profissional.arquivo, paciente.nome AS paciente, paciente.cpf, paciente.sexo, paciente.nascimento, paciente.telefone, paciente.celular, paciente.endereco, paciente.numero, paciente.bairro, paciente.cidade, paciente.estado, paciente.cep FROM usuario LEFT JOIN profissional ON usuario.id = profissional.usuario_id LEFT JOIN paciente ON paciente.usuario_id = usuario.id ORDER BY profissional.nome, paciente.nome";
+                    $sql = "SELECT usuario.id, usuario.email, usuario.tipo, profissional.nome AS profissional, profissional.especialidade, profissional.celular AS celularProfissional, profissional.registro, profissional.arquivo, paciente.nome AS paciente, paciente.cpf, paciente.sexo, paciente.nascimento, paciente.telefone, paciente.celular AS celularPaciente, paciente.endereco, paciente.numero, paciente.bairro, paciente.cidade, paciente.estado, paciente.cep FROM usuario LEFT JOIN profissional ON usuario.id = profissional.usuario_id LEFT JOIN paciente ON paciente.usuario_id = usuario.id ORDER BY profissional.nome, paciente.nome";
 
                     if (array_key_exists('pesquisa', $_POST) && $_POST['pesquisa'] != '') {
                       $pesquisa = $_POST['pesquisa'];
-                      $sql = "SELECT usuario.id, usuario.email, usuario.tipo, profissional.nome AS profissional, profissional.especialidade, profissional.celular, profissional.registro, profissional.arquivo, paciente.nome AS paciente, paciente.cpf, paciente.sexo, paciente.nascimento, paciente.telefone, paciente.celular, paciente.endereco, paciente.numero, paciente.bairro, paciente.cidade, paciente.estado, paciente.cep FROM usuario LEFT JOIN profissional ON usuario.id = profissional.usuario_id LEFT JOIN paciente ON paciente.usuario_id = usuario.id  WHERE paciente.nome LIKE '%$pesquisa%' OR profissional.nome LIKE '%$pesquisa%' ORDER BY profissional.nome, paciente.nome";
+                      $sql = "SELECT usuario.id, usuario.email, usuario.tipo, profissional.nome AS profissional, profissional.especialidade, profissional.celular AS celularProfissional, profissional.registro, profissional.arquivo, paciente.nome AS paciente, paciente.cpf, paciente.sexo, paciente.nascimento, paciente.telefone, paciente.celular AS celularPaciente, paciente.endereco, paciente.numero, paciente.bairro, paciente.cidade, paciente.estado, paciente.cep FROM usuario LEFT JOIN profissional ON usuario.id = profissional.usuario_id LEFT JOIN paciente ON paciente.usuario_id = usuario.id  WHERE paciente.nome LIKE '%$pesquisa%' OR profissional.nome LIKE '%$pesquisa%' ORDER BY profissional.nome, paciente.nome";
                     }
 
                     $busca = $conexao->query($sql);
@@ -35,10 +35,12 @@
                         $email = $leitor['email'];
                         $tipo = $leitor['tipo'];
                         $cpf = $leitor['cpf'];
+                        $registro = $leitor['registro'];
                         $sexo = $leitor['sexo'];
                         $nascimento = $leitor['nascimento'];
                         $telefone = $leitor['telefone'];
-                        $celular = $leitor['celular'];
+                        $celularProfissional = $leitor['celularProfissional'];
+                        $celularPaciente = $leitor['celularPaciente'];
                         $endereco = $leitor['endereco'];
                         $numero = $leitor['numero'];
                         $bairro = $leitor['bairro'];
@@ -60,7 +62,7 @@
                     
                     <a class="btn btn-danger btn-sm" style="color:#fff" href="delete_usuario.php?id=<?php echo $id ?>" role="button"><i class="far fa-trash-alt"></i>&nbsp;Excluir</a>
                     
-                    <a type="button" class="btn btn-warning btn-sm" style="color:#fff" data-toggle="modal" data-target="#pacienteModal" data-id="<?php echo $id; ?>" data-nome="<?php echo $nomePaciente; ?>" data-email="<?php echo $email; ?>" data-tipo="<?php echo $tipo; ?>" data-cpf="<?php echo $cpf; ?>" data-sexo="<?php echo $sexo; ?>" data-nascimento="<?php echo $timestamp; ?>" data-telefone="<?php echo $telefone; ?>" data-celular="<?php echo $celular; ?>" data-endereco="<?php echo $endereco; ?>" data-numero="<?php echo $numero; ?>" data-bairro="<?php echo $bairro; ?>" data-cidade="<?php echo $cidade; ?>" data-estado="<?php echo $estado; ?>" data-cep="<?php echo $cep; ?>"><i class="far fa-edit"></i>&nbsp;Editar</a> 
+                    <a type="button" class="btn btn-warning btn-sm" style="color:#fff" data-toggle="modal" data-target="#pacienteModal" data-id="<?php echo $id; ?>" data-nome="<?php echo $nomePaciente; ?>" data-email="<?php echo $email; ?>" data-tipo="<?php echo $tipo; ?>" data-cpf="<?php echo $cpf; ?>" data-sexo="<?php echo $sexo; ?>" data-nascimento="<?php echo $timestamp; ?>" data-telefone="<?php echo $telefone; ?>" data-celular="<?php echo $celularPaciente; ?>" data-endereco="<?php echo $endereco; ?>" data-numero="<?php echo $numero; ?>" data-bairro="<?php echo $bairro; ?>" data-cidade="<?php echo $cidade; ?>" data-estado="<?php echo $estado; ?>" data-cep="<?php echo $cep; ?>"><i class="far fa-edit"></i>&nbsp;Editar</a> 
                     
                     </td>
 
@@ -75,7 +77,7 @@
                                     
                   <a class="btn btn-danger btn-sm" style="color:#fff" href="delete_usuario.php?id=<?php echo $id ?>" role="button"><i class="far fa-trash-alt"></i>&nbsp;Excluir</a>
                   
-                  <a type="button" class="btn btn-warning btn-sm" style="color:#fff" data-toggle="modal" data-target="#profissionalModal" data-id="<?php echo $id; ?>" data-nome="<?php echo $nomeProfissional; ?>" data-email="<?php echo $email; ?>" data-tipo="<?php echo $tipo; ?>" data-cpf="<?php echo $cpf; ?>" data-sexo="<?php echo $sexo; ?>" data-nascimento="<?php echo $timestamp; ?>" data-telefone="<?php echo $telefone; ?>" data-celular="<?php echo $celular; ?>" data-endereco="<?php echo $endereco; ?>" data-numero="<?php echo $numero; ?>" data-bairro="<?php echo $bairro; ?>" data-cidade="<?php echo $cidade; ?>" data-estado="<?php echo $estado; ?>" data-cep="<?php echo $cep; ?>" data-especialidade="<?php echo $especialidade; ?>" data-arquivo="<?php echo $arquivo; ?>"><i class="far fa-edit"></i>&nbsp;Editar</a> 
+                  <a type="button" class="btn btn-warning btn-sm" style="color:#fff" data-toggle="modal" data-target="#profissionalModal" data-id="<?php echo $id; ?>" data-nome="<?php echo $nomeProfissional; ?>" data-email="<?php echo $email; ?>" data-tipo="<?php echo $tipo; ?>" data-cpf="<?php echo $registro; ?>" data-sexo="<?php echo $sexo; ?>" data-nascimento="<?php echo $timestamp; ?>" data-telefone="<?php echo $telefone; ?>" data-celular="<?php echo $celularProfissional; ?>" data-endereco="<?php echo $endereco; ?>" data-numero="<?php echo $numero; ?>" data-bairro="<?php echo $bairro; ?>" data-cidade="<?php echo $cidade; ?>" data-estado="<?php echo $estado; ?>" data-cep="<?php echo $cep; ?>" data-especialidade="<?php echo $especialidade; ?>" data-arquivo="<?php echo $arquivo; ?>"><i class="far fa-edit"></i>&nbsp;Editar</a> 
                   
                   </td>
                 </tr>
@@ -236,11 +238,11 @@
             </div>
           </div>
           <div class="custom-control custom-radio">
-            <input type="radio" id="radioAdm" name="tipo" class="custom-control-input" value="1" required>
+            <input type="radio" id="radio1" name="tipo" class="custom-control-input" value="1" required>
             <label class="custom-control-label" for="radioAdm">Administração</label>
           </div>
           <div class="custom-control custom-radio">
-            <input type="radio" id="radioMedico" name="tipo" class="custom-control-input" value="2" required>
+            <input type="radio" id="radio2" name="tipo" class="custom-control-input" value="2" required>
             <label class="custom-control-label" for="radioMedico">Médico</label>
           </div>
           <div class="form-row">
@@ -354,7 +356,7 @@ $('#profissionalModal').on('show.bs.modal', function (event) {
   modal.find('#id').val(recipient_id)
   modal.find('#campoNome').val(recipient_nome)
   modal.find('#campoEmailMedico').val(recipient_email)
-  modal.find('#campoTipo').val(recipient_tipo)
+  modal.find('#radio' + recipient_tipo).prop('checked', true)
   modal.find('#campoRegistro').val(recipient_cpf)
   modal.find("[name='campoSexo']").val(recipient_sexo)
   modal.find('#campoNascimento').val(recipient_nascimento)
