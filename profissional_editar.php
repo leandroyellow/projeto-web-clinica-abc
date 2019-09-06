@@ -21,7 +21,7 @@ $resultado = $conexao->query($sql);
 
 $sql2 = "UPDATE profissional SET profissional.nome='$nome', profissional.especialidade='$especialidade', profissional.celular='$celular', profissional.registro='$registro', profissional.arquivo='$novo_nome' WHERE profissional.usuario_id = $id";
 $resultado2 = $conexao->query($sql2);
-echo $sql2
-//header('Location: listar_cadastro.php');
+
+header('Location: listar_cadastro.php');
  
 ?>

@@ -12,21 +12,21 @@
                 
             <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="campoEmail">Email</label>
+                        <label for="campoEmail">Email:</label>
                         <input type="email" class="form-control" name="email" id="campoEmail" placeholder="Digite seu email" autocomplete="off" required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="campoSenha">Senha</label>
+                        <label for="campoSenha">Senha:</label>
                         <input type="password" class="form-control"  name="senha" id="campoSenha" placeholder="Digite uma senha" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="campoEmail2">Repetir email</label>
+                        <label for="campoEmail2">Repetir email:</label>
                         <input type="email" class="form-control" name="email" id="campoEmail2" placeholder="Repetir seu email" autocomplete="off" required oninput="validaEmail(this)">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="campoSenha2">Repetir senha</label>
+                        <label for="campoSenha2">Repetir senha:</label>
                         <input type="password" class="form-control"  name="senha" id="campoSenha2" placeholder="Repita sua senha" autocomplete="off" required oninput="validaSenha(this)">
                     </div>
                 </div>
@@ -41,19 +41,19 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="campoNome">Nome</label>
+                        <label for="campoNome">Nome:</label>
                         <input type="text" class="form-control" id="campoNome" name="nome" placeholder="Digite seu nome" autocomplete="off" required>
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="campoCelular">Celular</label>
+                        <label for="campoCelular">Celular:</label>
                         <input  class="form-control" id="campoCelular" name="celular" placeholder="Digite seu celular" autocomplete="off" required>
                     </div>
 
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="campoEspecialidade">Especialidade</label>
+                        <label for="campoEspecialidade">Especialidade:</label>
                         <select class="form-control" id="campoEspecialidade" name="especialidade" autocomplete="off" required>
                             <option selected>Selecione a especialidade</option>
                             <option value="clinico">Clinico Geral</option>
@@ -62,14 +62,14 @@
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="campoRegistro">Registro</label>
+                        <label for="campoRegistro">Registro:</label>
                         <input type="number" class="form-control" id="campoRegistro" name="registro" placeholder="Digite seu Registro ou CPF" autocomplete="off" required >
                     </div>
 
                 </div>
 
                 <div class="form-group">
-                    <label for="fotoMedico">Selecione a foto do médico</label>
+                    <label for="fotoMedico">Selecione a foto do médico:</label>
                     <input type="file" class="form-control-file btn botao" id="fotoMedico" name="arquivo" required>
                 </div>
 

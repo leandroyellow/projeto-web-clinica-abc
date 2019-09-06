@@ -50,47 +50,41 @@ $consulta = $conexao->query($sql);
         <div class="container">
             <div class="teste">
                 <h2 class="esp text-center">Especialidades</h2>
-                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-                    <div class="carousel-inner img img-fluid">
+                <div id="carouselExampleFade" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+
                         <div class="carousel-item active">
-                            <img  src="imagens/oftal.png" class="d-block w-100" alt="...">
-                            <p class="text-center txt">Oftalmologista</p>
+                            <div class="text-center icone"><i class="far fa-eye"></i><br>Oftalmologia</div>
                         </div>
                         <div class="carousel-item">
-                            <img src="imagens/dentista3.png" class="d-block w-100" alt="...">
-                            <p class="text-center txt">Dentista</p>
+                            <div class="text-center icone"><i class="fas fa-tooth"></i><br>Dentista</div>
                         </div>
                         <div class="carousel-item">
-                            <img src="imagens/card.png" class="d-block w-100" alt="...">
-                            <p class="text-center txt">Cardiologista</p>
+                            <div class="text-center icone"><i class="fas fa-heartbeat"></i><br>Cardiologia</div>
                         </div>
                         <div class="carousel-item">
-                            <img src="imagens/geral.png" class="d-block w-100" alt="...">
-                            <p class="text-center txt">Clínico Geral</p>
+                            <div class="text-center icone"><i class="fas fa-stethoscope"></i><br>Clínico Geral</div>
                         </div>
                         <div class="carousel-item">
-                            <img src="imagens/pediatra.png" class="d-block w-100" alt="...">
-                            <p class="text-center txt">Pediatria</p>
+                            <div class="text-center icone"><i class="fas fa-baby"></i><br>Pediatra</div>
                         </div>
                         <div class="carousel-item">
-                            <img src="imagens/nutri.png" class="d-block w-100" alt="...">
-                            <p class="text-center txt">Nutricionista</p>
+                            <div class="text-center icone"><i class="fas fa-apple-alt"></i><br>Nutricionista</div>
                         </div>
                         <div class="carousel-item">
-                            <img src="imagens/orto.png" class="d-block w-100" alt="...">
-                            <p class="text-center txt">Ortopedia</p>
+                            <div class="text-center icone"><i class="fas fa-bone"></i><br>Ortopedia</div>
                         </div>
                         <div class="carousel-item">
-                            <img src="imagens/medfam.png" class="d-block w-100" alt="...">
-                            <p class="text-center txt">Medicina de Família e Comunidade</p>
+                            <div class="text-center icone"><i class="fas fa-users"></i><br>Medicina de Família e Comunidade</div>
                         </div>
                         <div class="carousel-item">
-                            <img src="imagens/inter.png" class="d-block w-100" alt="...">
-                            <p class="text-center txt">Cirurgia Geral</p>
+                            <div class="text-center icone"><i class="fas fa-syringe"></i><br>Vacinas</div>
                         </div>
                         <div class="carousel-item">
-                            <img src="imagens/radio.png" class="d-block w-100" alt="...">
-                            <p class="text-center txt">Radiologia</p>
+                            <div class="text-center icone"><i class="fas fa-radiation"></i><br>Radiologia</div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="text-center icone"><i class="fas fa-procedures"></i><br>Internação</div>
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
@@ -171,17 +165,17 @@ $consulta = $conexao->query($sql);
                 <div class="col-sm-4 text center icone">
                     <i class="fas fa-users"></i><br>Familiar/Individual<br>
                     <p>A partir de R$ 79,90</p>
-                    <button type="button" class="btn btn-success btn-md">Faça sua cotação</button>
+                    <a href="cotacao.php" class="btn" id="botao">Faça sua cotação</a>
                 </div>
                 <div class="col-sm-4 text center icone">
                     <i class="fas fa-building"></i><br>Empresarial<br>
                     <p>A partir de R$ 39,90</p>
-                    <button type="button" class="btn btn-success btn-md">Faça sua cotação</button>
+                    <a href="cotacao.php" class="btn" id="botao">Faça sua cotação</a>
                 </div>
                 <div class="col-sm-4 text center icone">
                     <i class="fas fa-tooth"></i><br>Odontológicos<br>
                     <p>A partir de R$ 59,90</p>
-                    <button type="button" class="btn btn-success btn-md">Faça sua cotação</button>
+                    <a href="cotacao.php" class="btn" id="botao">Faça sua cotação</a>
                 </div>
             </div>
         </div>
