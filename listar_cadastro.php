@@ -19,18 +19,19 @@
 
                 <?php
                     require ('conexao.php');
-                    $sql = "SELECT paciente.usuario_id, paciente.nome, usuario.email, usuario.tipo, paciente.cpf, paciente.sexo, paciente.nascimento, paciente.telefone, paciente.celular, paciente.endereco, paciente.numero, paciente.bairro, paciente.cidade, paciente.estado, paciente.cep, ''AS especialidade, '' AS arquivo FROM paciente, usuario WHERE usuario.id = paciente.usuario_id UNION SELECT profissional.usuario_id, profissional.nome, usuario.email, usuario.tipo, profissional.registro AS cpf, '' AS sexo, '' AS nascimento, '' AS telefone, profissional.celular, '' AS endereco, '' AS numero, '' AS bairro, '' AS cidade, '' AS estado, '' AS cep, profissional.especialidade, profissional.arquivo FROM profissional, usuario WHERE usuario.id = profissional.usuario_id";
+                    $sql = "SELECT usuario.id, usuario.email, usuario.tipo, profissional.nome AS profissional, profissional.especialidade, profissional.celular, profissional.registro, profissional.arquivo, paciente.nome AS paciente, paciente.cpf, paciente.sexo, paciente.nascimento, paciente.telefone, paciente.celular, paciente.endereco, paciente.numero, paciente.bairro, paciente.cidade, paciente.estado, paciente.cep FROM usuario LEFT JOIN profissional ON usuario.id = profissional.usuario_id LEFT JOIN paciente ON paciente.usuario_id = usuario.id ORDER BY profissional.nome, paciente.nome";
 
                     if (array_key_exists('pesquisa', $_POST) && $_POST['pesquisa'] != '') {
                       $pesquisa = $_POST['pesquisa'];
-                      $sql .= " AND (profissional.nome LIKE '%$pesquisa%')";
+                      $sql = "SELECT usuario.id, usuario.email, usuario.tipo, profissional.nome AS profissional, profissional.especialidade, profissional.celular, profissional.registro, profissional.arquivo, paciente.nome AS paciente, paciente.cpf, paciente.sexo, paciente.nascimento, paciente.telefone, paciente.celular, paciente.endereco, paciente.numero, paciente.bairro, paciente.cidade, paciente.estado, paciente.cep FROM usuario LEFT JOIN profissional ON usuario.id = profissional.usuario_id LEFT JOIN paciente ON paciente.usuario_id = usuario.id  WHERE paciente.nome LIKE '%$pesquisa%' OR profissional.nome LIKE '%$pesquisa%' ORDER BY profissional.nome, paciente.nome";
                     }
 
                     $busca = $conexao->query($sql);
                     $diretorio = "upload/";
                     while ($leitor = $busca->fetch_assoc()){
-                        $id = $leitor['usuario_id'];
-                        $nome = $leitor['nome'];
+                        $id = $leitor['id'];
+                        $nomePaciente = $leitor['paciente'];
+                        $nomeProfissional = $leitor['profissional'];
                         $email = $leitor['email'];
                         $tipo = $leitor['tipo'];
                         $cpf = $leitor['cpf'];
@@ -52,14 +53,14 @@
                 ?>
 
                 <tr>
-                    <td><?php echo  $nome ?> </td>
+                    <td><?php echo  $nomePaciente ?> </td>
                     <td><?php echo $email ?> </td>
                     <td class="text-center"><?php echo $tipo ?> </td>
                     <td class="text-center">
                     
                     <a class="btn btn-danger btn-sm" style="color:#fff" href="delete_usuario.php?id=<?php echo $id ?>" role="button"><i class="far fa-trash-alt"></i>&nbsp;Excluir</a>
                     
-                    <a type="button" class="btn btn-warning btn-sm" style="color:#fff" data-toggle="modal" data-target="#pacienteModal" data-id="<?php echo $id; ?>" data-nome="<?php echo $nome; ?>" data-email="<?php echo $email; ?>" data-tipo="<?php echo $tipo; ?>" data-cpf="<?php echo $cpf; ?>" data-sexo="<?php echo $sexo; ?>" data-nascimento="<?php echo $timestamp; ?>" data-telefone="<?php echo $telefone; ?>" data-celular="<?php echo $celular; ?>" data-endereco="<?php echo $endereco; ?>" data-numero="<?php echo $numero; ?>" data-bairro="<?php echo $bairro; ?>" data-cidade="<?php echo $cidade; ?>" data-estado="<?php echo $estado; ?>" data-cep="<?php echo $cep; ?>"><i class="far fa-edit"></i>&nbsp;Editar</a> 
+                    <a type="button" class="btn btn-warning btn-sm" style="color:#fff" data-toggle="modal" data-target="#pacienteModal" data-id="<?php echo $id; ?>" data-nome="<?php echo $nomePaciente; ?>" data-email="<?php echo $email; ?>" data-tipo="<?php echo $tipo; ?>" data-cpf="<?php echo $cpf; ?>" data-sexo="<?php echo $sexo; ?>" data-nascimento="<?php echo $timestamp; ?>" data-telefone="<?php echo $telefone; ?>" data-celular="<?php echo $celular; ?>" data-endereco="<?php echo $endereco; ?>" data-numero="<?php echo $numero; ?>" data-bairro="<?php echo $bairro; ?>" data-cidade="<?php echo $cidade; ?>" data-estado="<?php echo $estado; ?>" data-cep="<?php echo $cep; ?>"><i class="far fa-edit"></i>&nbsp;Editar</a> 
                     
                     </td>
 
@@ -67,14 +68,14 @@
 
                 <?php }else{ ?>
                 <tr>
-                  <td><?php echo  $nome ?> </td>
+                  <td><?php echo  $nomeProfissional ?> </td>
                   <td><?php echo $email ?> </td>
                   <td class="text-center"><?php echo $tipo ?> </td>
                   <td class="text-center">
                                     
                   <a class="btn btn-danger btn-sm" style="color:#fff" href="delete_usuario.php?id=<?php echo $id ?>" role="button"><i class="far fa-trash-alt"></i>&nbsp;Excluir</a>
                   
-                  <a type="button" class="btn btn-warning btn-sm" style="color:#fff" data-toggle="modal" data-target="#profissionalModal" data-id="<?php echo $id; ?>" data-nome="<?php echo $nome; ?>" data-email="<?php echo $email; ?>" data-tipo="<?php echo $tipo; ?>" data-cpf="<?php echo $cpf; ?>" data-sexo="<?php echo $sexo; ?>" data-nascimento="<?php echo $timestamp; ?>" data-telefone="<?php echo $telefone; ?>" data-celular="<?php echo $celular; ?>" data-endereco="<?php echo $endereco; ?>" data-numero="<?php echo $numero; ?>" data-bairro="<?php echo $bairro; ?>" data-cidade="<?php echo $cidade; ?>" data-estado="<?php echo $estado; ?>" data-cep="<?php echo $cep; ?>" data-especialidade="<?php echo $especialidade; ?>" data-arquivo="<?php echo $arquivo; ?>"><i class="far fa-edit"></i>&nbsp;Editar</a> 
+                  <a type="button" class="btn btn-warning btn-sm" style="color:#fff" data-toggle="modal" data-target="#profissionalModal" data-id="<?php echo $id; ?>" data-nome="<?php echo $nomeProfissional; ?>" data-email="<?php echo $email; ?>" data-tipo="<?php echo $tipo; ?>" data-cpf="<?php echo $cpf; ?>" data-sexo="<?php echo $sexo; ?>" data-nascimento="<?php echo $timestamp; ?>" data-telefone="<?php echo $telefone; ?>" data-celular="<?php echo $celular; ?>" data-endereco="<?php echo $endereco; ?>" data-numero="<?php echo $numero; ?>" data-bairro="<?php echo $bairro; ?>" data-cidade="<?php echo $cidade; ?>" data-estado="<?php echo $estado; ?>" data-cep="<?php echo $cep; ?>" data-especialidade="<?php echo $especialidade; ?>" data-arquivo="<?php echo $arquivo; ?>"><i class="far fa-edit"></i>&nbsp;Editar</a> 
                   
                   </td>
                 </tr>
