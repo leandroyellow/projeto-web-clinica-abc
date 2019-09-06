@@ -38,7 +38,7 @@ require_once('conexao.php');
                 </div>
                 <div class="form-group col-md-8">
                     <label for="campoNome">Nome:</label>
-                    <select class="form-control"  name="paciente" id="campoNome" autocomplete="off" required disabled="disabled">
+                    <select class="form-control"  name="paciente" id="campoNome" autocomplete="off" required >
 
                     </select>
                     
@@ -78,6 +78,7 @@ require_once('conexao.php');
                         $idMedico = filter_input(INPUT_GET, "medico");
                         $especialidadeMedica = filter_input(INPUT_GET, "especialidade");
                         $dia = filter_input(INPUT_GET, "dia");
+                        $idpaciente = filter_input(INPUT_GET, "paciente");
                         $timestamp = date('Y-m-d',  strtotime(str_replace("/", "-", $dia))); 
  
                         if($idMedico && $especialidadeMedica && $dia){
@@ -98,19 +99,20 @@ require_once('conexao.php');
                         
                         if($busca->num_rows > 0){
                             while ($leitor = $busca->fetch_assoc()){
-                                $dias = $leitor['hora'];
+                                $hora = $leitor['hora'];
                                 $medico = $leitor['medico'];
                                 $especialidade = $leitor['especialidade'];
                                 $paciente = $leitor['paciente'];
 
+
                         
                     ?>
                     <tr>
-                        <td><?php echo $dias ?> </td>
+                        <td><?php echo $hora ?> </td>
                         <td><?php echo $medico ?></td>
                         <td><?php echo $especialidade ?> </td>
                         <td><?php echo $paciente ?> </td>
-                        <td class="text-center"><a class="btn btn-success btn-sm" style="color:#fff" href="agenda.php" role="button"><i class="fas fa-plus-circle"></i>&nbsp;Adicionar</a> 
+                        <td class="text-center"><a class="btn btn-success btn-sm" style="color:#fff" href="agenda.php?<?php echo "medico=$idMedico&paciente=$idpaciente&dia=$dia&hora=$hora&especialidade=$especialidadeMedica"?>"  role="button"><i class="fas fa-plus-circle"></i>&nbsp;Adicionar</a> 
                         </td>
                     </tr>
                             <?php }
