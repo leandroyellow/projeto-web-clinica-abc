@@ -83,13 +83,13 @@ require_once('conexao.php');
  
                         if($idMedico && $especialidadeMedica && $dia){
                             
-                            $sql = "SELECT agenda.hora, profissional.nome AS medico, profissional.especialidade, paciente.nome AS paciente 
+                            $sql = "SELECT agenda.id, agenda.hora, profissional.nome AS medico, profissional.especialidade, paciente.nome AS paciente 
                             FROM agenda 
                             INNER JOIN profissional ON profissional.id = agenda.profissional_id 
                             INNER JOIN paciente ON paciente.id = agenda.paciente_id 
                             WHERE agenda.dia = '$timestamp' AND profissional.id = $idMedico
                             UNION 
-                            SELECT intervalo.hora, 'Livre' AS nome, '$especialidadeMedica' AS especialidade, '' AS nome 
+                            SELECT '' AS id, intervalo.hora, 'Livre' AS nome, '$especialidadeMedica' AS especialidade, '' AS nome 
                             FROM intervalo 
                             WHERE intervalo.hora NOT IN (SELECT agenda.hora FROM agenda INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN paciente ON paciente.id = agenda.paciente_id WHERE agenda.dia = '$timestamp' AND profissional.id = $idMedico) 
                             ORDER BY hora";
@@ -103,6 +103,7 @@ require_once('conexao.php');
                                 $medico = $leitor['medico'];
                                 $especialidade = $leitor['especialidade'];
                                 $paciente = $leitor['paciente'];
+                                $id = $leitor['id'];
 
 
                         
@@ -112,10 +113,21 @@ require_once('conexao.php');
                         <td><?php echo $medico ?></td>
                         <td><?php echo $especialidade ?> </td>
                         <td><?php echo $paciente ?> </td>
+
+                        <?php
+                        if($paciente == ""){
+
+                        
+                        ?>
+
                         <td class="text-center"><a class="btn btn-success btn-sm" style="color:#fff" href="agenda.php?<?php echo "medico=$idMedico&paciente=$idpaciente&dia=$dia&hora=$hora&especialidade=$especialidadeMedica"?>"  role="button"><i class="fas fa-plus-circle"></i>&nbsp;Adicionar</a> 
                         </td>
+                        <?php
+                        }else{
+                        ?>
+                        <td class="text-center"><a class="btn btn-danger btn-sm" style="color:#fff" href="agenda_desmarca.php?<?php echo "medico=$idMedico&paciente=$idpaciente&dia=$dia&hora=$hora&especialidade=$especialidadeMedica&id=$id"?>" role="button"><i class="far fa-trash-alt"></i>&nbsp;Desmarcar</a> 
                     </tr>
-                            <?php }
+                            <?php }}
                             }
                         }else{
 
