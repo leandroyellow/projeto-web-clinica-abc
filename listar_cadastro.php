@@ -258,10 +258,18 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="campoEspecialidade">Especialidade</label>
-              <select class="form-control" id="campoEspecialidade" name="especialidade" autocomplete="off" required>
+              <select class="form-control" name="especialidade" id="campoEspecialidade" autocomplete="off" required>
                 <option selected>Selecione a especialidade</option>
-                <option value="clinico">Clinico Geral</option>
-                <option value="pediatra">Pediatria</option>
+                <?php 
+                  $select = "SELECT DISTINCT especialidade FROM especialidades ORDER BY especialidade";
+                  $resultado = $conexao->query($select);
+
+                  foreach($resultado as $especialidades){
+                      echo '<option value="'.$especialidades['especialidade'].'">'.$especialidades['especialidade'].'</option>';
+                  }
+                    
+                ?>
+                
               </select>
             </div>
             <div class="form-group col-md-6">

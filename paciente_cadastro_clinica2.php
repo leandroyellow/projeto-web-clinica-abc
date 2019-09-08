@@ -21,11 +21,15 @@
     $cidade = $_POST['cidade'];
     $estado = $_POST['estado'];
     $cep = $_POST['cep'];
+
+    $sqlEmail = "SELECT email FROM usuario WHERE email = '$email'";
+    $resultadoEmail = $conexao->query($sqlEmail);
+
     
     $sql = "SELECT cpf FROM paciente WHERE cpf = '$cpf'";
     $resultado = $conexao->query($sql);
 
-    if($resultado->num_rows > 0){
+    if($resultado->num_rows > 0 || $resultadoEmail->num_rows > 0){
 
         include("header_paciente.php"); ?>
 

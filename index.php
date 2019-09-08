@@ -5,7 +5,7 @@ require_once('conexao.php');
 
 $diretorio = "upload/";
 
-$sql = "SELECT profissional.arquivo, profissional.nome, profissional.especialidade FROM profissional  ";
+$sql = "SELECT profissional.arquivo, profissional.nome, profissional.especialidade FROM profissional INNER JOIN usuario ON usuario.id = profissional.usuario_id WHERE usuario.tipo = 2 ";
 $consulta = $conexao->query($sql);
 ?>
 
@@ -15,15 +15,20 @@ $consulta = $conexao->query($sql);
             <form>
                 <h2>Agende sua consulta online</h2>
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1"></label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>Escolha uma especialidade</option>
-                        <option>Clínico Geral</option>
-                        <option>Giicologista</option>
-                        <option>Pediatra</option>
-                        <option>Nutricionista</option>
-                        <option>Dentista</option>
-                    </select>
+                    <label for="campoEspecialidade"></label>
+                    <select class="form-control" name="especialidade" id="campoEspecialidade" autocomplete="off" required>
+                        <option selected>Selecione a especialidade</option>
+                        <?php 
+                            $select = "SELECT DISTINCT especialidade FROM especialidades ORDER BY especialidade";
+                            $resultado = $conexao->query($select);
+
+                            foreach($resultado as $especialidades){
+                                echo '<option value="'.$especialidades['especialidade'].'">'.$especialidades['especialidade'].'</option>';
+                            }
+                            
+                        ?>
+                        
+                        </select>
                 </div>
                 <button type="button" class="btn btn-block">Agendar</button>
             </form>

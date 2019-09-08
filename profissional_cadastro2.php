@@ -18,13 +18,14 @@
     $diretorio = "upload/"; //define o diretorio para onde enviaremos o arquivo
     move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio.$novo_nome); //efetua o upload
 
-
+    $sqlEmail = "SELECT email FROM usuario WHERE email = '$email'";
+    $resultadoEmail = $conexao->query($sqlEmail);
 
 
     $sql = "SELECT registro FROM profissional WHERE registro = $registro";
     $resultado = $conexao->query($sql);
 
-    if($resultado->num_rows > 0){
+    if($resultado->num_rows > 0 || $resultadoEmail->num_rows > 0){
 
         include("header_administrador.php"); ?>
 

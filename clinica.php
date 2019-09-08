@@ -12,7 +12,7 @@ require_once('conexao.php');
                     <select class="form-control" name="especialidade" id="campoEspecialidade" autocomplete="off" required>
                         <option selected>Selecione a especialidade</option>
                         <?php 
-                            $select = "SELECT DISTINCT especialidade FROM profissional ORDER BY especialidade";
+                            $select = "SELECT DISTINCT especialidade FROM profissional INNER JOIN usuario ON usuario.id = profissional.usuario_id WHERE usuario.tipo = 2 ORDER BY especialidade";
                             $resultado = $conexao->query($select);
 
                             foreach($resultado as $especialidades){
