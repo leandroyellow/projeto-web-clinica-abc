@@ -5,7 +5,7 @@ require_once('conexao.php');
 
 $diretorio = "upload/";
 
-$sql = "SELECT profissional.arquivo, profissional.nome, profissional.especialidade FROM profissional INNER JOIN usuario ON usuario.id = profissional.usuario_id WHERE usuario.tipo = 2 ";
+$sql = "SELECT profissional.arquivo, profissional.nome, especialidades.especialidade FROM profissional INNER JOIN usuario ON usuario.id = profissional.usuario_id INNER JOIN especialidades ON especialidades.id = profissional.especialidade WHERE usuario.tipo = 2 ";
 $consulta = $conexao->query($sql);
 ?>
 
@@ -19,11 +19,11 @@ $consulta = $conexao->query($sql);
                     <select class="form-control" name="especialidade" id="campoEspecialidade" autocomplete="off" required>
                         <option selected>Selecione a especialidade</option>
                         <?php 
-                            $select = "SELECT DISTINCT especialidade FROM especialidades ORDER BY especialidade";
+                            $select = "SELECT DISTINCT especialidades.id, especialidades.especialidade FROM especialidades INNER JOIN profissional ON profissional.especialidade = especialidades.id INNER JOIN usuario ON usuario.id = profissional.usuario_id WHERE usuario.tipo = 2 ORDER BY especialidade ";
                             $resultado = $conexao->query($select);
 
                             foreach($resultado as $especialidades){
-                                echo '<option value="'.$especialidades['especialidade'].'">'.$especialidades['especialidade'].'</option>';
+                                echo '<option value="'.$especialidades['id'].'">'. utf8_encode($especialidades['especialidade']).'</option>';
                             }
                             
                         ?>
@@ -135,7 +135,7 @@ $consulta = $conexao->query($sql);
                                         $arr_index = $i+$u;
                                         if (array_key_exists($arr_index, $arr)) {
                                     ?>
-                                    <div class="col-sm-4 text center medicos"><img class="img-medico img-fluid" src="<?php echo $diretorio . $arr[$arr_index]["arquivo"] ?>" alt="1"><h3 class="nome"><?php echo $arr[$arr_index]["nome"] ?></h3><p class="esp"><?php echo $arr[$arr_index]["especialidade"] ?></p></div>
+                                    <div class="col-sm-4 text center medicos"><img class="img-medico img-fluid" src="<?php echo $diretorio . $arr[$arr_index]["arquivo"] ?>" alt="1"><h3 class="nome"><?php echo $arr[$arr_index]["nome"] ?></h3><p class="esp"><?php echo utf8_encode($arr[$arr_index]["especialidade"]) ?></p></div>
                                     <?php
                                         }
                                     }

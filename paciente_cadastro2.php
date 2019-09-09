@@ -21,6 +21,8 @@
     $cidade = $_POST['cidade'];
     $estado = $_POST['estado'];
     $cep = $_POST['cep'];
+
+    $timestamp = date('Y-m-d',  strtotime(str_replace("/", "-", $nascimento))); 
     
     $sqlEmail = "SELECT email FROM usuario WHERE email = '$email'";
     $resultadoEmail = $conexao->query($sqlEmail);
@@ -52,7 +54,7 @@
             
                 $usuario = $db->usuario()->insert(array('email'=>$email, 'senha'=>$senha, 'tipo'=>$tipo));
             
-                $db->paciente()->insert(array('nome'=>$nome, 'cpf'=>$cpf, 'sexo'=>$sexo, 'nascimento'=>$nascimento, 'telefone'=>$telefone, 'celular'=>$celular, 'endereco'=>$endereco, 'numero'=>$numero, 'bairro'=>$bairro, 'cidade'=>$cidade, 'estado'=>$estado, 'cep'=>$cep, 'usuario_id'=>$usuario ));
+                $db->paciente()->insert(array('nome'=>$nome, 'cpf'=>$cpf, 'sexo'=>$sexo, 'nascimento'=>$timestamp, 'telefone'=>$telefone, 'celular'=>$celular, 'endereco'=>$endereco, 'numero'=>$numero, 'bairro'=>$bairro, 'cidade'=>$cidade, 'estado'=>$estado, 'cep'=>$cep, 'usuario_id'=>$usuario ));
                 
 
                 include("header_paciente.php"); ?>

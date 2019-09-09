@@ -19,11 +19,11 @@
 
                 <?php
                     require ('conexao.php');
-                    $sql = "SELECT usuario.id, usuario.email, usuario.tipo, profissional.nome AS profissional, profissional.especialidade, profissional.celular AS celularProfissional, profissional.registro, profissional.arquivo, paciente.nome AS paciente, paciente.cpf, paciente.sexo, paciente.nascimento, paciente.telefone, paciente.celular AS celularPaciente, paciente.endereco, paciente.numero, paciente.bairro, paciente.cidade, paciente.estado, paciente.cep FROM usuario LEFT JOIN profissional ON usuario.id = profissional.usuario_id LEFT JOIN paciente ON paciente.usuario_id = usuario.id ORDER BY profissional.nome, paciente.nome";
+                    $sql = "SELECT usuario.id, usuario.email, usuario.tipo, profissional.nome AS profissional, especialidades.especialidade, especialidades.id AS id_especialidade,  profissional.celular AS celularProfissional, profissional.registro, profissional.arquivo, paciente.nome AS paciente, paciente.cpf, paciente.sexo, paciente.nascimento, paciente.telefone, paciente.celular AS celularPaciente, paciente.endereco, paciente.numero, paciente.bairro, paciente.cidade, paciente.estado, paciente.cep FROM usuario LEFT JOIN profissional ON usuario.id = profissional.usuario_id LEFT JOIN paciente ON paciente.usuario_id = usuario.id LEFT JOIN especialidades ON especialidades.id = profissional.especialidade ORDER BY profissional.nome, paciente.nome";
 
                     if (array_key_exists('pesquisa', $_POST) && $_POST['pesquisa'] != '') {
                       $pesquisa = $_POST['pesquisa'];
-                      $sql = "SELECT usuario.id, usuario.email, usuario.tipo, profissional.nome AS profissional, profissional.especialidade, profissional.celular AS celularProfissional, profissional.registro, profissional.arquivo, paciente.nome AS paciente, paciente.cpf, paciente.sexo, paciente.nascimento, paciente.telefone, paciente.celular AS celularPaciente, paciente.endereco, paciente.numero, paciente.bairro, paciente.cidade, paciente.estado, paciente.cep FROM usuario LEFT JOIN profissional ON usuario.id = profissional.usuario_id LEFT JOIN paciente ON paciente.usuario_id = usuario.id  WHERE paciente.nome LIKE '%$pesquisa%' OR profissional.nome LIKE '%$pesquisa%' ORDER BY profissional.nome, paciente.nome";
+                      $sql = "SELECT usuario.id, usuario.email, usuario.tipo, profissional.nome AS profissional, especialidades.especialidade, especialidades.id AS is_especialidade, profissional.celular AS celularProfissional, profissional.registro, profissional.arquivo, paciente.nome AS paciente, paciente.cpf, paciente.sexo, paciente.nascimento, paciente.telefone, paciente.celular AS celularPaciente, paciente.endereco, paciente.numero, paciente.bairro, paciente.cidade, paciente.estado, paciente.cep FROM usuario LEFT JOIN profissional ON usuario.id = profissional.usuario_id LEFT JOIN paciente ON paciente.usuario_id = usuario.id LEFT JOIN especialidades ON especialidades.id = profissional.especialidade WHERE paciente.nome LIKE '%$pesquisa%' OR profissional.nome LIKE '%$pesquisa%' ORDER BY profissional.nome, paciente.nome";
                     }
 
                     $busca = $conexao->query($sql);
@@ -47,7 +47,8 @@
                         $cidade = $leitor['cidade'];
                         $estado = $leitor['estado'];
                         $cep = $leitor['cep'];
-                        $especialidade = $leitor['especialidade'];
+                        $especialidade = $leitor['id_especialidade'];
+
                         $arquivo = $diretorio . $leitor['arquivo'];
                         $timestamp = date('d-m-Y',  strtotime(str_replace("/", "-", $nascimento)));
 
@@ -72,12 +73,12 @@
                 <tr>
                   <td><?php echo  $nomeProfissional ?> </td>
                   <td><?php echo $email ?> </td>
-                  <td class="text-center"><?php echo $tipo ?> </td>
+                  <td class="text-center"><?php echo $tipo; ?> </td>
                   <td class="text-center">
                                     
                   <a class="btn btn-danger btn-sm" style="color:#fff" href="delete_usuario.php?id=<?php echo $id ?>" role="button"><i class="far fa-trash-alt"></i>&nbsp;Excluir</a>
                   
-                  <a type="button" class="btn btn-warning btn-sm" style="color:#fff" data-toggle="modal" data-target="#profissionalModal" data-id="<?php echo $id; ?>" data-nome="<?php echo $nomeProfissional; ?>" data-email="<?php echo $email; ?>" data-tipo="<?php echo $tipo; ?>" data-cpf="<?php echo $registro; ?>" data-sexo="<?php echo $sexo; ?>" data-nascimento="<?php echo $timestamp; ?>" data-telefone="<?php echo $telefone; ?>" data-celular="<?php echo $celularProfissional; ?>" data-endereco="<?php echo $endereco; ?>" data-numero="<?php echo $numero; ?>" data-bairro="<?php echo $bairro; ?>" data-cidade="<?php echo $cidade; ?>" data-estado="<?php echo $estado; ?>" data-cep="<?php echo $cep; ?>" data-especialidade="<?php echo $especialidade; ?>" data-arquivo="<?php echo $arquivo; ?>"><i class="far fa-edit"></i>&nbsp;Editar</a> 
+                  <a type="button" class="btn btn-warning btn-sm" style="color:#fff" data-toggle="modal" data-target="#profissionalModal" data-id="<?php echo $id; ?>" data-nome="<?php echo $nomeProfissional; ?>" data-email="<?php echo $email; ?>" data-tipo="<?php echo $tipo; ?>" data-cpf="<?php echo $registro; ?>" data-sexo="<?php echo $sexo; ?>" data-nascimento="<?php echo $timestamp; ?>" data-telefone="<?php echo $telefone; ?>" data-celular="<?php echo $celularProfissional; ?>" data-endereco="<?php echo $endereco; ?>" data-numero="<?php echo $numero; ?>" data-bairro="<?php echo $bairro; ?>" data-cidade="<?php echo $cidade; ?>" data-estado="<?php echo $estado; ?>" data-cep="<?php echo $cep; ?>" data-especialidade="<?php  echo $especialidade; ?>" data-arquivo="<?php echo $arquivo; ?>"><i class="far fa-edit"></i>&nbsp;Editar</a> 
                   
                   </td>
                 </tr>
@@ -261,11 +262,11 @@
               <select class="form-control" name="especialidade" id="campoEspecialidade" autocomplete="off" required>
                 <option selected>Selecione a especialidade</option>
                 <?php 
-                  $select = "SELECT DISTINCT especialidade FROM especialidades ORDER BY especialidade";
+                  $select = "SELECT DISTINCT * FROM especialidades ORDER BY especialidade";
                   $resultado = $conexao->query($select);
 
                   foreach($resultado as $especialidades){
-                      echo '<option value="'.$especialidades['especialidade'].'">'.$especialidades['especialidade'].'</option>';
+                      echo '<option value="'.$especialidades['id'].'">'. utf8_encode ($especialidades['especialidade']) .'</option>';
                   }
                     
                 ?>
@@ -376,7 +377,8 @@ $('#profissionalModal').on('show.bs.modal', function (event) {
   modal.find('#campoCidade').val(recipient_cidade)
   modal.find('#campoEstado').val(recipient_estado)
   modal.find('#campoCep').val(recipient_cep)
-  modal.find('#campoEspecialidade').val(recipient_especialidade)
+  //modal.find('#campoEspecialidade').val(["Administrador"]);
+  modal.find('#campoEspecialidade').val([recipient_especialidade])
   modal.find('#foto').prop('src', recipient_arquivo)
 })</script>
 

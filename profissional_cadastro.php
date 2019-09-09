@@ -60,11 +60,11 @@ require_once('conexao.php'); ?>
                         <select class="form-control" name="especialidade" id="campoEspecialidade" autocomplete="off" required>
                         <option selected>Selecione a especialidade</option>
                         <?php 
-                            $select = "SELECT DISTINCT especialidade FROM especialidades ORDER BY especialidade";
+                            $select = "SELECT * FROM especialidades ORDER BY especialidade";
                             $resultado = $conexao->query($select);
 
                             foreach($resultado as $especialidades){
-                                echo '<option value="'.$especialidades['especialidade'].'">'.$especialidades['especialidade'].'</option>';
+                                echo '<option value="'. $especialidades['id'].'">'.utf8_encode($especialidades['especialidade']).'</option>';
                             }
                             
                         ?>

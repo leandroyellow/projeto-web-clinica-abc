@@ -12,11 +12,11 @@ require_once('conexao.php');
                     <select class="form-control" name="especialidade" id="campoEspecialidade" autocomplete="off" required>
                         <option selected>Selecione a especialidade</option>
                         <?php 
-                            $select = "SELECT DISTINCT especialidade FROM profissional INNER JOIN usuario ON usuario.id = profissional.usuario_id WHERE usuario.tipo = 2 ORDER BY especialidade";
+                            $select = "SELECT DISTINCT especialidades.id, especialidades.especialidade FROM especialidades INNER JOIN profissional ON profissional.especialidade = especialidades.id INNER JOIN usuario ON usuario.id = profissional.usuario_id WHERE usuario.tipo = 2 ORDER BY especialidade";
                             $resultado = $conexao->query($select);
 
                             foreach($resultado as $especialidades){
-                                echo '<option value="'.$especialidades['especialidade'].'">'.$especialidades['especialidade'].'</option>';
+                                echo '<option value="'.$especialidades['id'].'">'. utf8_encode ($especialidades['especialidade']).'</option>';
                             }
                             
                         ?>
@@ -83,13 +83,14 @@ require_once('conexao.php');
  
                         if($idMedico && $especialidadeMedica && $dia){
                             
-                            $sql = "SELECT agenda.id, agenda.hora, profissional.nome AS medico, profissional.especialidade, paciente.nome AS paciente 
+                            $sql = "SELECT agenda.id, agenda.hora, profissional.nome AS medico, profissional.especialidade AS id_especialidade, especialidades.especialidade, paciente.nome AS paciente 
                             FROM agenda 
                             INNER JOIN profissional ON profissional.id = agenda.profissional_id 
                             INNER JOIN paciente ON paciente.id = agenda.paciente_id 
+                            INNER JOIN especialidades ON profissional.especialidade = especialidades.id
                             WHERE agenda.dia = '$timestamp' AND profissional.id = $idMedico
                             UNION 
-                            SELECT '' AS id, intervalo.hora, 'Livre' AS nome, '$especialidadeMedica' AS especialidade, '' AS nome 
+                            SELECT '' AS id, intervalo.hora, 'Livre' AS nome, '' AS especialidade, '' AS especialidade, '' AS nome 
                             FROM intervalo 
                             WHERE intervalo.hora NOT IN (SELECT agenda.hora FROM agenda INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN paciente ON paciente.id = agenda.paciente_id WHERE agenda.dia = '$timestamp' AND profissional.id = $idMedico) 
                             ORDER BY hora";
@@ -104,6 +105,7 @@ require_once('conexao.php');
                                 $especialidade = $leitor['especialidade'];
                                 $paciente = $leitor['paciente'];
                                 $id = $leitor['id'];
+                                $idEspecialidade = $leitor['id_especialidade'];
 
 
                         
@@ -111,7 +113,7 @@ require_once('conexao.php');
                     <tr>
                         <td><?php echo $hora ?> </td>
                         <td><?php echo $medico ?></td>
-                        <td><?php echo $especialidade ?> </td>
+                        <td><?php echo utf8_encode($especialidade) ?> </td>
                         <td><?php echo $paciente ?> </td>
 
                         <?php
