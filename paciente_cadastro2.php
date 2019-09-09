@@ -38,8 +38,8 @@
 
             <div class="cor">
                 <div class="container text-center cadastro">
-                    <img class="cadastro" src="imagens/aviso.png" alt="">
-                    <h1 class="sucesso">Paciente já cadastrado!</h1>
+                    <img src="imagens/aviso.png" alt="">
+                    <h1 class="sucesso">Paciente já cadastrado</h1>
                     <a href="index.php" class="btn" id="botao">Voltar</a>
                     <a href="paciente_cadastro.php" class="btn" id="botao">Fazer outro cadastro</a>
                 </div>
@@ -62,7 +62,7 @@
                 <div class="cor">
                     <div class="container text-center cadastro">
                         <img class="cadastro" src="imagens/cadastro.png" alt="">
-                        <h1 class="sucesso">Cadastro realizado com sucesso!</h1>
+                        <h1 class="sucesso">Cadastro realizado com sucesso</h1>
                         <a href="index.php" class="btn" id="botao">Voltar</a>
                         <a href="paciente_cadastro.php" class="btn" id="botao">Fazer outro cadastro</a>
                     </div>

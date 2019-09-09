@@ -89,7 +89,19 @@ $consulta = $conexao->query($sql);
                             <div class="text-center icone"><i class="fas fa-radiation"></i><br>Radiologia</div>
                         </div>
                         <div class="carousel-item">
+                            <div class="text-center icone"><i class="fas fa-brain"></i><br>Neurologista</div>
+                        </div>
+                        <div class="carousel-item">
                             <div class="text-center icone"><i class="fas fa-procedures"></i><br>Internação</div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="text-center icone"><i class="fas fa-female"></i><br>Ginecologista</div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="text-center icone"><i class="fas fa-smile"></i><br>Dermatologia</div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="text-center icone"><i class="fas fa-dna"></i><br>Exames</div>
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
@@ -135,7 +147,8 @@ $consulta = $conexao->query($sql);
                                         $arr_index = $i+$u;
                                         if (array_key_exists($arr_index, $arr)) {
                                     ?>
-                                    <div class="col-sm-4 text center medicos"><img class="img-medico img-fluid" src="<?php echo $diretorio . $arr[$arr_index]["arquivo"] ?>" alt="1"><h3 class="nome"><?php echo $arr[$arr_index]["nome"] ?></h3><p class="esp"><?php echo utf8_encode($arr[$arr_index]["especialidade"]) ?></p></div>
+
+                                    <div class="col-sm-4 text center medicos"><img class="img-medico img-fluid" src="<?php echo $diretorio . $arr[$arr_index]["arquivo"] ?>" alt="1"><h3 class="nome"><?php echo "Dr(a). ". $arr[$arr_index]["nome"] ?></h3><p class="esp"><?php echo utf8_encode ($arr[$arr_index]["especialidade"]) ?></p></div>
                                     <?php
                                         }
                                     }
