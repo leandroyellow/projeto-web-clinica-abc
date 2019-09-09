@@ -1,4 +1,4 @@
-<?php
+<?php 
 
     require('conexao.php');
 
@@ -32,6 +32,26 @@
         
     
     }
+    else{
+        include("header_paciente.php");
+        ?>
 
-    echo "senha invalida";
+
+    <div class="cor">
+        <div class="container text-center cadastro">
+            <img class="erro" src="imagens/erro.png" alt="">
+            <h1 class="sucesso">Senha inválida</h1>
+            <a href="index.php" class="btn" id="botao">Voltar</a>
+            <a href="login.php" class="btn" id="botao">Tentar novamente</a>
+        </div>
+    </div>
+
+
+
+<?php include("footer.php");
+    }
+
+   
+    
 ?>
+
