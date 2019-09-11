@@ -27,7 +27,14 @@
                         <a class="nav-item nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link" href="#planos">Planos</a>
                         <a class="nav-item nav-link" href="#contato">Contato</a>
-                        <a class="nav-item nav-link" href="login.php">Entrar</a>
+                        <div class="dropdown">
+                            <a class="nav-item nav-link dropdown-toggle" href="#" id="submenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $nome; ?></a>
+                            <div class="dropdown-menu" aria-labelledby="submenu">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,30 @@
-<?php include("header_administrador.php"); ?>
+<?php session_start();
+require('conexao.php');
+require('config.php');
+
+if((!isset ($_SESSION['email']) == true) && (!isset ($_SESSION['senha']) == true) && (!isset ($_SESSION['id']) == true))
+{
+  unset($_SESSION['email']);
+  unset($_SESSION['senha']);
+  unset ($_SESSION['id']);
+  header('location:index.php');
+  }
+ 
+$logado = $_SESSION['email'];
+$senha = $_SESSION['senha'];
+$id = $_SESSION['id'];
+
+$sql = "SELECT profissional.id, profissional.nome FROM profissional WHERE profissional.usuario_id = $id";
+
+$resultado = $conexao->query($sql);
+    
+$row = mysqli_fetch_assoc($resultado);
+
+$nome = $row['nome'];
+
+
+include("header_administrador.php");
+?>
     
     <div class="cor">
         <div class="container">

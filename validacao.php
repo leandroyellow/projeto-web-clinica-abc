@@ -1,5 +1,7 @@
 <?php 
 
+    session_start();
+
     require('conexao.php');
 
     // Verifica se houve POST e se o usuário ou a senha é(são) vazio(s)
@@ -21,25 +23,38 @@
         $row = mysqli_fetch_assoc($resultado);
     
         if($row['tipo'] == 1){
+            $_SESSION['email'] = $email;
+            $_SESSION['senha'] = $senha;
+            $_SESSION['id'] = $row['id'];
             header('Location: clinica.php'); 
         }
         elseif($row['tipo'] == 2){
-            header('Location: profissional_cadastro.php'); 
+            $_SESSION['email'] = $email;
+            $_SESSION['senha'] = $senha;
+            $_SESSION['id'] = $row['id'];
+            header('Location: medico.php'); 
         }
         elseif($row['tipo'] == 3 ){
-            header('Location: index.php'); 
+            $_SESSION['email'] = $email;
+            $_SESSION['senha'] = $senha;
+            $_SESSION['id'] = $row['id'];
+            header('location:site.php');
+            
         }
         
     
     }
     else{
+        unset ($_SESSION['email']);
+        unset ($_SESSION['senha']);
+        unset ($_SESSION['id']);
         include("header_paciente.php");
         ?>
 
 
     <div class="cor">
-        <div class="container text-center cadastro">
-            <img class="erro" src="imagens/erro.png" alt="">
+        <div class="container text-center">
+            <img class="erro img-fluid" src="imagens/erro.png" alt="">
             <h1 class="sucesso">Senha inválida</h1>
             <a href="index.php" class="btn" id="botao">Voltar</a>
             <a href="login.php" class="btn" id="botao">Tentar novamente</a>

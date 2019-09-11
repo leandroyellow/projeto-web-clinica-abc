@@ -1,4 +1,30 @@
-<?php include("header_administrador.php"); ?>
+<?php session_start();
+require('conexao.php');
+require('config.php');
+
+if((!isset ($_SESSION['email']) == true) && (!isset ($_SESSION['senha']) == true) && (!isset ($_SESSION['id']) == true))
+{
+  unset($_SESSION['email']);
+  unset($_SESSION['senha']);
+  unset ($_SESSION['id']);
+  header('location:index.php');
+  }
+ 
+$logado = $_SESSION['email'];
+$senha = $_SESSION['senha'];
+$id = $_SESSION['id'];
+
+$sql = "SELECT profissional.id, profissional.nome FROM profissional WHERE profissional.usuario_id = $id";
+
+$resultado = $conexao->query($sql);
+    
+$row = mysqli_fetch_assoc($resultado);
+
+$nome = $row['nome'];
+
+
+include("header_administrador.php");
+?>
 
     <div class="cor">
         <div class="container">
@@ -18,12 +44,12 @@
                 </thead>
 
                 <?php
-                    require ('conexao.php');
+                    
                     $sql = "SELECT usuario.id, usuario.email, usuario.tipo, profissional.nome AS profissional, especialidades.especialidade, especialidades.id AS id_especialidade,  profissional.celular AS celularProfissional, profissional.registro, profissional.arquivo, paciente.nome AS paciente, paciente.cpf, paciente.sexo, paciente.nascimento, paciente.telefone, paciente.celular AS celularPaciente, paciente.endereco, paciente.numero, paciente.bairro, paciente.cidade, paciente.estado, paciente.cep FROM usuario LEFT JOIN profissional ON usuario.id = profissional.usuario_id LEFT JOIN paciente ON paciente.usuario_id = usuario.id LEFT JOIN especialidades ON especialidades.id = profissional.especialidade ORDER BY profissional.nome, paciente.nome";
 
                     if (array_key_exists('pesquisa', $_POST) && $_POST['pesquisa'] != '') {
                       $pesquisa = $_POST['pesquisa'];
-                      $sql = "SELECT usuario.id, usuario.email, usuario.tipo, profissional.nome AS profissional, especialidades.especialidade, especialidades.id AS is_especialidade, profissional.celular AS celularProfissional, profissional.registro, profissional.arquivo, paciente.nome AS paciente, paciente.cpf, paciente.sexo, paciente.nascimento, paciente.telefone, paciente.celular AS celularPaciente, paciente.endereco, paciente.numero, paciente.bairro, paciente.cidade, paciente.estado, paciente.cep FROM usuario LEFT JOIN profissional ON usuario.id = profissional.usuario_id LEFT JOIN paciente ON paciente.usuario_id = usuario.id LEFT JOIN especialidades ON especialidades.id = profissional.especialidade WHERE paciente.nome LIKE '%$pesquisa%' OR profissional.nome LIKE '%$pesquisa%' ORDER BY profissional.nome, paciente.nome";
+                      $sql = "SELECT usuario.id, usuario.email, usuario.tipo, profissional.nome AS profissional, especialidades.especialidade, especialidades.id AS id_especialidade, profissional.celular AS celularProfissional, profissional.registro, profissional.arquivo, paciente.nome AS paciente, paciente.cpf, paciente.sexo, paciente.nascimento, paciente.telefone, paciente.celular AS celularPaciente, paciente.endereco, paciente.numero, paciente.bairro, paciente.cidade, paciente.estado, paciente.cep FROM usuario LEFT JOIN profissional ON usuario.id = profissional.usuario_id LEFT JOIN paciente ON paciente.usuario_id = usuario.id LEFT JOIN especialidades ON especialidades.id = profissional.especialidade WHERE paciente.nome LIKE '%$pesquisa%' OR profissional.nome LIKE '%$pesquisa%' ORDER BY profissional.nome, paciente.nome";
                     }
 
                     $busca = $conexao->query($sql);
