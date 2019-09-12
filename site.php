@@ -9,11 +9,12 @@ session_start();
 require('conexao.php');
 
 
-if((!isset ($_SESSION['email']) == true) && (!isset ($_SESSION['senha']) == true) && (!isset ($_SESSION['id']) == true))
+if((!isset ($_SESSION['email']) == true) && (!isset ($_SESSION['senha']) == true) && (!isset ($_SESSION['id']) == true) || $_SESSION['tipo'] != 3 )
 {
   unset($_SESSION['email']);
   unset($_SESSION['senha']);
   unset ($_SESSION['id']);
+  unset ($_SESSION['tipo']);
   header('location:index.php');
   }
 

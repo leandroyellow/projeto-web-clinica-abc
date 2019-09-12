@@ -26,18 +26,21 @@
             $_SESSION['email'] = $email;
             $_SESSION['senha'] = $senha;
             $_SESSION['id'] = $row['id'];
+            $_SESSION['tipo'] = $row['tipo'];
             header('Location: clinica.php'); 
         }
         elseif($row['tipo'] == 2){
             $_SESSION['email'] = $email;
             $_SESSION['senha'] = $senha;
             $_SESSION['id'] = $row['id'];
+            $_SESSION['tipo'] = $row['tipo'];
             header('Location: medico.php'); 
         }
         elseif($row['tipo'] == 3 ){
             $_SESSION['email'] = $email;
             $_SESSION['senha'] = $senha;
             $_SESSION['id'] = $row['id'];
+            $_SESSION['tipo'] = $row['tipo'];
             header('location:site.php');
             
         }

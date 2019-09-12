@@ -2,11 +2,12 @@
 require('conexao.php');
 require('config.php');
 
-if((!isset ($_SESSION['email']) == true) && (!isset ($_SESSION['senha']) == true) && (!isset ($_SESSION['id']) == true))
+if((!isset ($_SESSION['email']) == true) && (!isset ($_SESSION['senha']) == true) && (!isset ($_SESSION['id']) == true) || $_SESSION['tipo'] != 1 )
 {
   unset($_SESSION['email']);
   unset($_SESSION['senha']);
   unset ($_SESSION['id']);
+  unset ($_SESSION['tipo']);
   header('location:index.php');
   }
  

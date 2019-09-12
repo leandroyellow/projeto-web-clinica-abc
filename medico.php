@@ -9,11 +9,12 @@ session_start();
 require('conexao.php');
 
 
-if((!isset ($_SESSION['email']) == true) && (!isset ($_SESSION['senha']) == true) && (!isset ($_SESSION['id']) == true))
+if((!isset ($_SESSION['email']) == true) && (!isset ($_SESSION['senha']) == true) && (!isset ($_SESSION['id']) == true) || $_SESSION['tipo'] != 2 )
 {
   unset($_SESSION['email']);
   unset($_SESSION['senha']);
   unset ($_SESSION['id']);
+  unset ($_SESSION['tipo']);
   header('location:index.php');
   }
 
@@ -21,7 +22,7 @@ $logado = $_SESSION['email'];
 $senha = $_SESSION['senha'];
 $id = $_SESSION['id'];
 
-$sql = "SELECT paciente.id, paciente.nome FROM paciente WHERE paciente.usuario_id = $id";
+$sql = "SELECT profissional.id, profissional.nome FROM profissional WHERE profissional.usuario_id = $id";
 
 $resultado = $conexao->query($sql);
     
