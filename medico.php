@@ -33,11 +33,32 @@ $nome = $row['nome'];
 
 include("header_medico.php");
 ?>
-
-
-
+<div class="cor">
+  <div class="container">
+      <!--<h2 class="text-center sucesso">Agenda</h2>-->
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="campoDia">Data:</label>
+            <input class="form-control"  name="dia" id="campoDia" placeholder="Digite uma data" autocomplete="off" required>
+          </div>
+          <div class="form-group col-md-8">
+            <label>Clique para verificar a agenda do dia:</label>
+            <button type="submit" class="btn botao form-control" id="verificaAgenda">Verificar</button>
+          </div>
+        </div>
+      <table class="table">
+            <caption></caption>
+              <thead>
+                <tr>
+                  <th>Horário</th>
+                  <th class="text-center">Paciente</th>
+                  <th class="text-center">Situação</th>
+                </tr>        
+              </thead>
+      </table>
+  </div>
+</div>
 
 <?php
 include("footer.php");
-
 ?>
