@@ -29,6 +29,13 @@ $resultado = $conexao->query($sql);
 $row = mysqli_fetch_assoc($resultado);
 
 $nome = $row['nome'];
+$idMedico = $row['id'];
+
+
+
+
+
+
 
 
 include("header_medico.php");
@@ -36,6 +43,7 @@ include("header_medico.php");
 <div class="cor">
   <div class="container">
       <!--<h2 class="text-center sucesso">Agenda</h2>-->
+        <form action="">
         <div class="form-row">
           <div class="form-group col-md-4">
             <label for="campoDia">Data:</label>
@@ -46,15 +54,52 @@ include("header_medico.php");
             <button type="submit" class="btn botao form-control" id="verificaAgenda">Verificar</button>
           </div>
         </div>
+        </form>
       <table class="table">
             <caption></caption>
               <thead>
                 <tr>
                   <th>Horário</th>
-                  <th class="text-center">Paciente</th>
+                  <th class="">Paciente</th>
                   <th class="text-center">Situação</th>
                 </tr>        
               </thead>
+              <?php
+              $dia = filter_input(INPUT_GET, "dia");
+              $timestamp = date('Y-m-d',  strtotime(str_replace("/", "-", $dia))); 
+              
+              if($dia){
+                $sqlAgenda = "SELECT agenda.id, agenda.hora, profissional.nome AS medico, profissional.especialidade AS id_especialidade, especialidades.especialidade, paciente.nome AS paciente 
+                FROM agenda 
+                INNER JOIN profissional ON profissional.id = agenda.profissional_id 
+                INNER JOIN paciente ON paciente.id = agenda.paciente_id 
+                INNER JOIN especialidades ON profissional.especialidade = especialidades.id
+                WHERE agenda.dia = '$timestamp' AND profissional.id = $idMedico ORDER BY hora";
+              $busca = $conexao->query($sqlAgenda);
+              
+              if($busca->num_rows > 0){
+                            while ($leitor = $busca->fetch_assoc()){
+                                $hora = $leitor['hora'];
+                                $paciente = $leitor['paciente'];
+
+
+                        
+                    ?>
+                    <tr>
+                        <td><?php echo $hora ?> </td>
+                        <td><?php echo $paciente ?> </td>
+
+                        
+
+                        <td class="text-center"><a class="btn btn-success btn-sm" style="color:#fff" href="agenda.php?<?php echo "medico=$idMedico&paciente=$idpaciente&dia=$dia&hora=$hora&especialidade=$especialidadeMedica"?>"  role="button"><i class="fas fa-plus-circle"></i>&nbsp;Adicionar</a> 
+                        </td>
+                        
+                    </tr>
+                            
+<?php
+                        }}}
+                    ?>
+                   
       </table>
   </div>
 </div>
