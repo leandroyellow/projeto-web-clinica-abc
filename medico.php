@@ -117,8 +117,10 @@ include("header_medico.php");
           </div>
           <div class="form-row">
             <div class="form-group col-md-12">
-              <label for="campoProntuario">Prontuário:</label>
-              <input type="text" class="form-control" name="prontuario" id="campoPronturario" required>
+
+              <label for="campoProntuario">Prontuário</label>
+              
+              <textarea class="form-control" id="campoProntuario" name="prontuario" rows="10"></textarea>
             </div>
           </div>
           <div class="modal-footer">
@@ -148,9 +150,10 @@ $('#prontuarioPaciente').on('show.bs.modal', function (event){
   var recipient_prontuario = button.data('prontuario')
   
   var modal = $(this)
-  modal.find('.modal-title').text('ID: ' + recipient_idpaciente)
+  modal.find('.modal-title').text('Prontuário: ' + recipient_idpaciente)
   modal.find('#id').val(recipient_idpaciente)
   modal.find('#campoNome').val(recipient_nome)
   modal.find('#campoProntuario').val(recipient_prontuario)
+  
 })
 </script>
