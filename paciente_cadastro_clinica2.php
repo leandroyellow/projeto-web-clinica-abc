@@ -33,7 +33,7 @@
 
     if($resultado->num_rows > 0 || $resultadoEmail->num_rows > 0){
 
-        include("header_paciente.php"); ?>
+        include("header_administrador.php"); ?>
 
         <div class="cor">
             <div class="container text-center cadastro">

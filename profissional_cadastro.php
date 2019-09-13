@@ -33,7 +33,7 @@ include("header_administrador.php");
 
     <div class="cor">
         <h2 class="text-center sucesso">Cadastro do Profissional</h2>
-        <div class="container tamanhoContainer">
+        <div class="container">
             
             <form class="formulario" action="profissional_cadastro2.php" method="post" enctype="multipart/form-data">
                 

@@ -38,7 +38,7 @@
     <div class="cor">
 
         
-        <div class="container" id="tamanhoContainer">
+        <div class="container tamanhoContainer">
             <h2 class="text-center sucesso">Login</h2>
             <form form class="formulario" action="validacao.php" method="post">
                 <div class="form-group row">
