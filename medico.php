@@ -31,79 +31,126 @@ $row = mysqli_fetch_assoc($resultado);
 $nome = $row['nome'];
 $idMedico = $row['id'];
 
-
-
-
-
-
-
-
 include("header_medico.php");
 ?>
 <div class="cor">
   <div class="container">
-      <!--<h2 class="text-center sucesso">Agenda</h2>-->
-        <form action="">
-        <div class="form-row">
-          <div class="form-group col-md-4">
-            <label for="campoDia">Data:</label>
-            <input class="form-control"  name="dia" id="campoDia" placeholder="Digite uma data" autocomplete="off" required>
-          </div>
-          <div class="form-group col-md-8">
-            <label>Clique para verificar a agenda do dia:</label>
-            <button type="submit" class="btn botao form-control" id="verificaAgenda">Verificar</button>
-          </div>
+    <form action="">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="campoDia">Data:</label>
+          <input  class="form-control"  name="dia" id="campoDia" placeholder="Digite uma data" autocomplete="off" required value="<?php echo date("d/m/Y");?>">
         </div>
-        </form>
-      <table class="table">
-            <caption></caption>
-              <thead>
-                <tr>
-                  <th>Horário</th>
-                  <th class="">Paciente</th>
-                  <th class="text-center">Situação</th>
-                </tr>        
-              </thead>
-              <?php
-              $dia = filter_input(INPUT_GET, "dia");
-              $timestamp = date('Y-m-d',  strtotime(str_replace("/", "-", $dia))); 
+        <div class="form-group col-md-8">
+          <label>Clique para verificar a agenda do dia:</label>
+          <button type="submit" class="btn botao form-control" id="verificaAgenda">Verificar</button>
+          <?php $dia = filter_input(INPUT_GET, "dia");?>
+        </div>
+      </div>
+    </form>
+    <h2>Agenda do dia: <?php echo $dia;?></h2>
+    <table class="table">
+      <caption></caption>
+        <thead>
+          <tr>
+            <th>Horário</th>
+            <th class="">Paciente</th>
+            <th class="text-center">Situação</th>
+          </tr>        
+        </thead>
+        <?php
+        
+        $timestamp = date('Y-m-d',  strtotime(str_replace("/", "-", $dia))); 
+        
+        
+        $sqlAgenda = "SELECT agenda.hora, paciente.id, paciente.nome, paciente.prontuario FROM agenda INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN paciente ON paciente.id = agenda.paciente_id WHERE agenda.dia = '$timestamp' AND profissional.id = $idMedico ORDER BY hora";
+
+        
+
+          $buscaAgenda = $conexao->query($sqlAgenda);
               
-              if($dia){
-                $sqlAgenda = "SELECT agenda.id, agenda.hora, profissional.nome AS medico, profissional.especialidade AS id_especialidade, especialidades.especialidade, paciente.nome AS paciente 
-                FROM agenda 
-                INNER JOIN profissional ON profissional.id = agenda.profissional_id 
-                INNER JOIN paciente ON paciente.id = agenda.paciente_id 
-                INNER JOIN especialidades ON profissional.especialidade = especialidades.id
-                WHERE agenda.dia = '$timestamp' AND profissional.id = $idMedico ORDER BY hora";
-              $busca = $conexao->query($sqlAgenda);
-              
-              if($busca->num_rows > 0){
-                            while ($leitor = $busca->fetch_assoc()){
-                                $hora = $leitor['hora'];
-                                $paciente = $leitor['paciente'];
-
-
+          
+            while ($leitor = $buscaAgenda->fetch_assoc()){
+              $hora = $leitor['hora'];
+              $paciente = $leitor['nome'];
+              $idpaciente = $leitor['id'];
+              $prontuario = $leitor['prontuario'];
                         
-                    ?>
-                    <tr>
-                        <td><?php echo $hora ?> </td>
-                        <td><?php echo $paciente ?> </td>
+              ?>
+              <tr>
+                <td><?php echo $hora ?> </td>
+                <td><?php echo $paciente ?> </td>
+                <td class="text-center">
+                
+                
 
-                        
-
-                        <td class="text-center"><a class="btn btn-success btn-sm" style="color:#fff" href="agenda.php?<?php echo "medico=$idMedico&paciente=$idpaciente&dia=$dia&hora=$hora&especialidade=$especialidadeMedica"?>"  role="button"><i class="fas fa-plus-circle"></i>&nbsp;Adicionar</a> 
-                        </td>
-                        
-                    </tr>
+                <a type="button" class="btn btn-warning btn-sm" style="color:#fff" data-toggle="modal" data-target="#prontuarioPaciente" data-idpaciente="<?php echo $idpaciente; ?>" data-nome="<?php echo $paciente; ?>" data-prontuario="<?php echo $prontuario; ?>"><i class="far fa-edit"></i>&nbsp;Editar Prontuário</a> 
+                
+                </td>
+              </tr>
                             
-<?php
-                        }}}
-                    ?>
+        <?php
+        }
+        ?>
                    
-      </table>
+    </table>
   </div>
+</div>
+
+<div class="modal fade" id="prontuarioPaciente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Prontuário</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="formulario" action="editar_prontuario.php" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="id" id="id">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="campoNome">Nome:</label>
+              <input type="text" class="form-control" name="nome" id="campoNome">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="campoProntuario">Prontuário</label>
+              <input type="text" class="form-control" name="prontuario" id="campoPronturario" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn" id="botao">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <?php
 include("footer.php");
 ?>
+<script>
+$(document).ready(function(){
+  $("#campoDia").mask("00/00/0000",{placeholder:"__/__/____"});
+});
+</script>
+<script type="text/javascript">
+$('#prontuarioPaciente').on('show.bs.modal', function (event){
+  var button = $(event.relatedTarget)
+  var recipient_idpaciente = button.data('idpaciente')
+  var recipient_nome = button.data('nome')
+  var recipient_prontuario = button.data('prontuario')
+  
+  var modal = $(this)
+  modal.find('.modal-title').text('ID: ' + recipient_idpaciente)
+  modal.find('#id').val(recipient_idpaciente)
+  modal.find('#campoNome').val(recipient_nome)
+  modal.find('#campoProntuario').val(recipient_prontuario)
+})
+</script>
