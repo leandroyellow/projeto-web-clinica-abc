@@ -43,33 +43,8 @@ $consulta = $conexao->query($sql);
             </div>
         </nav>
     </header>
-
-    <section class="agenda">
-        <div class="overlay"></div><!--overlay-->
-        <div class="center">
-            <form>
-                <h2>Agende sua consulta online</h2>
-                <div class="form-group">
-                    <label for="campoEspecialidade"></label>
-                    <select class="form-control" name="especialidade" id="campoEspecialidade" autocomplete="off" required>
-                        <option selected>Selecione a especialidade</option>
-                        <?php 
-                            $select = "SELECT DISTINCT especialidades.id, especialidades.especialidade FROM especialidades INNER JOIN profissional ON profissional.especialidade = especialidades.id INNER JOIN usuario ON usuario.id = profissional.usuario_id WHERE usuario.tipo = 2 ORDER BY especialidade ";
-                            $resultado = $conexao->query($select);
-
-                            foreach($resultado as $especialidades){
-                                echo '<option value="'.$especialidades['id'].'">'. utf8_encode($especialidades['especialidade']).'</option>';
-                            }
-                            
-                        ?>
-                        
-                        </select>
-                </div>
-                <button type="button" class="btn btn-block">Agendar</button>
-            </form>
-        </div><!--center-->
-    </section><!--agenda-->
-
+    <div class="parallax1"></div>
+    
     <section class="servicos-container">
         <div class="container">
             <h2 class="servicos">Serviços Oferecidos</h2>
@@ -86,6 +61,7 @@ $consulta = $conexao->query($sql);
         </div>
     </section><!--servicos-container-->
 
+    <div class="parallax2"></div>
     <section class="quem-somos">
         <div class="container">
             <div class="teste">
@@ -152,6 +128,7 @@ $consulta = $conexao->query($sql);
         </div>
     </section><!--quem_somos-->
 
+    <div class="parallax3"></div>
     <section class="medicos-container">
         <div class="container">
             <h2 class="equipe">Equipe Médica</h2>
@@ -209,7 +186,7 @@ $consulta = $conexao->query($sql);
         </div>
     </section>
 
-
+    <div class="parallax4"></div>
     <section class="planos-container">
         <a name="planos"></a>
         <div class="container">
@@ -234,4 +211,5 @@ $consulta = $conexao->query($sql);
         </div>
     </section>
 
+    <div class="parallax5"></div>
 <?php include("footer.php"); ?>

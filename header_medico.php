@@ -18,21 +18,20 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="clinica.php"><img src="imagens/logopq2.png" alt=""> <span class="ml-2">Clinica ABC</span></a>
+                <a class="navbar-brand" href="medico.php"><img src="imagens/logopq2.png" alt=""> <span class="ml-2">Clinica ABC</span></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ml-auto">
-                        <a class="nav-item nav-link active" href="clinica.php">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="listar_cadastro.php">Cadastros</a>
-                        <a class="nav-item nav-link" href="paciente_cadastro_clinica.php">Cadasro do paciente</a>
-                        <a class="nav-item nav-link" href="profissional_cadastro.php">Cadastro do profissional</a>
+                        <a class="nav-item nav-link active" href="medico.php">Home <span class="sr-only">(current)</span></a>
+                        
+                        
                         <div class="dropdown">
                             <a class="nav-item nav-link dropdown-toggle" href="#" id="submenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $nome; ?></a>
                             <div class="dropdown-menu" aria-labelledby="submenu">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Minha conta</a>
+                                <a class="dropdown-item" href="#">Redefinir senha</a>
                                 <a class="dropdown-item" href="logout.php">Sair</a>
                             </div>
                         </div>

@@ -33,31 +33,31 @@ include("header_administrador.php");
             <form class="formulario" action="paciente_cadastro_clinica2.php" method="post">
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="campoEmail">Email</label>
+                        <label for="campoEmail">Email:</label>
                         <input type="email" class="form-control" name="email" id="campoEmail" placeholder="Digite seu email" autocomplete="off" required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="campoSenha">Senha</label>
+                        <label for="campoSenha">Senha:</label>
                         <input type="password" class="form-control"  name="senha" id="campoSenha" placeholder="Digite uma senha" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="campoEmail2">Repetir email</label>
+                        <label for="campoEmail2">Repetir email:</label>
                         <input type="email" class="form-control" name="email" id="campoEmail2" placeholder="Repetir seu email" autocomplete="off" required oninput="validaEmail(this)">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="campoSenha2">Repetir senha</label>
+                        <label for="campoSenha2">Repetir senha:</label>
                         <input type="password" class="form-control"  name="senha" id="campoSenha2" placeholder="Repita sua senha" autocomplete="off" required oninput="validaSenha(this)">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="campoNome">Nome</label>
+                        <label for="campoNome">Nome:</label>
                         <input type="text" class="form-control" name="nome" id="campoNome" placeholder="Digite seu nome" autocomplete="off" required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="campoCpf">CPF</label>
+                        <label for="campoCpf">CPF:</label>
                         <input class="form-control"  name="cpf" id="campoCpf" placeholder="Digite seu CPF" autocomplete="off" required>
                     </div>
                 </div>
@@ -71,31 +71,31 @@ include("header_administrador.php");
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                        <label for="campoNascimento">Nascimento</label>
+                        <label for="campoNascimento">Nascimento:</label>
                         <input  class="form-control" name="nascimento" id="campoNascimento" placeholder="Digite seu nascimento" autocomplete="off" required>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="campoTelefone">Telefone</label>
+                        <label for="campoTelefone">Telefone:</label>
                         <input class="form-control"  name="telefone" id="campoTelefone" placeholder="Digite seu telefone" autocomplete="off" required>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="campoCelular">Celular</label>
+                        <label for="campoCelular">Celular:</label>
                         <input class="form-control"  name="celular" id="campoCelular" placeholder="Digite seu celular" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-2">
-                        <label for="campoCep">CEP</label>
+                        <label for="campoCep">CEP:</label>
                         <input class="form-control" id="campoCep" name="cep" autocomplete="off" required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="campoCidade">Cidade</label>
+                        <label for="campoCidade">Cidade:</label>
                         <input type="text" class="form-control cep" id="campoCidade" name="cidade" id="campoCidade" placeholder="Digite sua cidade" autocomplete="off" required>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="campoEstado">Estado</label>
+                        <label for="campoEstado">Estado:</label>
                         <select id="campoEstado" class="form-control cep" name="estado" autocomplete="off" required>
-                            <option selected>Selecione o estado</option>
+                            <option selected>Selecione o estado:</option>
                             <option>AC</option>
                             <option>AL</option>
                             <option>AP</option>
@@ -128,20 +128,20 @@ include("header_administrador.php");
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="campoEndereco">Endereço</label>
+                        <label for="campoEndereco">Endereço:</label>
                         <input type="text" class="form-control cep" name="endereco" id="campoEndereco" placeholder="Digite seu endereço" autocomplete="off" required>
                     </div>
                     <div class="form-group col-md-2">
-                        <label for="campoNumero">Número</label>
+                        <label for="campoNumero">Número:</label>
                         <input type="number" class="form-control cep"  name="numero" id="campoNumero" autocomplete="off" required>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="campoBairro">Bairro</label>
+                        <label for="campoBairro">Bairro:</label>
                         <input type="text" class="form-control cep"  name="bairro" id="campoBairro" placeholder="Digite seu bairro" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="text-right">
-                <a href="index.php" id="botao" class="btn" >Voltar</a>
+                <a href="clinica.php" id="botao" class="btn" >Voltar</a>
                     <button type="submit" class="btn" id="botao">Cadastrar</button>
                 </div>
             </form>
