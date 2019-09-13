@@ -48,7 +48,7 @@ include("header_medico.php");
         </div>
       </div>
     </form>
-    <h2>Agenda do dia: <?php echo $dia;?></h2>
+    <h2 class="sucesso text-center">Agenda do dia: <?php echo $dia;?></h2>
     <table class="table">
       <caption></caption>
         <thead>
@@ -117,7 +117,7 @@ include("header_medico.php");
           </div>
           <div class="form-row">
             <div class="form-group col-md-12">
-              <label for="campoProntuario">Prontuário</label>
+              <label for="campoProntuario">Prontuário:</label>
               <input type="text" class="form-control" name="prontuario" id="campoPronturario" required>
             </div>
           </div>
