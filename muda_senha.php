@@ -94,6 +94,7 @@ else{
         <form form class="formulario" action="muda_senha2.php" method="post">
             <input type="hidden" name="id" value="<?=$id;?>">
             <input type="hidden" name="nome" value="<?=$nome?>">
+            <input type="hidden" name="tipo" value="<?=$tipo?>">
             <div class="form-group row">
                 <div class="col-sm-12">
                     <label for="senhaAtual" class="col-form-label">Senha atual</label>

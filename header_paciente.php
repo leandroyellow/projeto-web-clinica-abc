@@ -30,7 +30,7 @@
                         <div class="dropdown">
                             <a class="nav-item nav-link dropdown-toggle" href="#" id="submenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $nome; ?></a>
                             <div class="dropdown-menu" aria-labelledby="submenu">
-                                <a class="dropdown-item" href="#">Minha conta</a>
+                                <a class="dropdown-item" href="minha_conta.php">Minha conta</a>
                                 <a class="dropdown-item" href="#">Consultas agendadas</a>
                                 <a class="dropdown-item" href="muda_senha.php">Redifinir senha</a>
                                 <a class="dropdown-item" href="logout.php">Sair</a>
