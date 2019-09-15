@@ -62,7 +62,7 @@ if($resultadoupdate == true && $resultadoupdate2 == true){
     <div class="cor">
         <div class="container text-center cadastro">
             <img class="cadastro" src="imagens/cadastro.png" alt="">
-            <h1 class="sucesso">Senha alterada com sucesso</h1>
+            <h1 class="sucesso">Conta alterada com sucesso</h1>
             <a href="<?=$botaoVoltar?>" class="btn" id="botao">Voltar</a>
             
         </div>
@@ -78,7 +78,7 @@ include("$header"); ?>
 <div class="cor">
     <div class="container text-center cadastro">
         <img class="cadastro" src="imagens/aviso.png" alt="">
-        <h1 class="sucesso">Não foi possível alterar a senha</h1>
+        <h1 class="sucesso">Não foi possível alterar sua conta</h1>
         <a href="clinica.php" class="btn" id="botao">Voltar</a>
         
     </div>
