@@ -18,7 +18,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="index.php"><img src="imagens/logopq2.png" alt=""> <span class="ml-2">Clinica ABC</span></a>
+                <a class="navbar-brand" href="index.php"><img src="imagens/logopq2.png" alt=""> <span class="ml-2">Clínica ABC</span></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -42,13 +42,13 @@
             <h2 class="text-center sucesso">Login</h2>
             <form form class="formulario" action="validacao.php" method="post">
                 <div class="form-group row">
-                    <label for="campoEmail" class="col-sm-2 col-form-label">Email</label>
+                    <label for="campoEmail" class="col-sm-2 col-form-label">Email:</label>
                     <div class="col-sm-10">
                         <input type="email" id="campoEmail" class="form-control" placeholder="Digite seu email" name="email" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="campoSenha" class="col-sm-2 col-form-label">Senha</label>
+                    <label for="campoSenha" class="col-sm-2 col-form-label">Senha:</label>
                     <div class="col-sm-10">
                         <input type="password" id="campoSenha" class="form-control" placeholder="Digite sua senha" name="senha" autocomplete="off" required>
                     </div>

@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-sm-4 text center footer">
                     <h3 class="sobre">Sobre Nós</h3>
-                    <p class="sobre">Nossa clínica criada para atender as necessidades específicas na área de saúde, com soluções inovadoras, práticas e ofertando o melhor custo/benefício do mercado para nossos clientes.</p>
+                    <p class="sobre">Nossa clínica foi criada para atender as necessidades específicas na área da saúde, com soluções inovadoras, práticas e ofertando o melhor custo/benefício do mercado para nossos clientes.</p>
                 </div>
                 <div class="col-sm-4 text center footer">
                     <h3>Clínica ABC</h3>

@@ -239,15 +239,12 @@ h3.nome{
 }
 
 p.esp{
-    
     color: #646464;
     font-size: 25px;
 }
 
 div.row div {
     text-align: center;
-    
-    
 }
 
 div.row div img{
@@ -322,13 +319,14 @@ form.formulario{
 }
 
 div.cadastro{
-   padding: 50px;
+   padding: 100px;
    
 }
 
 h1.sucesso{
     color: #646464;
     padding-bottom: 80px;
+    padding-top: 80px;
     text-transform: uppercase;
     font-size: 40px;
 }
@@ -354,7 +352,7 @@ img.erro{
 /*parallax*/
 .parallax1{
     background-image: url("../imagens/img6.jpg");
-    min-height: 850px; 
+    min-height: 900px; 
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -363,7 +361,7 @@ img.erro{
 
 .parallax2{
     background-image: url("../imagens/img8.jpg");
-    min-height: 800px; 
+    min-height: 600px; 
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -372,7 +370,7 @@ img.erro{
 
 .parallax3{
     background-image: url("../imagens/img30.png");
-    min-height: 900px; 
+    min-height: 600px; 
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;

@@ -95,21 +95,21 @@ else{
             <input type="hidden" name="id" value="<?=$id;?>">
             <input type="hidden" name="nome" value="<?=$nome?>">
             <input type="hidden" name="tipo" value="<?=$tipo?>">
-            <div class="form-group row">
+            <div class="form-group">
                 <div class="col-sm-12">
-                    <label for="senhaAtual" class="col-form-label">Senha atual</label>
+                    <label for="senhaAtual" class="col-form-label">Senha atual:</label>
                     <input type="password" id="senhaAtual" class="form-control" placeholder="Digite sua senha atual" name="senhaAtual" autocomplete="off" required>
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group">
                 <div class="col-sm-12">
-                    <label for="senhaNova" class="col-form-label">Nova senha</label>
+                    <label for="senhaNova" class="col-form-label">Nova senha:</label>
                     <input type="password" id="senhaNova" class="form-control" placeholder="Digite sua nova senha" name="senhaNova" autocomplete="off" required>
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group">
                 <div class="col-sm-12">
-                    <label for="senhaNova" class="col-form-label">Confirma senha</label>
+                    <label for="senhaNova" class="col-form-label">Confirma senha:</label>
                     <input type="password" id="senhaNova2" class="form-control" placeholder="Confirma sua nova senha" name="senhaNova" autocomplete="off" required oninput="validaSenha(this)">
                 </div>
             </div>
