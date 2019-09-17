@@ -31,6 +31,7 @@ include("header_administrador.php");
         <div class="container">
             <h2 class="text-center sucesso">Cadastro do Paciente</h2>
             <form class="formulario" action="paciente_cadastro_clinica2.php" method="post">
+                <input type="hidden" value="<?= $nome?>" name="name">   
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="campoEmail">Email:</label>

@@ -33,6 +33,7 @@
                             <div class="dropdown-menu" aria-labelledby="submenu">
                                 <a class="dropdown-item" href="minha_conta.php">Minha conta</a>
                                 <a class="dropdown-item" href="muda_senha.php">Redefinir senha</a>
+                                <a class="dropdown-item" href="especialidade_cadastro.php">Cadastrar nova especialidade</a>
                                 <a class="dropdown-item" href="logout.php">Sair</a>
                             </div>
                         </div>

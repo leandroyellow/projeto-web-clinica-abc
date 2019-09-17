@@ -15,6 +15,13 @@ $logado = $_SESSION['email'];
 $senha = $_SESSION['senha'];
 $id = $_SESSION['id'];
 
+$idMedico = filter_input(INPUT_GET, "medico");
+$especialidadeMedica = filter_input(INPUT_GET, "especialidade");
+$dia = filter_input(INPUT_GET, "dia");
+$idpaciente = filter_input(INPUT_GET, "paciente");
+$timestamp = date('Y-m-d',  strtotime(str_replace("/", "-", $dia)));
+
+
 $sql = "SELECT profissional.id, profissional.nome FROM profissional WHERE profissional.usuario_id = $id";
 
 $resultado = $conexao->query($sql);
@@ -24,6 +31,8 @@ $row = mysqli_fetch_assoc($resultado);
 $nome = $row['nome'];
 
 include("header_administrador.php");
+
+
 ?>
 
 
@@ -62,7 +71,7 @@ include("header_administrador.php");
             <div class="form-row">           
                 <div class="form-group col-md-4">
                     <label for="campoCpf">CPF:</label>
-                    <input class="form-control"  name="cpf" id="campoCpf" placeholder="Digite seu CPF" autocomplete="off" required>
+                    <input class="form-control"  name="cpf" id="campoCpf" placeholder="Digite seu CPF" autocomplete="off"  required>
                 </div>
                 <div class="form-group col-md-8">
                     <label for="campoNome">Nome:</label>
@@ -88,7 +97,7 @@ include("header_administrador.php");
         </form>
 
 
-            <h2 class="text-center sucesso">Agenda</h2>
+            <h2 class="text-center sucesso">Agenda do médico:  </h2>
             <table class="table">
                 <caption></caption>
                 <thead>
@@ -102,13 +111,7 @@ include("header_administrador.php");
                 </thead>
 
                 <tbody>
-                    <?php 
-                        $idMedico = filter_input(INPUT_GET, "medico");
-                        $especialidadeMedica = filter_input(INPUT_GET, "especialidade");
-                        $dia = filter_input(INPUT_GET, "dia");
-                        $idpaciente = filter_input(INPUT_GET, "paciente");
-                        $timestamp = date('Y-m-d',  strtotime(str_replace("/", "-", $dia))); 
- 
+                    <?php
                         if($idMedico && $especialidadeMedica && $dia){
                             
                             $sql = "SELECT agenda.id, agenda.hora, profissional.nome AS medico, profissional.especialidade AS id_especialidade, especialidades.especialidade, paciente.nome AS paciente 

@@ -36,7 +36,7 @@ include("header_administrador.php");
         <div class="container">
             
             <form class="formulario" action="profissional_cadastro2.php" method="post" enctype="multipart/form-data">
-                
+            <input type="hidden" value="<?= $nome?>" name="name">    
             <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="campoEmail">Email:</label>
@@ -90,7 +90,7 @@ include("header_administrador.php");
                             $resultado = $conexao->query($select);
 
                             foreach($resultado as $especialidades){
-                                echo '<option value="'. $especialidades['id'].'">'.utf8_encode($especialidades['especialidade']).'</option>';
+                                echo '<option value="'. $especialidades['id'].'">'. $especialidades['especialidade'] .'</option>';
                             }
                             
                         ?>

@@ -7,8 +7,8 @@
     $email = $_POST['email'];
     $senha = $_POST['senha'];
     $tipo = $_POST['tipo'];
-
-    $nome = $_POST['nome'];
+    $nome = $_POST['name'];
+    $nomeProfissional = $_POST['nome'];
     $celular = $_POST['celular'];
     $registro = $_POST['registro'];
     $especialidade = $_POST['especialidade'];
@@ -50,7 +50,7 @@
             $usuario = $db->usuario()->insert(array('email'=>$email, 'senha'=>$senha, 'tipo'=>$tipo));
                 
                 
-            $db->profissional()->insert(array('nome'=>$nome, 'celular'=>$celular, 'registro'=>$registro, 'especialidade'=>$especialidade, 'usuario_id'=>$usuario, 'arquivo'=>$novo_nome));
+            $db->profissional()->insert(array('nome'=>$nomeProfissional, 'celular'=>$celular, 'registro'=>$registro, 'especialidade'=>$especialidade, 'usuario_id'=>$usuario, 'arquivo'=>$novo_nome));
 
             include("header_administrador.php"); ?>
 

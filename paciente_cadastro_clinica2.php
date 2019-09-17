@@ -8,8 +8,8 @@
     $senha = $_POST['senha'];
     $tipo = "3";
     
-    
-    $nome = $_POST['nome'];
+    $nome = $_POST['name'];
+    $nomePaciente = $_POST['nome'];
     $cpf = $_POST['cpf'];
     $sexo = $_POST['sexo'];
     $nascimento = $_POST['nascimento'];
@@ -53,7 +53,7 @@
         
             $usuario = $db->usuario()->insert(array('email'=>$email, 'senha'=>$senha, 'tipo'=>$tipo));
         
-            $db->paciente()->insert(array('nome'=>$nome, 'cpf'=>$cpf, 'sexo'=>$sexo, 'nascimento'=>$timestamp, 'telefone'=>$telefone, 'celular'=>$celular, 'endereco'=>$endereco, 'numero'=>$numero, 'bairro'=>$bairro, 'cidade'=>$cidade, 'estado'=>$estado, 'cep'=>$cep, 'usuario_id'=>$usuario ));
+            $db->paciente()->insert(array('nome'=>$nomePaciente, 'cpf'=>$cpf, 'sexo'=>$sexo, 'nascimento'=>$timestamp, 'telefone'=>$telefone, 'celular'=>$celular, 'endereco'=>$endereco, 'numero'=>$numero, 'bairro'=>$bairro, 'cidade'=>$cidade, 'estado'=>$estado, 'cep'=>$cep, 'usuario_id'=>$usuario ));
             
 
             include("header_paciente.php"); ?>

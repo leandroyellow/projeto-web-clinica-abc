@@ -128,9 +128,11 @@ if($tipo == 1 || $tipo == 2){
                                 $nomeEspecialidade = $especialidades['especialidade'];
                                 //echo '<option value="'. $especialidades['id'].'">'.utf8_encode($especialidades['especialidade']).'</option>';
                                 
+                                
                             
                         ?>
-                        <option value="<?=$cod?>" <?php echo selected('$nomeEspecialidade', '$especialidade'); ?> ><?=utf8_encode($nomeEspecialidade)?></option>
+                        <option value="<?= $cod ?>" <?= $especialidade == $nomeEspecialidade ? "selected='selected'" : "" ?>><?= utf8_encode($nomeEspecialidade) ?></option>
+                        <!--<option value="<?=$cod?>" <?php echo selected('$nomeEspecialidade', '$especialidade'); ?> ><?=utf8_encode($nomeEspecialidade)?></option>-->
                         <?php } ?>
 
                     </select>
@@ -167,7 +169,7 @@ if($tipo == 1 || $tipo == 2){
 
 <?php }
 elseif($tipo == 3){
-  echo  $tipo;
+/*  echo  $tipo;
   echo  $email;
   echo  $senha;
   echo  $id;
@@ -183,7 +185,7 @@ elseif($tipo == 3){
   echo  $bairro;
   echo  $cidade;
   echo  $estado;
-  echo  $cep;
+  echo  $cep;*/
 ?>
   <div class="cor">
         <div class="container">
@@ -214,11 +216,11 @@ elseif($tipo == 3){
                     </div>
                 </div>
                 <div class="custom-control custom-radio">
-                    <input class="custom-control-input" type="radio" name="sexo" id="campoSexoM" value="M" required>
+                    <input class="custom-control-input" type="radio" name="sexo" id="campoSexoM" value="M" required <?= $sexo == 'M' ? "checked='checked'" : "" ?>>
                     <label class="custom-control-label" for="campoSexoM">Masculino</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <input class="custom-control-input" type="radio" name="sexo" id="campoSexoF" value="F" required>
+                    <input class="custom-control-input" type="radio" name="sexo" id="campoSexoF" value="F" required <?= $sexo == 'F' ? "checked='checked'" : "" ?>>
                     <label class="custom-control-label" for="campoSexoF">Feminino</label>
                 </div>
                 <div class="form-row">
@@ -244,11 +246,49 @@ elseif($tipo == 3){
                         <label for="campoCidade">Cidade:</label>
                         <input type="text" class="form-control cep" id="campoCidade" name="cidade" id="campoCidade" placeholder="Digite sua cidade" autocomplete="off" required value="<?=$cidade?>">
                     </div>
+                    <?php
+                        $ar_estado = array(
+                            "AC",
+                            "AL",
+                            "AP",
+                            "AM", 
+                            "BA",
+                            "CE",
+                            "DF",
+                            "ES",
+                            "GO",
+                            "MA",
+                            "MT",
+                            "MS",
+                            "MG",
+                            "PA",
+                            "PB",
+                            "PR",
+                            "PE",
+                            "PI",
+                            "RJ",
+                            "RN",
+                            "RS",
+                            "RO",
+                            "RR",
+                            "SC",
+                            "SP",
+                            "SE",
+                            "TO"
+                        );
+                    ?>
                     <div class="form-group col-md-4">
                         <label for="campoEstado">Estado:</label>
                         <select id="campoEstado" class="form-control cep" name="estado" autocomplete="off" required value="<?=$estado?>">
                             <option selected>Selecione o estado</option>
-                            <option>AC</option>
+                            <?php
+                                foreach($ar_estado as $x) {
+                            ?>
+                            <option value="<?= $x ?>" <?= $estado == $x ? "selected='selected'" : "" ?>><?= $x ?></option>
+                            <?php
+                                }
+                            ?>
+                            <!--<option>AC</option>
                             <option>AL</option>
                             <option>AP</option>
                             <option>AM</option>
@@ -274,7 +314,7 @@ elseif($tipo == 3){
                             <option>SC</option>
                             <option>SP</option>
                             <option>SE</option>
-                            <option>TO</option>
+                            <option>TO</option>-->
                         </select>
                     </div>
                 </div>
