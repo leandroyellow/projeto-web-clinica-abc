@@ -43,7 +43,7 @@ $consulta = $conexao->query($sql);
             </div>
         </nav>
     </header>
-    <div class="parallax1"></div>
+    <div class="parallax parallax1"></div>
     
     <section class="servicos-container">
         <div class="container">
@@ -61,7 +61,7 @@ $consulta = $conexao->query($sql);
         </div>
     </section><!--servicos-container-->
 
-    <div class="parallax2"></div>
+    <div class="parallax parallax2 parallax-min"></div>
     <section class="quem-somos">
         <div class="container">
             <div class="teste">
@@ -128,7 +128,7 @@ $consulta = $conexao->query($sql);
         </div>
     </section><!--quem_somos-->
 
-    <div class="parallax3"></div>
+    <div class="parallax parallax3 parallax-min"></div>
     <section class="medicos-container">
         <div class="container">
             <h2 class="equipe">Equipe Médica</h2>
@@ -186,7 +186,7 @@ $consulta = $conexao->query($sql);
         </div>
     </section>
 
-    <div class="parallax4"></div>
+    <div class="parallax parallax4 parallax-min"></div>
     <section class="planos-container">
         <a name="planos"></a>
         <div class="container">
@@ -211,5 +211,17 @@ $consulta = $conexao->query($sql);
         </div>
     </section>
 
-    <div class="parallax5"></div>
+    <div class="parallax parallax5 parallax-min"></div>
 <?php include("footer.php"); ?>
+
+
+<script type="text/javascript">
+$(window).scroll(function () {
+    $(".parallax").animate({
+        "background-position-y": ($(window).scrollTop()/80) + "px"
+    }, {
+        queue: false, 
+        duration: 0
+    });
+});
+</script>
