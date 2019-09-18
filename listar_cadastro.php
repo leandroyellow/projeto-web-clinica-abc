@@ -293,7 +293,7 @@ include("header_administrador.php");
                   $resultado = $conexao->query($select);
 
                   foreach($resultado as $especialidades){
-                      echo '<option value="'.$especialidades['id'].'">'. utf8_encode ($especialidades['especialidade']) .'</option>';
+                      echo '<option value="'.$especialidades['id'].'">'. $especialidades['especialidade'] .'</option>';
                   }
                     
                 ?>

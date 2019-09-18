@@ -7,6 +7,7 @@
 
     foreach($resultado as $medicos){
         echo '<option value="'.$medicos['id'].'">'.$medicos['nome'].'</option>';
+        //echo "<option value=" $medicos['id'] "  $_POST['medico'] == $medicos['id'] ? "selected='selected'" : "" > $medicos['nome']</option>";
     }
 /*
     $categoria = $_REQUEST['especialidade'];

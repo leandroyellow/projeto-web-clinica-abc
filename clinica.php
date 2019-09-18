@@ -11,35 +11,37 @@ if((!isset ($_SESSION['email']) == true) && (!isset ($_SESSION['senha']) == true
   header('location:index.php');
   }
  
-$logado = $_SESSION['email'];
-$senha = $_SESSION['senha'];
-$id = $_SESSION['id'];
+  $logado = $_SESSION['email'];
+  $senha = $_SESSION['senha'];
+  $id = $_SESSION['id'];
+  
+  $idMedico = filter_input(INPUT_GET, "medico");
+  $especialidadeMedica_id = filter_input(INPUT_GET, "especialidade");
+  $dia = filter_input(INPUT_GET, "dia");
+  $idpaciente = filter_input(INPUT_GET, "paciente");
+  $timestamp = date('Y-m-d',  strtotime(str_replace("/", "-", $dia)));
+  
 
-$idMedico = filter_input(INPUT_GET, "medico");
-$especialidadeMedica = filter_input(INPUT_GET, "especialidade");
-$dia = filter_input(INPUT_GET, "dia");
-$idpaciente = filter_input(INPUT_GET, "paciente");
-$timestamp = date('Y-m-d',  strtotime(str_replace("/", "-", $dia)));
+$consulta_nome_profissional = "SELECT profissional.id, profissional.nome FROM profissional WHERE profissional.usuario_id = $id";
+$resultado_nome_profissional = $conexao->query($consulta_nome_profissional);
+$row_nome_profissional = mysqli_fetch_assoc($resultado_nome_profissional);
+$nome = $row_nome_profissional['nome'];
 
+$consulta_nome_medico = "SELECT nome FROM profissional WHERE id = $idMedico";
+$resultado_nome_medico = $conexao->query($consulta_nome_medico);
+$row_nome_medico = mysqli_fetch_assoc($resultado_nome_medico);
+$nomeMedico = $row_nome_medico['nome'];
 
-$sql = "SELECT profissional.id, profissional.nome FROM profissional WHERE profissional.usuario_id = $id";
+$consulta_especialidade = "SELECT DISTINCT especialidades.id, especialidades.especialidade FROM especialidades INNER JOIN profissional ON profissional.especialidade = especialidades.id INNER JOIN usuario ON usuario.id = profissional.usuario_id WHERE usuario.tipo = 2 ORDER BY especialidade";
+$resultado_especialidade = $conexao->query($consulta_especialidade);
 
-$resultado = $conexao->query($sql);
-    
-$row = mysqli_fetch_assoc($resultado);
+$consulta_agenda = "SELECT agenda.id, agenda.hora, profissional.nome AS medico, profissional.especialidade AS id_especialidade, especialidades.especialidade, paciente.nome AS paciente FROM agenda INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN paciente ON paciente.id = agenda.paciente_id INNER JOIN especialidades ON profissional.especialidade = especialidades.id WHERE agenda.dia = '$timestamp' AND profissional.id = $idMedico UNION SELECT '' AS id, intervalo.hora, 'Livre' AS nome, '' AS especialidade, '' AS especialidade, '' AS nome FROM intervalo WHERE intervalo.hora NOT IN (SELECT agenda.hora FROM agenda INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN paciente ON paciente.id = agenda.paciente_id WHERE agenda.dia = '$timestamp' AND profissional.id = $idMedico) ORDER BY hora";
+$resultado_agenda = $conexao->query($consulta_agenda);
 
-$nome = $row['nome'];
 
 include("header_administrador.php");
 
-
 ?>
-
-
-
-
-
-
     <div class="cor">
         <div class="container">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -49,12 +51,16 @@ include("header_administrador.php");
                     <select class="form-control" name="especialidade" id="campoEspecialidade" autocomplete="off" required>
                         <option selected>Selecione a especialidade</option>
                         <?php 
-                            $select = "SELECT DISTINCT especialidades.id, especialidades.especialidade FROM especialidades INNER JOIN profissional ON profissional.especialidade = especialidades.id INNER JOIN usuario ON usuario.id = profissional.usuario_id WHERE usuario.tipo = 2 ORDER BY especialidade";
-                            $resultado = $conexao->query($select);
+                            
 
-                            foreach($resultado as $especialidades){
-                                echo '<option value="'.$especialidades['id'].'">'. utf8_encode ($especialidades['especialidade']).'</option>';
+                            foreach($resultado_especialidade as $especialidades){
+                                //echo '<option value="'.$especialidades['id'].'">'. utf8_encode ($especialidades['especialidade']).'</option>';
+                              ?>
+
+                                <option value="<?= $especialidades['id'] ?>" <?= $especialidadeMedica_id == $especialidades['id'] ? "selected='selected'" : "" ?>><?= $especialidades['especialidade'] ?></option>
+                              <?php  
                             }
+
                             
                         ?>
                         
@@ -86,7 +92,7 @@ include("header_administrador.php");
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="campoDia">Data:</label>
-                    <input class="form-control"  name="dia" id="campoDia" placeholder="Digite uma data" autocomplete="off" required>
+                    <input class="form-control"  name="dia" id="campoDia" placeholder="Digite uma data" autocomplete="off" required value="<?=$dia?>">
                 </div>
                 <div class="form-group col-md-8">
                     <label>Clique para verificar a agenda do médico selecionado:</label>
@@ -97,7 +103,7 @@ include("header_administrador.php");
         </form>
 
 
-            <h2 class="text-center sucesso">Agenda do médico:  </h2>
+            <h2 class="text-center sucesso">Agenda de: <?=$nomeMedico?> do dia: <?=$dia?> </h2>
             <table class="table">
                 <caption></caption>
                 <thead>
@@ -112,25 +118,14 @@ include("header_administrador.php");
 
                 <tbody>
                     <?php
-                        if($idMedico && $especialidadeMedica && $dia){
+                        if($idMedico && $especialidadeMedica_id && $dia){
                             
-                            $sql = "SELECT agenda.id, agenda.hora, profissional.nome AS medico, profissional.especialidade AS id_especialidade, especialidades.especialidade, paciente.nome AS paciente 
-                            FROM agenda 
-                            INNER JOIN profissional ON profissional.id = agenda.profissional_id 
-                            INNER JOIN paciente ON paciente.id = agenda.paciente_id 
-                            INNER JOIN especialidades ON profissional.especialidade = especialidades.id
-                            WHERE agenda.dia = '$timestamp' AND profissional.id = $idMedico
-                            UNION 
-                            SELECT '' AS id, intervalo.hora, 'Livre' AS nome, '' AS especialidade, '' AS especialidade, '' AS nome 
-                            FROM intervalo 
-                            WHERE intervalo.hora NOT IN (SELECT agenda.hora FROM agenda INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN paciente ON paciente.id = agenda.paciente_id WHERE agenda.dia = '$timestamp' AND profissional.id = $idMedico) 
-                            ORDER BY hora";
-                            $busca = $conexao->query($sql);
+                            
                             
                         
                         
-                        if($busca->num_rows > 0){
-                            while ($leitor = $busca->fetch_assoc()){
+                        if($resultado_agenda->num_rows > 0){
+                            while ($leitor = $resultado_agenda->fetch_assoc()){
                                 $hora = $leitor['hora'];
                                 $medico = $leitor['medico'];
                                 $especialidade = $leitor['especialidade'];
@@ -153,12 +148,12 @@ include("header_administrador.php");
                         
                         ?>
 
-                        <td class="text-center"><a class="btn btn-success btn-sm" style="color:#fff" href="agenda.php?<?php echo "medico=$idMedico&paciente=$idpaciente&dia=$dia&hora=$hora&especialidade=$especialidadeMedica"?>"  role="button"><i class="fas fa-plus-circle"></i>&nbsp;Adicionar</a> 
+                        <td class="text-center"><a class="btn btn-success btn-sm" style="color:#fff" href="agenda.php?<?php echo "medico=$idMedico&paciente=$idpaciente&dia=$dia&hora=$hora&especialidade=$especialidadeMedica_id"?>"  role="button"><i class="fas fa-plus-circle"></i>&nbsp;Adicionar</a> 
                         </td>
                         <?php
                         }else{
                         ?>
-                        <td class="text-center"><a class="btn btn-danger btn-sm" style="color:#fff" href="agenda_desmarca.php?<?php echo "medico=$idMedico&paciente=$idpaciente&dia=$dia&hora=$hora&especialidade=$especialidadeMedica&id=$id"?>" role="button"><i class="far fa-trash-alt"></i>&nbsp;Desmarcar</a> 
+                        <td class="text-center"><a class="btn btn-danger btn-sm" style="color:#fff" href="agenda_desmarca.php?<?php echo "medico=$idMedico&paciente=$idpaciente&dia=$dia&hora=$hora&especialidade=$especialidadeMedica_id&id=$id"?>" role="button"><i class="far fa-trash-alt"></i>&nbsp;Desmarcar</a> 
                     </tr>
                             <?php }}
                             }
@@ -185,6 +180,7 @@ $("#campoEspecialidade").on("change", function(){
         url: 'medico_options.php',
         type: 'POST',
         data:{especialidade:especialidadeSelecionada},
+        
         beforeSend: function(){
             
             $("#campoMedico").html("Carregando....");

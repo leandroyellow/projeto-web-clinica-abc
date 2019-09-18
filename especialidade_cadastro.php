@@ -61,7 +61,7 @@ include("header_administrador.php");
 
                 <?php
                     
-                    $sql2 = "SELECT * FROM especialidades";
+                    $sql2 = "SELECT * FROM especialidades ORDER BY especialidade";
                     $Resutado2 = $conexao->query($sql2);
                     while ($leitor = $Resutado2->fetch_assoc()){
                         $id_especialidade = $leitor['id'];

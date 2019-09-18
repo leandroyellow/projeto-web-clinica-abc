@@ -132,7 +132,7 @@ if($tipo == 1 || $tipo == 2){
                             
                         ?>
                         <option value="<?= $cod ?>" <?= $especialidade == $nomeEspecialidade ? "selected='selected'" : "" ?>><?= utf8_encode($nomeEspecialidade) ?></option>
-                        <!--<option value="<?=$cod?>" <?php echo selected('$nomeEspecialidade', '$especialidade'); ?> ><?=utf8_encode($nomeEspecialidade)?></option>-->
+                        
                         <?php } ?>
 
                     </select>
