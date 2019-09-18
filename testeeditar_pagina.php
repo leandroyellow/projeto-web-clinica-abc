@@ -96,7 +96,7 @@ if($tipo == 1 || $tipo == 2){
                             $select = "SELECT * FROM especialidades ORDER BY especialidade";
                             $resultado = $conexao->query($select);
                             foreach($resultado as $especialidades){
-                                echo '<option value="'. $especialidades['id'].'">'.utf8_encode($especialidades['especialidade']).'</option>';
+                                echo '<option value="'. $especialidades['id'].'">'.$especialidades['especialidade'].'</option>';
                             }
                         ?>
                     </select>

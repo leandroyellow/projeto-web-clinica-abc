@@ -139,7 +139,7 @@ include("header_administrador.php");
                     <tr>
                         <td><?php echo $hora ?> </td>
                         <td><?php echo $medico ?></td>
-                        <td><?php echo utf8_encode($especialidade) ?> </td>
+                        <td><?php echo $especialidade ?> </td>
                         <td><?php echo $paciente ?> </td>
 
                         <?php
