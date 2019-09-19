@@ -22,7 +22,11 @@ $resultado = $conexao->query($sql);
 $row = mysqli_fetch_assoc($resultado);
 
 $nome = $row['nome'];
-
+$mensagemAlerta = '';
+if(isset($_GET['msg'])){
+if ($_GET['msg'] == 'entrou') {
+    $mensagemAlerta = 'Especialidade já cadastrada';
+}}
 
 include("header_administrador.php");
 ?>
@@ -50,6 +54,7 @@ include("header_administrador.php");
 
                 </div>
             </form>
+            <div><?=$mensagemAlerta?></div>
 
             <table class="table" style=margin-top:50px;>
                 <thead>
@@ -89,3 +94,7 @@ include("header_administrador.php");
     </div><!--cor-->
 
 <?php include("footer.php"); ?>
+
+<?php
+    
+?>

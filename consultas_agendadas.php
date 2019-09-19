@@ -35,8 +35,11 @@ if($tipo == 3){
         <div class="container">
             <h2 class="text-center sucesso">Cadastros</h2>
             <form class="form-inline" method="POST">
-              <input class="form-control mr-sm-2" name="pesquisa" type="search" placeholder="Pesquisa por nome" aria-label="Pesquisa">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisa</button>
+                <div class="form-group">
+                    <label for="pesquisa" style="display: block; width: 100%;">Pesquisa a partir da data: </label>
+                    <input class="form-control mr-sm-2" id="pesquisa" name="pesquisa" type="search" placeholder="Pesquisa por data" aria-label="Pesquisa">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisa</button>
+                </div>
             </form>
             <table class="table" style=margin-top:50px;>
                 <thead>
@@ -51,8 +54,18 @@ if($tipo == 3){
 
                 <?php
                     
-                    $sql2 = "SELECT agenda.dia, agenda.hora, paciente.nome AS 'nomePaciente', especialidades.especialidade, profissional.nome AS 'nomeMedico' FROM agenda INNER JOIN paciente ON paciente.id = agenda.paciente_id INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN especialidades ON especialidades.id = profissional.especialidade WHERE paciente.usuario_id = $id AND dia >= $atual";
+                    $sql2 = "SELECT agenda.dia, agenda.hora, paciente.nome AS 'nomePaciente', especialidades.especialidade, profissional.nome AS 'nomeMedico' FROM agenda INNER JOIN paciente ON paciente.id = agenda.paciente_id INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN especialidades ON especialidades.id = profissional.especialidade WHERE paciente.usuario_id = $id AND dia >= '$atual'";
+
+                    if (array_key_exists('pesquisa', $_POST) && $_POST['pesquisa'] != '') {
+                        $pesquisa = $_POST['pesquisa'];
+                        $pesquisa2 = date('Y-m-d', strtotime(str_replace("/", "-", $pesquisa)));
+                        $sql2 = "SELECT agenda.dia, agenda.hora, paciente.nome AS 'nomePaciente', especialidades.especialidade, profissional.nome AS 'nomeMedico' FROM agenda INNER JOIN paciente ON paciente.id = agenda.paciente_id INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN especialidades ON especialidades.id = profissional.especialidade WHERE paciente.usuario_id = $id AND dia >= '$pesquisa2'";
+                        
+                      }
+
                     $Resutado2 = $conexao->query($sql2);
+
+                    
                     while ($leitor = $Resutado2->fetch_assoc()){
                         $dia = $leitor['dia'];
                         $timestamp = date('d-m-Y',  strtotime(str_replace("/", "-", $dia))); 
@@ -69,7 +82,7 @@ if($tipo == 3){
                     <td><?php echo  $timestamp ?> </td>
                     <td><?php echo $hora ?> </td>
                     <td class="text-center"><?php echo $especialidade ?> </td>
-                    <td class="text-center"><?= utf8_encode ($nomeMedico) ?> </td>
+                    <td class="text-center"><?= $nomeMedico ?> </td>
                     <td class="text-center">
                         <a class="btn btn-danger btn-sm" style="color:#fff" href="#" role="button"><i class="far fa-trash-alt"></i>&nbsp;Cancelar</a>
                     </td>
@@ -89,7 +102,13 @@ if($tipo == 3){
 
 
     include("footer.php");
-
+?>
+    <script>
+    $(document).ready(function(){
+        $("#pesquisa").mask("00/00/0000", {placeholder: "__/__/____"});
+    });
+</script>
+    <?php
                     }else{
     unset($_SESSION['email']);
     unset($_SESSION['senha']);
