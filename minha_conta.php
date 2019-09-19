@@ -3,7 +3,7 @@ require('conexao.php');
 require('config.php');
 $tipo = $_SESSION['tipo'];
 $email = $_SESSION['email'];
-$senha = $_SESSION['senha'];
+
 $id = $_SESSION['id'];
 
 $sql = "SELECT profissional.id AS 'id_profissional', profissional.nome, profissional.celular, profissional.registro, especialidades.id AS 'id_especialidade', especialidades.especialidade FROM profissional INNER JOIN especialidades ON especialidades.id = profissional.especialidade WHERE profissional.usuario_id = $id";
@@ -89,7 +89,7 @@ else{
 if($tipo == 1 || $tipo == 2){
 ?>
 <div class="cor">
-    <h2 class="text-center sucesso">Minha conta</h2>
+    <h2 class="text-center sucesso">Minha Conta</h2>
     <div class="container">
         <form class="formulario" action="minha_conta2.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?=$id;?>">
@@ -189,7 +189,7 @@ elseif($tipo == 3){
 ?>
   <div class="cor">
         <div class="container">
-            <h2 class="text-center sucesso">Cadastro</h2>
+            <h2 class="text-center sucesso">Minha Conta</h2>
             <form class="formulario" action="minha_conta2.php" method="post">
                 <input type="hidden" name="id" value="<?=$id;?>">
                 <input type="hidden" name="nome" value="<?=$nome?>">

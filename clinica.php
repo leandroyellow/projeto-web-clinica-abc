@@ -41,6 +41,7 @@ include("header_administrador.php");
 ?>
     <div class="cor">
         <div class="container">
+        <h2 class="text-center sucesso">Agenda</h2>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <div class="form-row">
                 <div class="form-group col-md-4">
@@ -106,7 +107,7 @@ include("header_administrador.php");
                 $nomeMedico = $row_nome_medico['nome'];
                 ?>
 
-            <h2 class="text-center sucesso">Agenda de: <?=$nomeMedico?> do dia: <?=$dia?> </h2>
+            <h2 class="text-center sucesso">Agenda <?=$nomeMedico?> dia: <?=$dia?> </h2>
             <table class="table">
                 <caption></caption>
                 <thead>

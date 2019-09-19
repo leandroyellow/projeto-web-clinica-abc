@@ -32,7 +32,7 @@
                             <div class="dropdown-menu" aria-labelledby="submenu">
                                 <a class="dropdown-item" href="minha_conta.php">Minha conta</a>
                                 <a class="dropdown-item" href="consultas_agendadas.php">Consultas agendadas</a>
-                                <a class="dropdown-item" href="muda_senha.php">Redifinir senha</a>
+                                <a class="dropdown-item" href="muda_senha.php">Alterar senha</a>
                                 <a class="dropdown-item" href="logout.php">Sair</a>
                             </div>
                         </div>

@@ -3,7 +3,7 @@ require('conexao.php');
 require('config.php');
 $tipo = $_SESSION['tipo'];
 $email = $_SESSION['email'];
-$senha = $_SESSION['senha'];
+
 $id = $_SESSION['id'];
 $atual = date("Y-m-d"); 
 
@@ -33,7 +33,7 @@ if($tipo == 3){
 
     <div class="cor">
         <div class="container">
-            <h2 class="text-center sucesso">Cadastros</h2>
+            <h2 class="text-center sucesso">Consultas Agendadas</h2>
             <form class="form-inline" method="POST">
                 <div class="form-group">
                     <label for="pesquisa" style="display: block; width: 100%;">Pesquisa a partir da data: </label>

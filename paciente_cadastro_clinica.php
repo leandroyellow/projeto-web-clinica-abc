@@ -12,7 +12,7 @@ if((!isset ($_SESSION['email']) == true) && (!isset ($_SESSION['senha']) == true
   }
  
 $logado = $_SESSION['email'];
-$senha = $_SESSION['senha'];
+
 $id = $_SESSION['id'];
 
 $sql = "SELECT profissional.id, profissional.nome FROM profissional WHERE profissional.usuario_id = $id";
