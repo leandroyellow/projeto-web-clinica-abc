@@ -19,7 +19,7 @@ if((!isset ($_SESSION['email']) == true) && (!isset ($_SESSION['senha']) == true
   }
 
 $logado = $_SESSION['email'];
-$senha = $_SESSION['senha'];
+
 $id = $_SESSION['id'];
 
 $sql = "SELECT profissional.id, profissional.nome FROM profissional WHERE profissional.usuario_id = $id";
@@ -35,8 +35,9 @@ include("header_medico.php");
 ?>
 <div class="cor">
   <div class="container">
+  <h2 class="sucesso text-center">Hello World! <?= $nome?></h2>
     <form action="">
-      <div class="form-row">
+      <div class="form-row agenda-med">
         <div class="form-group col-md-4">
           <label for="campoDia">Data:</label>
           <input  class="form-control"  name="dia" id="campoDia" placeholder="Digite uma data" autocomplete="off" required value="<?php echo date("d/m/Y");?>">

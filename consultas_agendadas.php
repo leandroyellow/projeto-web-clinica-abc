@@ -3,7 +3,7 @@ require('conexao.php');
 require('config.php');
 $tipo = $_SESSION['tipo'];
 $email = $_SESSION['email'];
-$senha = $_SESSION['senha'];
+
 $id = $_SESSION['id'];
 $atual = date("Y-m-d"); 
 
@@ -33,7 +33,7 @@ if($tipo == 3){
 
     <div class="cor">
         <div class="container">
-            <h2 class="text-center sucesso">Cadastros</h2>
+            <h2 class="text-center sucesso">Consultas Agendadas</h2>
             <form class="form-inline" method="POST">
               <input class="form-control mr-sm-2" name="pesquisa" type="search" placeholder="Pesquisa por nome" aria-label="Pesquisa">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisa</button>

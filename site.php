@@ -25,7 +25,7 @@ if((!isset ($_SESSION['email']) == true) && (!isset ($_SESSION['senha']) == true
   }
 
 $logado = $_SESSION['email'];
-$senha = $_SESSION['senha'];
+
 $id = $_SESSION['id'];
 
 $sql = "SELECT paciente.id, paciente.nome FROM paciente WHERE paciente.usuario_id = $id";
@@ -230,7 +230,18 @@ include("header_paciente.php");
         </div>
     </section>
 
-
+    <section class="final">
+        <div class="overlay"></div>
+        <div class="frase-final">
+            <p class="texto-final">“O segredo da saúde mental e corporal </p>
+            <p class="texto-final">está em não se lamentar pelo passado, não se preocupar com o </p>
+            <p class="texto-final"> futuro, nem se adiantar aos problemas, mas viver sábia e seriamente o presente.” </p>
+            <p class="texto-final"> BUDA</p>
+        </div>
+    </section>
+    
+    
+    
 <?php
 include("footer.php");
 

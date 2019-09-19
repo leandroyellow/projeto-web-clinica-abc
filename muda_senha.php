@@ -38,7 +38,7 @@ elseif($tipo == 2){
       }
     
     $logado = $_SESSION['email'];
-    $senha = $_SESSION['senha'];
+    
     $id = $_SESSION['id'];
     $botaoVoltar = 'medico.php';
     
@@ -64,7 +64,7 @@ elseif($tipo == 3){
       }
     
     $logado = $_SESSION['email'];
-    $senha = $_SESSION['senha'];
+    
     $id = $_SESSION['id'];
     $botaoVoltar = 'site.php';
     
