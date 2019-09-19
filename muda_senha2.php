@@ -3,8 +3,8 @@ require_once('config.php');
 require_once('conexao.php');
 
 $id = $_POST['id'];
-$senhaAtual = $_POST['senhaAtual'];
-$senhaNova = $_POST['senhaNova'];
+$senhaAtual = sha1($_POST['senhaAtual']);
+$senhaNova = sha1($_POST['senhaNova']);
 $nome = $_POST['nome']; 
 $tipo = $_POST['tipo'];
 
@@ -17,6 +17,8 @@ elseif($tipo == 2){
 elseif($tipo == 3){
     $header = "header_paciente.php";
 }
+
+
 
 $sql = "SELECT * FROM usuario WHERE id = $id AND senha = '$senhaAtual'";
 $resultado = $conexao->query($sql);

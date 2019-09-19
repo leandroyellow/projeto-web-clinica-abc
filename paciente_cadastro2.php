@@ -52,7 +52,7 @@
 
             if(isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['nome']) && isset($_POST['cpf']) && isset($_POST['sexo']) && isset($_POST['nascimento']) && isset($_POST['telefone']) && isset($_POST['celular']) && isset($_POST['endereco']) && isset($_POST['numero']) && isset($_POST['bairro']) && isset($_POST['cidade']) && isset($_POST['estado']) && isset($_POST['cep'])) {
             
-                $usuario = $db->usuario()->insert(array('email'=>$email, 'senha'=>$senha, 'tipo'=>$tipo));
+                $usuario = $db->usuario()->insert(array('email'=>$email, 'senha'=>sha1($senha), 'tipo'=>$tipo));
             
                 $db->paciente()->insert(array('nome'=>$nome, 'cpf'=>$cpf, 'sexo'=>$sexo, 'nascimento'=>$timestamp, 'telefone'=>$telefone, 'celular'=>$celular, 'endereco'=>$endereco, 'numero'=>$numero, 'bairro'=>$bairro, 'cidade'=>$cidade, 'estado'=>$estado, 'cep'=>$cep, 'usuario_id'=>$usuario ));
                 

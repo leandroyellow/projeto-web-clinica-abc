@@ -47,7 +47,7 @@
 
         if(isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['tipo']) && isset($_POST['nome']) && isset($_POST['celular']) && isset($_POST['registro']) && isset($_POST['especialidade']) && isset($_FILES['arquivo'])) {
 
-            $usuario = $db->usuario()->insert(array('email'=>$email, 'senha'=>$senha, 'tipo'=>$tipo));
+            $usuario = $db->usuario()->insert(array('email'=>$email, 'senha'=>sha1($senha), 'tipo'=>$tipo));
                 
                 
             $db->profissional()->insert(array('nome'=>$nomeProfissional, 'celular'=>$celular, 'registro'=>$registro, 'especialidade'=>$especialidade, 'usuario_id'=>$usuario, 'arquivo'=>$novo_nome));

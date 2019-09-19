@@ -13,7 +13,7 @@ if($tipo == 1){
     }
     
     $logado = $_SESSION['email'];
-    $senha = $_SESSION['senha'];
+    
     $id = $_SESSION['id'];
     $botaoVoltar = 'clinica.php';
 

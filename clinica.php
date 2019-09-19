@@ -12,7 +12,7 @@ if((!isset ($_SESSION['email']) == true) && (!isset ($_SESSION['senha']) == true
   }
  
   $logado = $_SESSION['email'];
-  $senha = $_SESSION['senha'];
+  
   $id = $_SESSION['id'];
   
   $idMedico = filter_input(INPUT_GET, "medico");
@@ -27,10 +27,7 @@ $resultado_nome_profissional = $conexao->query($consulta_nome_profissional);
 $row_nome_profissional = mysqli_fetch_assoc($resultado_nome_profissional);
 $nome = $row_nome_profissional['nome'];
 
-$consulta_nome_medico = "SELECT nome FROM profissional WHERE id = $idMedico";
-$resultado_nome_medico = $conexao->query($consulta_nome_medico);
-$row_nome_medico = mysqli_fetch_assoc($resultado_nome_medico);
-$nomeMedico = $row_nome_medico['nome'];
+
 
 $consulta_especialidade = "SELECT DISTINCT especialidades.id, especialidades.especialidade FROM especialidades INNER JOIN profissional ON profissional.especialidade = especialidades.id INNER JOIN usuario ON usuario.id = profissional.usuario_id WHERE usuario.tipo = 2 ORDER BY especialidade";
 $resultado_especialidade = $conexao->query($consulta_especialidade);
@@ -101,7 +98,13 @@ include("header_administrador.php");
                 </div>
             </div>
         </form>
-
+        <?php
+            if($idMedico && $especialidadeMedica_id && $dia){
+                $consulta_nome_medico = "SELECT nome FROM profissional WHERE id = $idMedico";
+                $resultado_nome_medico = $conexao->query($consulta_nome_medico);
+                $row_nome_medico = mysqli_fetch_assoc($resultado_nome_medico);
+                $nomeMedico = $row_nome_medico['nome'];
+                ?>
 
             <h2 class="text-center sucesso">Agenda de: <?=$nomeMedico?> do dia: <?=$dia?> </h2>
             <table class="table">
@@ -117,11 +120,10 @@ include("header_administrador.php");
                 </thead>
 
                 <tbody>
-                    <?php
-                        if($idMedico && $especialidadeMedica_id && $dia){
+                    
                             
                             
-                            
+                      <?php      
                         
                         
                         if($resultado_agenda->num_rows > 0){
