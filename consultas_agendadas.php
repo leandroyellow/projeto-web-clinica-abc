@@ -6,6 +6,7 @@ $email = $_SESSION['email'];
 
 $id = $_SESSION['id'];
 $atual = date("Y-m-d"); 
+$pesquisa2 = $atual;
 
 $sql = "SELECT paciente.id, paciente.nome FROM paciente WHERE paciente.usuario_id = $id";
 
@@ -54,17 +55,22 @@ if($tipo == 3){
 
                 <?php
                     
-                    $sql2 = "SELECT agenda.dia, agenda.hora, paciente.nome AS 'nomePaciente', especialidades.especialidade, profissional.nome AS 'nomeMedico' FROM agenda INNER JOIN paciente ON paciente.id = agenda.paciente_id INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN especialidades ON especialidades.id = profissional.especialidade WHERE paciente.usuario_id = $id AND dia >= '$atual'";
+                    $sql2 = "SELECT agenda.id, agenda.dia, agenda.hora, paciente.nome AS 'nomePaciente', especialidades.especialidade, profissional.nome AS 'nomeMedico' FROM agenda INNER JOIN paciente ON paciente.id = agenda.paciente_id INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN especialidades ON especialidades.id = profissional.especialidade WHERE paciente.usuario_id = $id AND dia >= '$atual'";
 
                     if (array_key_exists('pesquisa', $_POST) && $_POST['pesquisa'] != '') {
                         $pesquisa = $_POST['pesquisa'];
+
                         $pesquisa2 = date('Y-m-d', strtotime(str_replace("/", "-", $pesquisa)));
-                        $sql2 = "SELECT agenda.dia, agenda.hora, paciente.nome AS 'nomePaciente', especialidades.especialidade, profissional.nome AS 'nomeMedico' FROM agenda INNER JOIN paciente ON paciente.id = agenda.paciente_id INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN especialidades ON especialidades.id = profissional.especialidade WHERE paciente.usuario_id = $id AND dia >= '$pesquisa2'";
+                        $sql2 = "SELECT agenda.id, agenda.dia, agenda.hora, paciente.nome AS 'nomePaciente', especialidades.especialidade, profissional.nome AS 'nomeMedico' FROM agenda INNER JOIN paciente ON paciente.id = agenda.paciente_id INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN especialidades ON especialidades.id = profissional.especialidade WHERE paciente.usuario_id = $id AND dia >= '$pesquisa2'";
                         
+                      }elseif(isset($_GET['dia'])){
+                        $pesquisa2 = $_GET['dia'];  
+                        $sql2 = "SELECT agenda.id, agenda.dia, agenda.hora, paciente.nome AS 'nomePaciente', especialidades.especialidade, profissional.nome AS 'nomeMedico' FROM agenda INNER JOIN paciente ON paciente.id = agenda.paciente_id INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN especialidades ON especialidades.id = profissional.especialidade WHERE paciente.usuario_id = $id AND dia >= '$pesquisa2'";
                       }
 
                     $Resutado2 = $conexao->query($sql2);
-
+//echo $sql2;
+//echo $pesquisa2;
                     
                     while ($leitor = $Resutado2->fetch_assoc()){
                         $dia = $leitor['dia'];
@@ -73,6 +79,7 @@ if($tipo == 3){
                         $nomeMedico = $leitor['nomeMedico'];
                         $especialidade = $leitor['especialidade'];
                         $hora = $leitor['hora'];
+                        $id_agenda = $leitor['id'];
                         
 
                         
@@ -84,7 +91,7 @@ if($tipo == 3){
                     <td class="text-center"><?php echo $especialidade ?> </td>
                     <td class="text-center"><?= $nomeMedico ?> </td>
                     <td class="text-center">
-                        <a class="btn btn-danger btn-sm" style="color:#fff" href="#" role="button"><i class="far fa-trash-alt"></i>&nbsp;Cancelar</a>
+                        <a class="btn btn-danger btn-sm" style="color:#fff" href="agenda_desmarca.php?<?php echo"id=$id_agenda&dia=$pesquisa2"?>" role="button"><i class="far fa-trash-alt"></i>&nbsp;Cancelar</a>
                     </td>
 
                 </tr>

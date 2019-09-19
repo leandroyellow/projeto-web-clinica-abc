@@ -17,22 +17,35 @@ if (isset($_GET['paciente'])&&isset($_GET['medico'])&&isset($_GET['dia'])&&isset
     
     
 $sql = "DELETE FROM agenda WHERE agenda.id = $id";
-echo $sql;
+//echo $sql;
 	if ($conexao->query($sql) == true ) {
         echo "Dado inserido com sucesso";
         header("Location: clinica.php?especialidade=$especialidade&medico=$medico&paciente=$paciente&dia=$dia"  );
-echo $especialidade;
+//echo $especialidade;
         
 	}
 	else{
 		echo "Erro " . $conexao->error;
 	}
 
-	$conexao->close();
+	
 
+}elseif(isset($_GET['id'])&&isset($_GET['dia'])){
+    $id = $_GET['id'];
+    $dia = $_GET['dia'];
+    $sql = "DELETE FROM agenda WHERE agenda.id = $id";
+    if ($conexao->query($sql) == true ) {
+        echo "Dado inserido com sucesso";
+        header("Location: consultas_agendadas.php?dia=$dia"  );
+//echo $especialidade;
+        
+	}
+	else{
+		echo "Erro " . $conexao->error;
+	}
 }
 
-
+$conexao->close();
 
 
 ?>
