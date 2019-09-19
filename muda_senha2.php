@@ -10,12 +10,15 @@ $tipo = $_POST['tipo'];
 
 if($tipo == 1){
     $header = "header_administrador.php";
+    $botaoVoltar = "clinica.php";
 }
 elseif($tipo == 2){
     $header = "header_medico.php";
+    $botaoVoltar = "medico.php";
 }
 elseif($tipo == 3){
     $header = "header_paciente.php";
+    $botaoVoltar = "site.php";
 }
 
 
@@ -35,7 +38,7 @@ if($resultado->num_rows > 0){
         <div class="container text-center cadastro">
             <img class="cadastro" src="imagens/cadastro.png" alt="">
             <h1 class="sucesso">Senha alterada com sucesso</h1>
-            <a href="clinica.php" class="btn" id="botao">Voltar</a>
+            <a href="<?= $botaoVoltar ?>" class="btn" id="botao">Voltar</a>
             
         </div>
     </div>
@@ -51,7 +54,7 @@ include("$header"); ?>
     <div class="container text-center cadastro">
         <img class="cadastro" src="imagens/aviso.png" alt="">
         <h1 class="sucesso">Não foi possível alterar a senha</h1>
-        <a href="clinica.php" class="btn" id="botao">Voltar</a>
+        <a href="<?= $botaoVoltar ?>" class="btn" id="botao">Voltar</a>
         
     </div>
 </div>
