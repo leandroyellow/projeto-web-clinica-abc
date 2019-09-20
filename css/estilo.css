@@ -25,7 +25,8 @@ h1{
 
 div.cor{
     background: #f2f2f2;
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 50px;
 }
 
 div.tamanhoContainer{
@@ -279,7 +280,8 @@ section.planos-container .btn{
 /*footer*/
 footer{
     background: #011a00;
-    padding-top: 20px;
+    padding-top: 50px;
+    padding-bottom: 40px;
     color: #fff;
 }
 
