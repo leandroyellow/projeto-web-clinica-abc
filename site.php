@@ -43,7 +43,7 @@ include("header_paciente.php");
 <section class="agenda">
         <div class="overlay"></div><!--overlay-->
         <div class="center">
-            <form>
+            <form action="agendamento_cliente.php" method="post">
                 <h2>Agende sua consulta online</h2>
                 <div class="form-group">
                     <label for="campoEspecialidade"></label>
@@ -59,9 +59,9 @@ include("header_paciente.php");
                             
                         ?>
                         
-                        </select>
+                    </select>
                 </div>
-                <button type="button" class="btn btn-block">Agendar</button>
+                <button type="submit" class="btn btn-block">Agendar</button>
             </form>
         </div><!--center-->
     </section><!--agenda-->
