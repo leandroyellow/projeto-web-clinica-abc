@@ -34,7 +34,7 @@
                 
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['tipo'] = $row['tipo'];
-                header('Location: clinica.php'); 
+                header('Location: clinica.php');
             }
             elseif($row['tipo'] == 2){
                 $_SESSION['email'] = $email;
@@ -49,13 +49,12 @@
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['tipo'] = $row['tipo'];
                 header('location:site.php');
-                
             }
+            exit();
         }
         else{
             
             unset ($_SESSION['email']);
-            unset ($_SESSION['senha']);
             unset ($_SESSION['id']);
             unset ($_SESSION['tipo']);
             ?>
@@ -111,7 +110,7 @@
     }
     else{
         unset ($_SESSION['email']);
-        unset ($_SESSION['senha']);
+        unset ($_SESSION['tipo']);
         unset ($_SESSION['id']);
         
         ?>

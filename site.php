@@ -15,7 +15,7 @@ $diretorio = "upload/";
 $sql = "SELECT profissional.arquivo, profissional.nome, especialidades.especialidade FROM profissional INNER JOIN usuario ON usuario.id = profissional.usuario_id INNER JOIN especialidades ON especialidades.id = profissional.especialidade WHERE usuario.tipo = 2 ";
 $consulta = $conexao->query($sql);
 
-if((!isset ($_SESSION['email']) == true) && (!isset ($_SESSION['senha']) == true) && (!isset ($_SESSION['id']) == true) || $_SESSION['tipo'] != 3 )
+if((!isset($_SESSION['email']) && !isset($_SESSION['senha']) && !isset($_SESSION['id'])) || $_SESSION['tipo'] != 3 )
 {
   unset($_SESSION['email']);
   unset($_SESSION['senha']);
