@@ -25,8 +25,8 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ml-auto">
                         <a class="nav-item nav-link active" href="site.php">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="#planos">Planos</a>
-                        <a class="nav-item nav-link" href="#contato">Contato</a>
+                        <a class="nav-item nav-link" href="site.php#planos">Planos</a>
+                        <a class="nav-item nav-link" href="site.php#contato">Contato</a>
                         <div class="dropdown">
                             <a class="nav-item nav-link dropdown-toggle" href="#" id="submenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $nome; ?></a>
                             <div class="dropdown-menu" aria-labelledby="submenu">

@@ -29,6 +29,8 @@ div.cor{
     padding-bottom: 50px;
 }
 
+
+
 div.tamanhoContainer{
     width: 500px;
     padding: 65px;
@@ -418,4 +420,13 @@ img.erro{
     font-size: 30px;
     text-align: center;
     background: none;
+}
+
+/*mensagem especialidade-cadastro*/
+.alerta{
+    font-weight: bold;
+    text-transform: uppercase;
+    color: red;
+    text-align: right;
+    padding-bottom: 20px;
 }

@@ -13,7 +13,7 @@ if((!isset ($_SESSION['email']) == true) && (!isset($_SESSION['id']) == true) ||
 }
 
 $idUsuario = $_SESSION['id'];
-$idEspecialidade = $_POST['especialidade'];
+$idEspecialidade = trim($_POST['especialidade']);
 
 $sql = "SELECT id, nome FROM paciente WHERE usuario_id = $idUsuario";
 $resultado = $conexao->query($sql);
@@ -24,8 +24,8 @@ $idPaciente = $row['id'];
 $sqlListaMedico = "SELECT id, nome FROM profissional WHERE especialidade = $idEspecialidade";
 $resultadoListaMedico = $conexao->query($sqlListaMedico);
 
-$idMedico = filter_input(INPUT_GET, "medico");
-$dia = filter_input(INPUT_GET, "dia");
+$idMedico = filter_input(INPUT_POST, "medico");
+$dia = filter_input(INPUT_POST, "dia");
 $timestamp = date('Y-m-d',  strtotime(str_replace("/", "-", $dia)));
 
 $consulta_agenda = "SELECT  intervalo.hora FROM intervalo WHERE intervalo.hora NOT IN (SELECT agenda.hora FROM agenda INNER JOIN profissional ON profissional.id = agenda.profissional_id WHERE agenda.dia = '$timestamp' AND profissional.id = $idMedico) ORDER BY hora";
@@ -38,10 +38,11 @@ include("header_paciente.php");
 <div class="cor">
     <div class="container">
         <h2 class="text-center sucesso">Agenda</h2>
-        <form action="<?php echo $_SERVER['PHP_SELF'];?>">
+        <form method="POST">
+            <input type="hidden" name="especialidade" value="<?= $idEspecialidade ?>">
             <div class="form-row">
                 <div class="form-group col-md-8">
-                    <label for="campoMedico">Escolha o médico</label>
+                    <label for="campoMedico">Escolha o médico:</label>
                     <select class="form-control" name="medico" id="campoMedico" required>
                         <option selected>Selecione o médico</option>
                         <?php
@@ -120,4 +121,11 @@ include("header_paciente.php");
 
 
 
-<?php include("footer.php");
+<?php include("footer.php");?>
+
+<script>
+$(document).ready(function(){
+    
+    $("#campoDia").mask("00/00/0000", {placeholder: "__/__/____"});
+});                
+</script>

@@ -49,13 +49,15 @@ include("header_administrador.php");
                     </div>
                 </div>
 
+                <div class="alerta"><?=$mensagemAlerta?></div>
+                
                 <div class="text-right">
                     <a href="clinica.php" class="btn" id="botao">Voltar</a>
                     <button type="submit" class="btn" id="botao">Cadastar</button>
 
                 </div>
             </form>
-            <div><?=$mensagemAlerta?></div>
+            
 
             <table class="table" style=margin-top:50px;>
                 <thead>
