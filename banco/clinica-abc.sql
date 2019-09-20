@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 20-Set-2019 às 16:56
--- Versão do servidor: 10.1.37-MariaDB
--- versão do PHP: 7.2.12
+-- Tempo de geração: 20-Set-2019 às 19:20
+-- Versão do servidor: 10.3.15-MariaDB
+-- versão do PHP: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,8 +19,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `clinica-abc`
+-- Banco de dados: `clinica-abc`
 --
+CREATE DATABASE IF NOT EXISTS `clinica-abc` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `clinica-abc`;
 
 -- --------------------------------------------------------
 
@@ -41,17 +43,11 @@ CREATE TABLE `agenda` (
 --
 
 INSERT INTO `agenda` (`id`, `paciente_id`, `profissional_id`, `dia`, `hora`) VALUES
-(7, 10, 25, '2019-05-05', '09:00:00'),
-(8, 10, 25, '2019-05-05', '10:00:00'),
 (9, 10, 25, '2019-09-12', '08:00:00'),
-(11, 8, 24, '2019-09-20', '08:30:00'),
-(12, 8, 24, '2019-09-20', '09:30:00'),
-(13, 8, 13, '2019-09-30', '09:00:00'),
-(14, 8, 18, '2019-05-05', '08:30:00'),
-(15, 6, 14, '2019-10-10', '08:00:00'),
-(18, 6, 18, '2019-09-21', '09:00:00'),
-(19, 6, 19, '2019-10-28', '14:00:00'),
-(20, 6, 16, '2019-10-01', '08:30:00');
+(16, 6, 25, '2019-10-20', '14:30:00'),
+(17, 6, 25, '2019-10-20', '18:00:00'),
+(18, 6, 25, '2019-10-20', '08:00:00'),
+(19, 6, 25, '2019-10-20', '09:00:00');
 
 -- --------------------------------------------------------
 
@@ -78,7 +74,7 @@ INSERT INTO `especialidades` (`id`, `especialidade`) VALUES
 (19, 'Cardiologista'),
 (21, 'FisioterapÃªutico'),
 (22, 'Ortopedia'),
-(23, 'Dermatologista');
+(23, 'aaaaa');
 
 -- --------------------------------------------------------
 
@@ -138,7 +134,7 @@ CREATE TABLE `paciente` (
   `cidade` varchar(100) NOT NULL,
   `estado` varchar(2) NOT NULL,
   `cep` varchar(10) NOT NULL,
-  `prontuario` text
+  `prontuario` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -147,7 +143,7 @@ CREATE TABLE `paciente` (
 
 INSERT INTO `paciente` (`id`, `usuario_id`, `nome`, `cpf`, `sexo`, `nascimento`, `telefone`, `celular`, `endereco`, `numero`, `bairro`, `cidade`, `estado`, `cep`, `prontuario`) VALUES
 (6, 29, 'Arthur Machado Ducati carro', '555.555.555-55', 'M', '2001-12-12', '(31) 8375-0474', '(31) 98948-8479', 'Rua Waldemar SimÃµes', '222', 'Vila Boa Vista', 'SÃ£o Carlos', 'SP', '13574-012', NULL),
-(8, 31, 'Matheus Ducati Gomes', '338.492.838-52', 'M', '1983-05-22', '(92) 3436-3456', '(92) 99292-9322', 'Rua Anita Garibald', '34', 'Santo AntÃ´nio', 'Manaus', 'AM', '69029-285', 'teste'),
+(8, 31, 'Matheus Ducati Gomes', '338.492.838-52', 'M', '1983-05-22', '(92) 3436-3456', '(92) 99292-9322', 'Rua Anita Garibald', '34', 'Santo AntÃ´nio', 'Manaus', 'AM', '69029-285', NULL),
 (9, 32, 'Bernardo Ducati Machado', '738.849.420-00', 'M', '1985-05-06', '(19) 4884-6253', '(19) 93406-1810', 'PraÃ§a Anita Garibaldi', '244', 'Centro', 'Campinas', 'SP', '13015-180', NULL),
 (10, 33, 'Alice Amaral Ducati', '111.111.111-11', 'F', '2000-05-22', '(92) 3921-5271', '(92) 93493-3545', 'Rua Anita Garibald', '234', 'Santo AntÃ´nio', 'Manaus', 'AM', '69029-285', 'ffffffffffffffffff'),
 (11, 34, 'Ana Paula Amaral Machado', '927.173.754-73', 'F', '1999-05-06', '(31) 5428-7752', '(31) 92914-7220', 'Rua AnfibÃ³lios', '234', 'Bonfim', 'Belo Horizonte', 'MG', '31210-440', NULL),
@@ -167,7 +163,7 @@ CREATE TABLE `profissional` (
   `celular` varchar(15) NOT NULL,
   `registro` varchar(20) NOT NULL,
   `arquivo` varchar(40) NOT NULL,
-  `data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `data` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -184,7 +180,7 @@ INSERT INTO `profissional` (`id`, `usuario_id`, `nome`, `especialidade`, `celula
 (18, 43, 'Carlos Teixeira Amaral', 15, '(11) 97117-4245', '21406019984', 'bebdc82478264147b0d2e0c6cde6bafc.png', '2019-09-08 00:25:48'),
 (19, 44, 'Lara Gomes Ducati', 18, '(19) 99234-1469', '85901735269', 'af5c689b182e03f921d08e82130aa0ff.png', '2019-09-08 00:26:45'),
 (20, 45, 'Mariana Machado Teixeira', 21, '777777', '05712638959', '54be48037d9ff10dcb7150cc85f19676.png', '2019-09-08 00:28:17'),
-(21, 46, 'Gabriela Ducati Amaral', 15, '(92) 99579-1620', '59693965329', 'bc2a102e5059f86224c673b3760bf04d.jpg', '2019-09-08 00:29:17'),
+(21, 46, 'Gabriela Ducati Amaral', 15, '(92) 99579-1620', '59693965329', '5921df8ebbb1fae7eceb63743c5ecac6.png', '2019-09-08 00:29:17'),
 (22, 47, 'Maria Amaral Machado', 22, '(92) 98714-4168', '65702301315', 'c2f931243ed6465ca46955a31eba12fa.png', '2019-09-08 00:30:34'),
 (23, 48, 'administrador teste', 13, '(77) 77777-7777', '12312312312', 'f2705bdbb34b3d302c0a12fb1067beb6.png', '2019-09-08 00:35:57'),
 (24, 49, 'Ã‡ucas do Amaral', 14, '(23) 12312-3123', '4556675667', '9f387cd43b8515d071cc4a0a14fae45a.png', '2019-09-09 08:36:44'),
@@ -210,35 +206,35 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `email`, `senha`, `tipo`) VALUES
-(29, 'p@paciente', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 3),
-(31, 'matheus.gomes@uol.com.br', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 3),
-(32, 'bernardo.machado@yahoo.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 3),
-(33, 'alice.ducati@yahoo.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 3),
-(34, 'anapaula.machado@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 3),
-(35, 'laura.ducati@globo.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 3),
-(37, 'isabela.amaral@hotmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 2),
-(38, 'isabela.amaral@icloud.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 2),
-(39, 'isabela.amaral@globo.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 2),
-(40, 'isabela.teixeira@hotmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 2),
-(41, 'guilherme.teixeira@yahoo.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 2),
-(42, 'gabriel.machado@yahoo.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 2),
-(43, 'carlos.amaral@icloud.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 2),
-(44, 'lara.ducati@uol.com.br', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 2),
-(45, 'mariana@uol.com.br', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 2),
-(46, 'gabriela.amaral@uol.com.br', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 2),
-(47, 'maria.machado@globo.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 2),
-(48, 'admin@admin', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 1),
-(49, 'lucas@lucas', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 2),
-(50, 'wert@wert', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 2),
-(51, 'sha@sha', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 2),
+(29, 'p@paciente', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 3),
+(31, 'matheus.gomes@uol.com.br', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 3),
+(32, 'bernardo.machado@yahoo.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 3),
+(33, 'alice.ducati@yahoo.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 3),
+(34, 'anapaula.machado@gmail.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 3),
+(35, 'laura.ducati@globo.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 3),
+(37, 'isabela.amaral@hotmail.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 2),
+(38, 'isabela.amaral@icloud.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 2),
+(39, 'isabela.amaral@globo.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 2),
+(40, 'isabela.teixeira@hotmail.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 2),
+(41, 'guilherme.teixeira@yahoo.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 2),
+(42, 'gabriel.machado@yahoo.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 2),
+(43, 'carlos.amaral@icloud.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 2),
+(44, 'lara.ducati@uol.com.br', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 2),
+(45, 'mariana@uol.com.br', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 2),
+(46, 'gabriela.amaral@uol.com.br', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 2),
+(47, 'maria.machado@globo.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 2),
+(48, 'admin@admin', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 1),
+(49, 'lucas@lucas', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 2),
+(50, 'wert@wert', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 2),
+(51, 'sha@sha', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 2),
 (52, 'a@a', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 1);
 
 --
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `agenda`
+-- Índices para tabela `agenda`
 --
 ALTER TABLE `agenda`
   ADD PRIMARY KEY (`id`),
@@ -246,20 +242,20 @@ ALTER TABLE `agenda`
   ADD KEY `profissional_agenda` (`profissional_id`);
 
 --
--- Indexes for table `especialidades`
+-- Índices para tabela `especialidades`
 --
 ALTER TABLE `especialidades`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `paciente`
+-- Índices para tabela `paciente`
 --
 ALTER TABLE `paciente`
   ADD PRIMARY KEY (`id`),
   ADD KEY `usuario_paciente` (`usuario_id`);
 
 --
--- Indexes for table `profissional`
+-- Índices para tabela `profissional`
 --
 ALTER TABLE `profissional`
   ADD PRIMARY KEY (`id`),
@@ -267,47 +263,47 @@ ALTER TABLE `profissional`
   ADD KEY `especialidade_profissional` (`especialidade`);
 
 --
--- Indexes for table `usuario`
+-- Índices para tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `agenda`
+-- AUTO_INCREMENT de tabela `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT for table `especialidades`
+-- AUTO_INCREMENT de tabela `especialidades`
 --
 ALTER TABLE `especialidades`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `paciente`
+-- AUTO_INCREMENT de tabela `paciente`
 --
 ALTER TABLE `paciente`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `profissional`
+-- AUTO_INCREMENT de tabela `profissional`
 --
 ALTER TABLE `profissional`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT for table `usuario`
+-- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
--- Constraints for dumped tables
+-- Restrições para despejos de tabelas
 --
 
 --
