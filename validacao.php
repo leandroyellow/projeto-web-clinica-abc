@@ -98,7 +98,7 @@
                     <div class="container text-center">
                         <img class="erro img-fluid" src="imagens/erro.png" alt="">
                         <h1 class="sucesso">Senha inválida</h1>
-                        <a href="index.php" class="btn" id="botao">Voltar</a>
+                        <a href="index.php" class="btn" id="botao">Recuperar senha</a>
                         <a href="login.php" class="btn" id="botao">Tentar novamente</a>
                     </div>
                 </div>
@@ -154,7 +154,7 @@
         <div class="container text-center">
             <img class="erro img-fluid" src="imagens/erro.png" alt="">
             <h1 class="sucesso">Email não cadastrado</h1>
-            <a href="index.php" class="btn" id="botao">Voltar</a>
+            <a href="paciente_cadastro.php" class="btn" id="botao">Fazer cadastro</a>
             <a href="login.php" class="btn" id="botao">Tentar novamente</a>
         </div>
     </div>
