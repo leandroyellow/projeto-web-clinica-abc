@@ -160,7 +160,7 @@ $consulta = $conexao->query($sql);
                                         if (array_key_exists($arr_index, $arr)) {
                                     ?>
 
-                                    <div class="col-sm-4 text center medicos"><img class="img-medico img-fluid" src="<?php echo $diretorio . $arr[$arr_index]["arquivo"] ?>" alt="1"><h3 class="nome"><?php echo "Dr(a). ". $arr[$arr_index]["nome"] ?></h3><p class="esp"><?php echo utf8_encode ($arr[$arr_index]["especialidade"]) ?></p></div>
+                                    <div class="col-sm-4 text center medicos"><img class="img-medico img-fluid" src="<?php echo $diretorio . $arr[$arr_index]["arquivo"] ?>" alt="1"><h3 class="nome"><?php echo "Dr(a). ". $arr[$arr_index]["nome"] ?></h3><p class="esp"><?php echo  $arr[$arr_index]["especialidade"]?></p></div>
                                     <?php
                                         }
                                     }
