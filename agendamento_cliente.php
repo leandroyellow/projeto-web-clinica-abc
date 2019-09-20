@@ -28,7 +28,7 @@ $idMedico = filter_input(INPUT_GET, "medico");
 $dia = filter_input(INPUT_GET, "dia");
 $timestamp = date('Y-m-d',  strtotime(str_replace("/", "-", $dia)));
 
-$consulta_agenda = "SELECT '' AS id, intervalo.hora, 'Livre' AS nome, '' AS especialidade, '' AS especialidade, '' AS nome FROM intervalo WHERE intervalo.hora NOT IN (SELECT agenda.hora FROM agenda INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN paciente ON paciente.id = agenda.paciente_id WHERE agenda.dia = '$timestamp' AND profissional.id = $idMedico) ORDER BY hora";
+$consulta_agenda = "SELECT  intervalo.hora FROM intervalo WHERE intervalo.hora NOT IN (SELECT agenda.hora FROM agenda INNER JOIN profissional ON profissional.id = agenda.profissional_id WHERE agenda.dia = '$timestamp' AND profissional.id = $idMedico) ORDER BY hora";
 $resultado_agenda = $conexao->query($consulta_agenda);
 
 include("header_paciente.php");
@@ -87,11 +87,7 @@ include("header_paciente.php");
                         if($resultado_agenda->num_rows > 0){
                             while ($leitor = $resultado_agenda->fetch_assoc()){
                                 $hora = $leitor['hora'];
-                                $medico = $leitor['medico'];
-                                $especialidade = $leitor['especialidade'];
-                                $paciente = $leitor['paciente'];
-                                $id = $leitor['id'];
-                                $idEspecialidade = $leitor['id_especialidade'];
+                                
 
 
                         
@@ -102,7 +98,7 @@ include("header_paciente.php");
 
                         
 
-                        <td class="text-center"><a class="btn btn-success btn-sm" style="color:#fff" href="agenda.php?<?php echo "medico=$idMedico&paciente=$idpaciente&dia=$dia&hora=$hora&especialidade=$especialidadeMedica_id"?>"  role="button"><i class="fas fa-plus-circle"></i>&nbsp;Adicionar</a> 
+                        <td class="text-center"><a class="btn btn-success btn-sm" style="color:#fff" href="agenda.php?<?php echo "medico=$idMedico&paciente=$idPaciente&dia=$dia&hora=$hora"?>"  role="button"><i class="fas fa-plus-circle"></i>&nbsp;Adicionar</a> 
                         </td>
                         
                         
@@ -112,6 +108,7 @@ include("header_paciente.php");
                         }else{
 
                         }
+                        
                     ?>
                      
                 
