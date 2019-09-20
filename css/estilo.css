@@ -25,8 +25,11 @@ h1{
 
 div.cor{
     background: #f2f2f2;
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 50px;
 }
+
+
 
 div.tamanhoContainer{
     width: 500px;
@@ -279,7 +282,8 @@ section.planos-container .btn{
 /*footer*/
 footer{
     background: #011a00;
-    padding-top: 20px;
+    padding-top: 50px;
+    padding-bottom: 40px;
     color: #fff;
 }
 
@@ -416,4 +420,13 @@ img.erro{
     font-size: 30px;
     text-align: center;
     background: none;
+}
+
+/*mensagem especialidade-cadastro*/
+.alerta{
+    font-weight: bold;
+    text-transform: uppercase;
+    color: red;
+    text-align: right;
+    padding-bottom: 20px;
 }
