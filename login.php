@@ -38,26 +38,28 @@
     <div class="cor">
 
         
-        <div class="container tamanhoContainer">
-            <h2 class="text-center sucesso">Login</h2>
-            <form form class="formulario" action="validacao.php" method="post">
-                <div class="form-group row">
-                    <label for="campoEmail" class="col-sm-2 col-form-label">Email:</label>
-                    <div class="col-sm-10">
-                        <input type="email" id="campoEmail" class="form-control" placeholder="Digite seu email" name="email" autocomplete="off" required>
+        <div class="container login-center">
+            <div class="login"> 
+                <h2 class="text-center sucesso">Login</h2>
+                <form form class="formulario" action="validacao.php" method="post">
+                    <div class="form-group row">
+                        <label for="campoEmail" class="col-sm-2 col-form-label">Email:</label>
+                        <div class="col-sm-10">
+                            <input type="email" id="campoEmail" class="form-control" placeholder="Digite seu email" name="email" autocomplete="off" required>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="campoSenha" class="col-sm-2 col-form-label">Senha:</label>
-                    <div class="col-sm-10">
-                        <input type="password" id="campoSenha" class="form-control" placeholder="Digite sua senha" name="senha" autocomplete="off" required>
+                    <div class="form-group row">
+                        <label for="campoSenha" class="col-sm-2 col-form-label">Senha:</label>
+                        <div class="col-sm-10">
+                            <input type="password" id="campoSenha" class="form-control" placeholder="Digite sua senha" name="senha" autocomplete="off" required>
+                        </div>
                     </div>
-                </div>
-                <div class="text-right">
-                    <a href="paciente_cadastro.php" id="botao" class="btn" >Quero me cadastrar</a>
-                    <button type="submit" class="btn" id="botao">Entrar</button>
-                </div>            
-            </form>
+                    <div class="text-right">
+                        <a href="paciente_cadastro.php" id="botao" class="btn" >Quero me cadastrar</a>
+                        <button type="submit" class="btn" id="botao">Entrar</button>
+                    </div>            
+                </form>
+            </div>
         </div>
     </div>
 

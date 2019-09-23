@@ -29,12 +29,20 @@ div.cor{
     padding-bottom: 50px;
 }
 
+div.login{
+   
+   width: 500px;
+   
 
-
-div.tamanhoContainer{
-    width: 500px;
-    padding: 65px;
 }
+
+.login-center{
+    display: flex;
+    justify-content: center;
+}
+
+
+
 
 #botao{
     margin-left: 20px;
@@ -359,13 +367,14 @@ img.erro{
     background-position: 50% 0;
     background-repeat: repeat-y;
     background-size: cover;
+    width: 100%;
 }
 .parallax-min {
     min-height: 600px;
 }
 .parallax1{
     background-image: url("../imagens/img6.jpg");
-    min-height: 900px; 
+    min-height: 800px; 
 }
 
 .parallax2{
