@@ -99,17 +99,9 @@ header nav{
     position: relative;
 }
 
-@media screen and (max-width: 1080px) {
-    .agenda {
-      height: 400px;
-    }
-  }
 
-@media screen and (max-width: 750px) {
-    .agenda {
-      height: 200px;
-    }
-  }
+
+  
 
 .overlay{
     position: absolute;
@@ -201,17 +193,7 @@ section.quem-somos{
     
 }
 
-@media screen and (max-width: 1080px) {
-    section.quem-somos {
-      height: 400px;
-    }
-  }
 
-@media screen and (max-width: 750px) {
-    section.quem-somos {
-      height: 200px;
-    }
-  }
 
 .img{
     border: 1px solid #6ebf6b;
@@ -375,7 +357,7 @@ img.erro{
     min-height: 600px;
 }
 .parallax1{
-    background-image: url("../imagens/img6.jpg");
+    background-image: url(../imagens/img6.jpg);
     min-height: 800px; 
 }
 
@@ -440,4 +422,37 @@ img.erro{
     color: red;
     text-align: right;
     padding-bottom: 20px;
+}
+
+@media screen and (max-width: 1080px) {
+    .agenda {
+      height: 400px;
+    }
+    section.quem-somos {
+        height: 400px;
+      }
+}
+
+@media screen and (max-width: 750px) {
+    .agenda {
+      height: 200px;
+    }
+    section.quem-somos {
+        height: 200px;
+    }
+    .esp{
+        font-size: 20px;
+    }
+    section div.icone {
+        font-size: 15px;
+    }
+    section div.icone i{
+        font-size: 30px;
+    }
+    .parallax1{
+        background-size: 400px 300px ;
+        min-height: 200px;
+        
+    }
+
 }
