@@ -89,35 +89,37 @@ else{
 ?>
 
 <div class="cor">
-    <div class="container tamanhoContainer">
-        <h2 class="text-center sucesso">Alterar Senha</h2>
-        <form form class="formulario" action="muda_senha2.php" method="post">
-            <input type="hidden" name="id" value="<?=$id;?>">
-            <input type="hidden" name="nome" value="<?=$nome?>">
-            <input type="hidden" name="tipo" value="<?=$tipo?>">
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <label for="senhaAtual" class="col-form-label">Senha atual:</label>
-                    <input type="password" id="senhaAtual" class="form-control" placeholder="Digite sua senha atual" name="senhaAtual" autocomplete="off" required>
+    <div class="container login-center">
+        <div class="login">
+            <h2 class="text-center sucesso">Alterar Senha</h2>
+            <form form class="formulario" action="muda_senha2.php" method="post">
+                <input type="hidden" name="id" value="<?=$id;?>">
+                <input type="hidden" name="nome" value="<?=$nome?>">
+                <input type="hidden" name="tipo" value="<?=$tipo?>">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <label for="senhaAtual" class="col-form-label">Senha atual:</label>
+                        <input type="password" id="senhaAtual" class="form-control" placeholder="Digite sua senha atual" name="senhaAtual" autocomplete="off" required>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <label for="senhaNova" class="col-form-label">Nova senha:</label>
-                    <input type="password" id="senhaNova" class="form-control" placeholder="Digite sua nova senha" name="senhaNova" autocomplete="off" required>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <label for="senhaNova" class="col-form-label">Nova senha:</label>
+                        <input type="password" id="senhaNova" class="form-control" placeholder="Digite sua nova senha" name="senhaNova" autocomplete="off" required>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <label for="senhaNova" class="col-form-label">Confirma senha:</label>
-                    <input type="password" id="senhaNova2" class="form-control" placeholder="Confirma sua nova senha" name="senhaNova" autocomplete="off" required oninput="validaSenha(this)">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <label for="senhaNova" class="col-form-label">Confirma senha:</label>
+                        <input type="password" id="senhaNova2" class="form-control" placeholder="Confirma sua nova senha" name="senhaNova" autocomplete="off" required oninput="validaSenha(this)">
+                    </div>
                 </div>
-            </div>
-            <div class="text-right">
-                <a href="<?=$botaoVoltar;?>" id="botao" class="btn" >Voltar</a>
-                <button type="submit" class="btn" id="botao">Alterar</button>
-            </div>            
-        </form>
+                <div class="text-right">
+                    <a href="<?=$botaoVoltar;?>" id="botao" class="btn" >Voltar</a>
+                    <button type="submit" class="btn" id="botao">Alterar</button>
+                </div>            
+            </form>
+        </div>
     </div>
 </div>
 

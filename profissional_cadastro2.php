@@ -13,10 +13,7 @@
     $registro = $_POST['registro'];
     $especialidade = $_POST['especialidade'];
 
-    $extensao = strtolower(substr($_FILES['arquivo']['name'], -4)); //pega a extensao do arquivo
-    $novo_nome = md5(time()) . $extensao; //define o nome do arquivo
-    $diretorio = "upload/"; //define o diretorio para onde enviaremos o arquivo
-    move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio.$novo_nome); //efetua o upload
+    
 
     $sqlEmail = "SELECT email FROM usuario WHERE email = '$email'";
     $resultadoEmail = $conexao->query($sqlEmail);
@@ -46,7 +43,11 @@
     else{
 
         if(isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['tipo']) && isset($_POST['nome']) && isset($_POST['celular']) && isset($_POST['registro']) && isset($_POST['especialidade']) && isset($_FILES['arquivo'])) {
-
+            $extensao = strtolower(substr($_FILES['arquivo']['name'], -4)); //pega a extensao do arquivo
+            $novo_nome = md5(time()) . $extensao; //define o nome do arquivo
+            $diretorio = "upload/"; //define o diretorio para onde enviaremos o arquivo
+            move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio.$novo_nome); //efetua o upload
+            
             $usuario = $db->usuario()->insert(array('email'=>$email, 'senha'=>sha1($senha), 'tipo'=>$tipo));
                 
                 
