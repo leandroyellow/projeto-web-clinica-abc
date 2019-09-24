@@ -29,13 +29,8 @@ div.cor{
     padding-bottom: 50px;
 }
 
-
-
 div.login{
-   
    width: 500px;
-   
-
 }
 
 .login-center{
@@ -43,16 +38,12 @@ div.login{
     justify-content: center;
 }
 
-
-
-
 #botao{
     margin-left: 20px;
     background-color: #6ebf6b;
     color: #fff;
     border-color: #28a745;
-    
-}
+ }
 
 .btn.botao{
     background-color: #6ebf6b;
@@ -61,19 +52,13 @@ div.login{
 }
 
 form div.text-right{
-    
     padding-bottom: 50px;
 }
 
-
-
 /**Estilização do site**/
-
-
 header{
     padding: 41px 0px;
     background: #f2f2f2;
-
 }
 
 .ml-2 {
@@ -98,10 +83,6 @@ header nav{
     background-size: cover;
     position: relative;
 }
-
-
-
-  
 
 .overlay{
     position: absolute;
@@ -138,8 +119,6 @@ section.agenda .btn{
     color: #fff;
     border-color: #28a745;
 }
-
-
 
 /*Serviços container*/
 section div.icone{
@@ -190,10 +169,7 @@ section.quem-somos{
     padding: 10px;
     border-radius: 15px;
     box-shadow: 0px 10px 30px 0px #808080;
-    
 }
-
-
 
 .img{
     border: 1px solid #6ebf6b;
@@ -216,21 +192,18 @@ section.quem-somos{
 
 section.medicos-container{
     background: #f2f2f2;
-    padding-bottom: 50px;
-    
 }
 
 h2.equipe{
     color: #646464;
     text-align: center;
-    padding-top: 40px;
+    padding-top: 50px;
     padding-bottom: 50px;
 }
 
 h3.nome{
     padding-top: 20px;
     color: #646464;
-    
 }
 
 p.esp{
@@ -300,7 +273,6 @@ div p.endereco{
 
 div.teste{
     width: 30%;
-    
 }
 
 /*formulario*/
@@ -317,7 +289,6 @@ form.formulario{
 
 div.cadastro{
    padding: 100px;
-   
 }
 
 h1.sucesso{
@@ -343,7 +314,6 @@ h2.sucesso{
 /*validacao*/
 img.erro{
     height: 250px;
-    
 }
 
 /*parallax*/
@@ -377,7 +347,6 @@ img.erro{
 .parallax5{
     background-image: url("../imagens/img80.jpg");
 }
-
 
 /* med agenda*/
 .agenda-med{
@@ -453,7 +422,5 @@ img.erro{
     .parallax1{
         background-size: 400px 300px ;
         min-height: 200px;
-        
     }
-
 }
