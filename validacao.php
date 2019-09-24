@@ -1,34 +1,20 @@
 <?php 
-
     session_start();
-
     require('conexao.php');
-
     // Verifica se houve POST e se o usuário ou a senha é(são) vazio(s)
     if (!empty($_POST) AND (empty($_POST['email']) OR empty($_POST['senha']))) {
         header("Location: index.php"); 
         exit();
     }
-
     $email = mysqli_real_escape_string($conexao, $_POST['email']);
     $senha = mysqli_real_escape_string($conexao, $_POST['senha']);
-
     $sql = "SELECT * FROM usuario WHERE email =  '$email'" ;
-
     $resultado = $conexao->query($sql);
-
-    
-
     if($resultado->num_rows > 0){
         $row = mysqli_fetch_assoc($resultado);
         $senhaBanco = $row['senha'];
         $senhaDigitada = sha1($senha);
-
-
-        
         if($senhaBanco == $senhaDigitada){
-
-    
             if($row['tipo'] == 1){
                 $_SESSION['email'] = $email;
                 
@@ -53,12 +39,10 @@
             exit();
         }
         else{
-            
             unset ($_SESSION['email']);
             unset ($_SESSION['id']);
             unset ($_SESSION['tipo']);
             ?>
-        
             <!DOCTYPE html>
             <html lang="pt-br">
             <head>
@@ -74,7 +58,6 @@
             
                 <title>Clínica ABC</title>
             </head>
-        
             <body>
                 <header>
                     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
@@ -112,9 +95,7 @@
         unset ($_SESSION['email']);
         unset ($_SESSION['tipo']);
         unset ($_SESSION['id']);
-        
         ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -130,7 +111,6 @@
 
     <title>Clínica ABC</title>
 </head>
-
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
@@ -163,8 +143,5 @@
 
 <?php include("footer.php");
     }
-
-   
-    
 ?>
 

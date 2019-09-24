@@ -19,7 +19,6 @@ class Funcoes{
 	}
 	//RESPONSAVEL POR ENVIAR O E-MAIL
 	public function enviarEmail($dados){
-
 		$this->objmail->IsSMTP();
 		$this->objmail->SMTPAuth = true;
 		$this->objmail->SMTPSecure = 'tls';
