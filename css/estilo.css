@@ -423,4 +423,8 @@ img.erro{
         background-size: 400px 300px ;
         min-height: 200px;
     }
+
+    table {
+        overflow-x: scroll;
+    }
 }

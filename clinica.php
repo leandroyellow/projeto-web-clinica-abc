@@ -108,67 +108,69 @@ include("header_administrador.php");
                 ?>
 
             <h2 class="text-center sucesso">Agenda <?=$nomeMedico?> dia: <?=$dia?> </h2>
-            <table class="table">
-                <caption></caption>
-                <thead>
-                    <tr>
-                        <th>Horário</th>
-                        <th>Médico</th>
-                        <th>Especialidade</th>
-                        <th>Paciente</th>
-                        <th class="text-center">Situação</th>
-                    </tr>        
-                </thead>
+            <div style="overflow-x: auto;">
+                <table class="table">
+                    <caption></caption>
+                    <thead>
+                        <tr>
+                            <th>Horário</th>
+                            <th>Médico</th>
+                            <th>Especialidade</th>
+                            <th>Paciente</th>
+                            <th class="text-center">Situação</th>
+                        </tr>        
+                    </thead>
 
-                <tbody>
-                    
+                    <tbody>
+                        
+                                
+                                
+                        <?php      
                             
                             
-                      <?php      
-                        
-                        
-                        if($resultado_agenda->num_rows > 0){
-                            while ($leitor = $resultado_agenda->fetch_assoc()){
-                                $hora = $leitor['hora'];
-                                $medico = $leitor['medico'];
-                                $especialidade = $leitor['especialidade'];
-                                $paciente = $leitor['paciente'];
-                                $id = $leitor['id'];
-                                $idEspecialidade = $leitor['id_especialidade'];
+                            if($resultado_agenda->num_rows > 0){
+                                while ($leitor = $resultado_agenda->fetch_assoc()){
+                                    $hora = $leitor['hora'];
+                                    $medico = $leitor['medico'];
+                                    $especialidade = $leitor['especialidade'];
+                                    $paciente = $leitor['paciente'];
+                                    $id = $leitor['id'];
+                                    $idEspecialidade = $leitor['id_especialidade'];
 
 
-                        
-                    ?>
-                    <tr>
-                        <td><?php echo $hora ?> </td>
-                        <td><?php echo $medico ?></td>
-                        <td><?php echo $especialidade ?> </td>
-                        <td><?php echo $paciente ?> </td>
-
-                        <?php
-                        if($paciente == ""){
-
-                        
+                            
                         ?>
+                        <tr>
+                            <td><?php echo $hora ?> </td>
+                            <td><?php echo $medico ?></td>
+                            <td><?php echo $especialidade ?> </td>
+                            <td><?php echo $paciente ?> </td>
 
-                        <td class="text-center"><a class="btn btn-success btn-sm" style="color:#fff" href="agenda.php?<?php echo "medico=$idMedico&paciente=$idpaciente&dia=$dia&hora=$hora&especialidade=$especialidadeMedica_id"?>"  role="button"><i class="fas fa-plus-circle"></i>&nbsp;Adicionar</a> 
-                        </td>
-                        <?php
-                        }else{
-                        ?>
-                        <td class="text-center"><a class="btn btn-danger btn-sm" style="color:#fff" href="agenda_desmarca.php?<?php echo "medico=$idMedico&paciente=$idpaciente&dia=$dia&hora=$hora&especialidade=$especialidadeMedica_id&id=$id"?>" role="button"><i class="far fa-trash-alt"></i>&nbsp;Desmarcar</a> 
-                    </tr>
-                            <?php }}
+                            <?php
+                            if($paciente == ""){
+
+                            
+                            ?>
+
+                            <td class="text-center"><a class="btn btn-success btn-sm" style="color:#fff" href="agenda.php?<?php echo "medico=$idMedico&paciente=$idpaciente&dia=$dia&hora=$hora&especialidade=$especialidadeMedica_id"?>"  role="button"><i class="fas fa-plus-circle"></i>&nbsp;Adicionar</a> 
+                            </td>
+                            <?php
+                            }else{
+                            ?>
+                            <td class="text-center"><a class="btn btn-danger btn-sm" style="color:#fff" href="agenda_desmarca.php?<?php echo "medico=$idMedico&paciente=$idpaciente&dia=$dia&hora=$hora&especialidade=$especialidadeMedica_id&id=$id"?>" role="button"><i class="far fa-trash-alt"></i>&nbsp;Desmarcar</a> 
+                        </tr>
+                                <?php }}
+                                }
+                            }else{
+
                             }
-                        }else{
-
-                        }
-                    ?>
-                     
+                        ?>
+                        
+                    
+                    </tbody>  
                 
-                </tbody>  
-            
-            </table>
+                </table>
+            </div> 
         </div>
     </div>         
 

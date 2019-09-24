@@ -42,65 +42,67 @@ if($tipo == 3){
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisa</button>
                 </div>
             </form>
-            <table class="table" style=margin-top:50px;>
-                <thead>
+            <div style="overflow-x: auto;">
+                <table class="table" style=margin-top:50px;>
+                    <thead>
+                        <tr>
+                            <th scope="col" >Data</th>
+                            <th scope="col">Hora</th>
+                            <th scope="col">Especialidade</th>
+                            <th scope="col">Nome do Médico</th>
+                            <th scope="col" class="text-center">Ação</th>
+                        </tr>
+                    </thead>
+
+                    <?php
+                        
+                        $sql2 = "SELECT agenda.id, agenda.dia, agenda.hora, paciente.nome AS 'nomePaciente', especialidades.especialidade, profissional.nome AS 'nomeMedico' FROM agenda INNER JOIN paciente ON paciente.id = agenda.paciente_id INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN especialidades ON especialidades.id = profissional.especialidade WHERE paciente.usuario_id = $id AND dia >= '$atual' ORDER BY dia";
+
+                        if (array_key_exists('pesquisa', $_POST) && $_POST['pesquisa'] != '') {
+                            $pesquisa = $_POST['pesquisa'];
+
+                            $pesquisa2 = date('Y-m-d', strtotime(str_replace("/", "-", $pesquisa)));
+                            $sql2 = "SELECT agenda.id, agenda.dia, agenda.hora, paciente.nome AS 'nomePaciente', especialidades.especialidade, profissional.nome AS 'nomeMedico' FROM agenda INNER JOIN paciente ON paciente.id = agenda.paciente_id INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN especialidades ON especialidades.id = profissional.especialidade WHERE paciente.usuario_id = $id AND dia >= '$pesquisa2' ORDER BY dia";
+                            
+                        }elseif(isset($_GET['dia'])){
+                            $pesquisa2 = $_GET['dia'];  
+                            $sql2 = "SELECT agenda.id, agenda.dia, agenda.hora, paciente.nome AS 'nomePaciente', especialidades.especialidade, profissional.nome AS 'nomeMedico' FROM agenda INNER JOIN paciente ON paciente.id = agenda.paciente_id INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN especialidades ON especialidades.id = profissional.especialidade WHERE paciente.usuario_id = $id AND dia >= '$pesquisa2' ORDER BY dia";
+                        }
+
+                        $Resutado2 = $conexao->query($sql2);
+    //echo $sql2;
+    //echo $pesquisa2;
+                        
+                        while ($leitor = $Resutado2->fetch_assoc()){
+                            $dia = $leitor['dia'];
+                            $timestamp = date('d-m-Y',  strtotime(str_replace("/", "-", $dia))); 
+                            $nomePaciente = $leitor['nomePaciente'];
+                            $nomeMedico = $leitor['nomeMedico'];
+                            $especialidade = $leitor['especialidade'];
+                            $hora = $leitor['hora'];
+                            $id_agenda = $leitor['id'];
+                            
+
+                            
+                    ?>
+
                     <tr>
-                        <th scope="col" >Data</th>
-                        <th scope="col">Hora</th>
-                        <th scope="col">Especialidade</th>
-                        <th scope="col">Nome do Médico</th>
-                        <th scope="col" class="text-center">Ação</th>
+                        <td><?php echo  $timestamp ?> </td>
+                        <td><?php echo $hora ?> </td>
+                        <td><?php echo $especialidade ?> </td>
+                        <td><?= $nomeMedico ?> </td>
+                        <td class="text-center">
+                            <a class="btn btn-danger btn-sm" style="color:#fff" href="agenda_desmarca.php?<?php echo"id=$id_agenda&dia=$pesquisa2"?>" role="button"><i class="far fa-trash-alt"></i>&nbsp;Cancelar</a>
+                        </td>
+
                     </tr>
-                </thead>
 
-                <?php
+                    <?php } ?>
                     
-                    $sql2 = "SELECT agenda.id, agenda.dia, agenda.hora, paciente.nome AS 'nomePaciente', especialidades.especialidade, profissional.nome AS 'nomeMedico' FROM agenda INNER JOIN paciente ON paciente.id = agenda.paciente_id INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN especialidades ON especialidades.id = profissional.especialidade WHERE paciente.usuario_id = $id AND dia >= '$atual' ORDER BY dia";
-
-                    if (array_key_exists('pesquisa', $_POST) && $_POST['pesquisa'] != '') {
-                        $pesquisa = $_POST['pesquisa'];
-
-                        $pesquisa2 = date('Y-m-d', strtotime(str_replace("/", "-", $pesquisa)));
-                        $sql2 = "SELECT agenda.id, agenda.dia, agenda.hora, paciente.nome AS 'nomePaciente', especialidades.especialidade, profissional.nome AS 'nomeMedico' FROM agenda INNER JOIN paciente ON paciente.id = agenda.paciente_id INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN especialidades ON especialidades.id = profissional.especialidade WHERE paciente.usuario_id = $id AND dia >= '$pesquisa2' ORDER BY dia";
                         
-                      }elseif(isset($_GET['dia'])){
-                        $pesquisa2 = $_GET['dia'];  
-                        $sql2 = "SELECT agenda.id, agenda.dia, agenda.hora, paciente.nome AS 'nomePaciente', especialidades.especialidade, profissional.nome AS 'nomeMedico' FROM agenda INNER JOIN paciente ON paciente.id = agenda.paciente_id INNER JOIN profissional ON profissional.id = agenda.profissional_id INNER JOIN especialidades ON especialidades.id = profissional.especialidade WHERE paciente.usuario_id = $id AND dia >= '$pesquisa2' ORDER BY dia";
-                      }
-
-                    $Resutado2 = $conexao->query($sql2);
-//echo $sql2;
-//echo $pesquisa2;
                     
-                    while ($leitor = $Resutado2->fetch_assoc()){
-                        $dia = $leitor['dia'];
-                        $timestamp = date('d-m-Y',  strtotime(str_replace("/", "-", $dia))); 
-                        $nomePaciente = $leitor['nomePaciente'];
-                        $nomeMedico = $leitor['nomeMedico'];
-                        $especialidade = $leitor['especialidade'];
-                        $hora = $leitor['hora'];
-                        $id_agenda = $leitor['id'];
-                        
-
-                        
-                ?>
-
-                <tr>
-                    <td><?php echo  $timestamp ?> </td>
-                    <td><?php echo $hora ?> </td>
-                    <td><?php echo $especialidade ?> </td>
-                    <td><?= $nomeMedico ?> </td>
-                    <td class="text-center">
-                        <a class="btn btn-danger btn-sm" style="color:#fff" href="agenda_desmarca.php?<?php echo"id=$id_agenda&dia=$pesquisa2"?>" role="button"><i class="far fa-trash-alt"></i>&nbsp;Cancelar</a>
-                    </td>
-
-                </tr>
-
-                <?php } ?>
-                
-                    
-                
-            </table>
+                </table>
+            </div>
         </div>
     </div>
     
