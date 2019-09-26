@@ -37,7 +37,7 @@ include("header_administrador.php");
 
 
     <div class="cor">
-        <h2 class="text-center sucesso">Cadastro Categoria Profissional</h2>
+        <h2 class="text-center sucesso">Cadastrar Nova Especialidade</h2>
         <div class="container">
             
             <form class="formulario" action="especialidade_cadastro2.php" method="post" enctype="multipart/form-data">
