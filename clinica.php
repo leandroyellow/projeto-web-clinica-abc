@@ -216,8 +216,11 @@ $("#campoEspecialidade").on("change", function(){
                         $("#campoNome").html("Carregando....");
                     },
                     success: function(data){
-                        
+                        alert (data);
                         $("#campoNome").html(data);
+                        if(data == "teste"){
+                            $("#novoCadastro").css({'display':'block'});
+                        }
                     },
                     error: function(data){
                         $("#novoCadastro").css({'display':'block'});
