@@ -1,308 +1,296 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Crimson Text', serif;
-    font-size: 20px;
-    
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Crimson Text', serif;
+  font-size: 20px;
 }
 
 /**boot CSS**/
-
-.center{
-    max-width: 1280px;
-    padding: 0 2%;
-    margin: 0 auto;
+.center {
+  max-width: 1280px;
+  padding: 0 2%;
+  margin: 0 auto;
 }
 
-h2{
-    font-weight: bold;
+h2 {
+  font-weight: bold;
 }
 
-h1{
-    padding: 20px;
+h1 {
+  padding: 20px;
 }
 
-div.cor{
-    background: #f2f2f2;
-    padding-top: 50px;
-    padding-bottom: 50px;
+div.cor {
+  background: #f2f2f2;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
-div.login{
-   width: 500px;
+div.login {
+  width: 500px;
 }
 
-.login-center{
-    display: flex;
-    justify-content: center;
+.login-center {
+  display: flex;
+  justify-content: center;
 }
 
-#botao{
-    margin-left: 20px;
-    background-color: #6ebf6b;
-    color: #fff;
-    border-color: #28a745;
- }
-
-.btn.botao{
-    background-color: #6ebf6b;
-    color: #fff;
-    border-color: #28a745;
+#botao {
+  margin-left: 20px;
+  background-color: #6ebf6b;
+  color: #fff;
+  border-color: #28a745;
 }
 
-form div.text-right{
-    padding-bottom: 50px;
+.btn.botao {
+  background-color: #6ebf6b;
+  color: #fff;
+  border-color: #28a745;
+}
+
+form div.text-right {
+  padding-bottom: 50px;
 }
 
 /**Estilização do site**/
-header{
-    padding: 41px 0px;
-    background: #f2f2f2;
+header {
+  padding: 41px 0px;
+  background: #f2f2f2;
 }
 
 .ml-2 {
-    font-weight: bold;
-    font-size: 25px;
-    vertical-align: middle;
-    color: #646464;
+  font-weight: bold;
+  font-size: 25px;
+  vertical-align: middle;
+  color: #646464;
 }
 
-header nav{
-    background: #f2f2f2;
-    border-bottom: 1px solid #6ebf6b;
+header nav {
+  background: #f2f2f2;
+  border-bottom: 1px solid #6ebf6b;
 }
-
 
 /*Estilização do agenda*/
-
-.agenda{
-    width: 100%;
-    height: 630px;
-    background-image: url(../imagens/fundo.jpg);
-    background-size: cover;
-    position: relative;
+.agenda {
+  width: 100%;
+  height: 630px;
+  background-image: url(../imagens/fundo.jpg);
+  background-size: cover;
+  position: relative;
 }
 
-.overlay{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(50, 50, 50, 0.5);
-    z-index: 1;
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(50, 50, 50, 0.5);
+  z-index: 1;
 }
 
-section.agenda form{
-    width: 98%;
-    max-width: 600px;
-    z-index: 2;
-    position: absolute;
-    left: 50%;
-    top: 50%; 
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-    background: none;
+section.agenda form {
+  width: 98%;
+  max-width: 600px;
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background: none;
 }
 
-section.agenda form h2{
-    color: #f2f2f2;
-    font-weight: 700;
-    font-size: 30px;
-    text-align: center;
-    background: none;
+section.agenda form h2 {
+  color: #f2f2f2;
+  font-weight: 700;
+  font-size: 30px;
+  text-align: center;
+  background: none;
 }
 
-section.agenda .btn{
-    background-color: #6ebf6b;
-    color: #fff;
-    border-color: #28a745;
+section.agenda .btn {
+  background-color: #6ebf6b;
+  color: #fff;
+  border-color: #28a745;
 }
 
 /*Serviços container*/
-section div.icone{
-    font-size: 25px;
-    color: #808080;
+section div.icone {
+  font-size: 25px;
+  color: #808080;
 }
 
-section div.icone i{
-    color: #6ebf6b;
-    font-size: 80px;
-    padding-top: 40px;
-    padding-bottom: 20px;
+section div.icone i {
+  color: #6ebf6b;
+  font-size: 80px;
+  padding-top: 40px;
+  padding-bottom: 20px;
 }
 
-h2.servicos{
-    text-align: center;
-    padding-top: 10px;
-    color: #646464;
+h2.servicos {
+  text-align: center;
+  padding-top: 10px;
+  color: #646464;
 }
 
 section.servicos-container {
-    padding-top: 40px;
-    padding-bottom: 50px;
-    background: #f2f2f2;
+  padding-top: 40px;
+  padding-bottom: 50px;
+  background: #f2f2f2;
 }
 
 div.row {
-    padding-bottom: 30px;
+  padding-bottom: 30px;
 }
 
 /*Quem somos*/
-
-section.quem-somos{
-    background: #f2f2f2;
-    background-image: url(../imagens/fundo2.png);
-    height: 600px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    align-items: center;
+section.quem-somos {
+  background: #f2f2f2;
+  background-image: url(../imagens/fundo2.png);
+  height: 600px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
 }
 
- .posicao{
-    
-    width:  auto;
-    border: 1px solid #6ebf6b;
-    padding: 10px;
-    border-radius: 15px;
-    box-shadow: 0px 10px 30px 0px #808080;
+.posicao {
+  width: auto;
+  border: 1px solid #6ebf6b;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0px 10px 30px 0px #808080;
 }
 
-.img{
-    border: 1px solid #6ebf6b;
-    border-radius: 20px;
-    box-shadow: 0px 10px 30px 0px #808080;
+.img {
+  border: 1px solid #6ebf6b;
+  border-radius: 20px;
+  box-shadow: 0px 10px 30px 0px #808080;
 }
 
-.esp{
-    padding-top: 10px;
-    color: #646464;
+.esp {
+  padding-top: 10px;
+  color: #646464;
 }
 
-.txt{
-    font-size: 25px;
-    color: #808080;
+.txt {
+  font-size: 25px;
+  color: #808080;
 }
-
 
 /*medicos-container*/
-
-section.medicos-container{
-    background: #f2f2f2;
+section.medicos-container {
+  background: #f2f2f2;
 }
 
-h2.equipe{
-    color: #646464;
-    text-align: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
+h2.equipe {
+  color: #646464;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
-h3.nome{
-    padding-top: 20px;
-    color: #646464;
+h3.nome {
+  padding-top: 20px;
+  color: #646464;
 }
 
-p.esp{
-    color: #646464;
-    font-size: 25px;
+p.esp {
+  color: #646464;
+  font-size: 25px;
 }
 
 div.row div {
-    text-align: center;
+  text-align: center;
 }
 
-div.row div img{
-    border: 1px solid #6ebf6b;
-    padding: 10px;
-    border-radius: 15px;
-    box-shadow: 0px 10px 30px 0px #808080;
+div.row div img {
+  border: 1px solid #6ebf6b;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0px 10px 30px 0px #808080;
 }
 
 /*Planos*/
-
-h2.planos{
-    color: #646464;
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 0px;
+h2.planos {
+  color: #646464;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 0px;
 }
 
-section.planos-container{
-    text-align: center;
-    background-color: rgba(50, 50, 50, 0.1);
-    padding-bottom: 50px;
-    padding-top: 50px;
+section.planos-container {
+  text-align: center;
+  background-color: rgba(50, 50, 50, 0.1);
+  padding-bottom: 50px;
+  padding-top: 50px;
 }
 
-section.planos-container .btn{
-    background-color: #6ebf6b;
+section.planos-container .btn {
+  background-color: #6ebf6b;
 }
 
 /*cotacao*/
-
-
 /*footer*/
-footer{
-    background: #011a00;
-    padding-top: 50px;
-    padding-bottom: 40px;
-    color: #fff;
+footer {
+  background: #011a00;
+  padding-top: 50px;
+  padding-bottom: 40px;
+  color: #fff;
 }
 
-footer h3 i.rede{
-    font-size: 30px;
+footer h3 i.rede {
+  font-size: 30px;
 }
 
 footer div.icone {
-    justify-content: flex-end;
-}
-footer div.icone span i{
-    color: #fff;
-    font-size: 32px;
-    margin-right: 10px;
+  justify-content: flex-end;
 }
 
-div p.endereco{
-    padding: 0px;
-    margin: 0px;
+footer div.icone span i {
+  color: #fff;
+  font-size: 32px;
+  margin-right: 10px;
 }
 
-div.teste{
-    width: 30%;
+div p.endereco {
+  padding: 0px;
+  margin: 0px;
+}
+
+div.teste {
+  width: 30%;
 }
 
 /*formulario*/
-
-h3.titulo{
-    text-align: center;
-    color: #808080;
-    padding: 30px;
+h3.titulo {
+  text-align: center;
+  color: #808080;
+  padding: 30px;
 }
 
-form.formulario{
-    margin-top: 40px;
+form.formulario {
+  margin-top: 40px;
 }
 
-div.cadastro{
-   padding: 100px;
+div.cadastro {
+  padding: 100px;
 }
 
-h1.sucesso{
-    color: #646464;
-    padding-bottom: 80px;
-    padding-top: 80px;
-    text-transform: uppercase;
-    font-size: 40px;
+h1.sucesso {
+  color: #646464;
+  padding-bottom: 80px;
+  padding-top: 80px;
+  text-transform: uppercase;
+  font-size: 40px;
 }
 
-h2.sucesso{
-    color: #646464;
-    padding-top: 30px;
-    
+h2.sucesso {
+  color: #646464;
+  padding-top: 30px;
 }
 
 /*img.cadastro{
@@ -310,121 +298,128 @@ h2.sucesso{
     border-radius: 100px;
     box-shadow: 0px 10px 30px 0px #808080;
 }*/
-
 /*validacao*/
-img.erro{
-    height: 250px;
+img.erro {
+  height: 250px;
 }
 
 /*parallax*/
 .parallax {
-    background-attachment: fixed;
-    background-position: 50% 0;
-    background-repeat: repeat-y;
-    background-size: cover;
-    width: 100%;
+  background-attachment: fixed;
+  background-position: 50% 0;
+  background-repeat: repeat-y;
+  background-size: cover;
+  width: 100%;
 }
+
 .parallax-min {
-    min-height: 600px;
-}
-.parallax1{
-    background-image: url(../imagens/img6.jpg);
-    min-height: 800px; 
+  min-height: 600px;
 }
 
-.parallax2{
-    background-image: url("../imagens/img8.jpg");
+.parallax1 {
+  background-image: url(../imagens/img6.jpg);
+  min-height: 800px;
 }
 
-.parallax3{
-    background-image: url("../imagens/img30.png");
+.parallax2 {
+  background-image: url("../imagens/img8.jpg");
 }
 
-.parallax4{
-    background-image: url("../imagens/img71.png");
+.parallax3 {
+  background-image: url("../imagens/img30.png");
 }
 
-.parallax5{
-    background-image: url("../imagens/img80.jpg");
+.parallax4 {
+  background-image: url("../imagens/img71.png");
+}
+
+.parallax5 {
+  background-image: url("../imagens/img80.jpg");
 }
 
 /* med agenda*/
-.agenda-med{
-    padding-top: 40px;
+.agenda-med {
+  padding-top: 40px;
 }
 
 /*site-rodape*/
-.final{
-    width: 100%;
-    height: 500px;
-    background-image: url("../imagens/saude1.jpg");
-    background-attachment: fixed;
-    background-position: 50% 0;
-    background-repeat: repeat-y;
-    background-size: cover;
-    position: relative;
+.final {
+  width: 100%;
+  height: 500px;
+  background-image: url("../imagens/saude1.jpg");
+  background-attachment: fixed;
+  background-position: 50% 0;
+  background-repeat: repeat-y;
+  background-size: cover;
+  position: relative;
 }
 
-.frase-final{
-    width: 98%;
-    max-width: 950px;
-    z-index: 2;
-    position: absolute;
-    left: 50%;
-    top: 50%; 
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-    background: none;
+.frase-final {
+  width: 98%;
+  max-width: 950px;
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background: none;
 }
 
-.texto-final{
-    color: #f2f2f2;
-    font-weight: 700;
-    font-size: 30px;
-    text-align: center;
-    background: none;
+.texto-final {
+  color: #f2f2f2;
+  font-weight: 700;
+  font-size: 30px;
+  text-align: center;
+  background: none;
 }
 
 /*mensagem especialidade-cadastro*/
-.alerta{
-    font-weight: bold;
-    text-transform: uppercase;
-    color: red;
-    text-align: right;
-    padding-bottom: 20px;
+.alerta {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: red;
+  text-align: right;
+  padding-bottom: 20px;
 }
 
 @media screen and (max-width: 1080px) {
-    .agenda {
-      height: 400px;
-    }
-    section.quem-somos {
-        height: 400px;
-      }
+  .agenda {
+    height: 400px;
+  }
+
+  section.quem-somos {
+    height: 400px;
+  }
 }
 
 @media screen and (max-width: 750px) {
-    .agenda {
-      height: 200px;
-    }
-    section.quem-somos {
-        height: 200px;
-    }
-    .esp{
-        font-size: 20px;
-    }
-    section div.icone {
-        font-size: 15px;
-    }
-    section div.icone i{
-        font-size: 30px;
-    }
-    .parallax1{
-        background-size: 400px 300px ;
-        min-height: 200px;
-    }
+  .agenda {
+    height: 200px;
+  }
 
-    table {
-        overflow-x: scroll;
-    }
+  section.quem-somos {
+    height: 200px;
+  }
+
+  .esp {
+    font-size: 20px;
+  }
+
+  section div.icone {
+    font-size: 15px;
+  }
+
+  section div.icone i {
+    font-size: 30px;
+  }
+
+  .parallax1 {
+    background-size: 400px 300px;
+    min-height: 200px;
+  }
+
+  table {
+    overflow-x: scroll;
+  }
 }

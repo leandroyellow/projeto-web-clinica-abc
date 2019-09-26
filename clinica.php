@@ -10,17 +10,17 @@ if((!isset ($_SESSION['email']) == true) && (!isset ($_SESSION['senha']) == true
   unset ($_SESSION['tipo']);
   header('location:index.php');
   }
- 
+
   $logado = $_SESSION['email'];
-  
+
   $id = $_SESSION['id'];
-  
+
   $idMedico = filter_input(INPUT_GET, "medico");
   $especialidadeMedica_id = filter_input(INPUT_GET, "especialidade");
   $dia = filter_input(INPUT_GET, "dia");
   $idpaciente = filter_input(INPUT_GET, "paciente");
   $timestamp = date('Y-m-d',  strtotime(str_replace("/", "-", $dia)));
-  
+
 
 $consulta_nome_profissional = "SELECT profissional.id, profissional.nome FROM profissional WHERE profissional.usuario_id = $id";
 $resultado_nome_profissional = $conexao->query($consulta_nome_profissional);
@@ -48,22 +48,22 @@ include("header_administrador.php");
                     <label for="campoEspecialidade">Especialidade:</label>
                     <select class="form-control" name="especialidade" id="campoEspecialidade" autocomplete="off" required>
                         <option selected>Selecione a especialidade</option>
-                        <?php 
-                            
+                        <?php
+
 
                             foreach($resultado_especialidade as $especialidades){
                                 //echo '<option value="'.$especialidades['id'].'">'. utf8_encode ($especialidades['especialidade']).'</option>';
                               ?>
 
                                 <option value="<?= $especialidades['id'] ?>" <?= $especialidadeMedica_id == $especialidades['id'] ? "selected='selected'" : "" ?>><?= $especialidades['especialidade'] ?></option>
-                              <?php  
+                              <?php
                             }
 
-                            
+
                         ?>
-                        
+
                     </select>
-                    
+
                 </div>
                 <div class="form-group col-md-8">
                     <label for="campoMedico">Médico:</label>
@@ -72,7 +72,7 @@ include("header_administrador.php");
                     </select>
                 </div>
             </div>
-            <div class="form-row">           
+            <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="campoCpf">CPF:</label>
                     <input class="form-control"  name="cpf" id="campoCpf" placeholder="Digite seu CPF" autocomplete="off"  required>
@@ -82,7 +82,7 @@ include("header_administrador.php");
                     <select class="form-control"  name="paciente" id="campoNome" autocomplete="off" required >
 
                     </select>
-                    
+
                 </div>
             </div>
             <a href="paciente_cadastro_clinica.php" id="novoCadastro" class="btn botao" style="display:none">Paciente não cadastrado</a>
@@ -95,7 +95,7 @@ include("header_administrador.php");
                 <div class="form-group col-md-8">
                     <label>Clique para verificar a agenda do médico selecionado:</label>
                     <button type="submit" class="btn botao form-control" id="verificaAgenda">Verificar</button>
-                    
+
                 </div>
             </div>
         </form>
@@ -118,16 +118,16 @@ include("header_administrador.php");
                             <th>Especialidade</th>
                             <th>Paciente</th>
                             <th class="text-center">Situação</th>
-                        </tr>        
+                        </tr>
                     </thead>
 
                     <tbody>
-                        
-                                
-                                
-                        <?php      
-                            
-                            
+
+
+
+                        <?php
+
+
                             if($resultado_agenda->num_rows > 0){
                                 while ($leitor = $resultado_agenda->fetch_assoc()){
                                     $hora = $leitor['hora'];
@@ -138,7 +138,7 @@ include("header_administrador.php");
                                     $idEspecialidade = $leitor['id_especialidade'];
 
 
-                            
+
                         ?>
                         <tr>
                             <td><?php echo $hora ?> </td>
@@ -149,15 +149,15 @@ include("header_administrador.php");
                             <?php
                             if($paciente == ""){
 
-                            
+
                             ?>
 
-                            <td class="text-center"><a class="btn btn-success btn-sm" style="color:#fff" href="agenda.php?<?php echo "medico=$idMedico&paciente=$idpaciente&dia=$dia&hora=$hora&especialidade=$especialidadeMedica_id"?>"  role="button"><i class="fas fa-plus-circle"></i>&nbsp;Adicionar</a> 
+                            <td class="text-center"><a class="btn btn-success btn-sm" style="color:#fff" href="agenda.php?<?php echo "medico=$idMedico&paciente=$idpaciente&dia=$dia&hora=$hora&especialidade=$especialidadeMedica_id"?>"  role="button"><i class="fas fa-plus-circle"></i>&nbsp;Adicionar</a>
                             </td>
                             <?php
                             }else{
                             ?>
-                            <td class="text-center"><a class="btn btn-danger btn-sm" style="color:#fff" href="agenda_desmarca.php?<?php echo "medico=$idMedico&paciente=$idpaciente&dia=$dia&hora=$hora&especialidade=$especialidadeMedica_id&id=$id"?>" role="button"><i class="far fa-trash-alt"></i>&nbsp;Desmarcar</a> 
+                            <td class="text-center"><a class="btn btn-danger btn-sm" style="color:#fff" href="agenda_desmarca.php?<?php echo "medico=$idMedico&paciente=$idpaciente&dia=$dia&hora=$hora&especialidade=$especialidadeMedica_id&id=$id"?>" role="button"><i class="far fa-trash-alt"></i>&nbsp;Desmarcar</a>
                         </tr>
                                 <?php }}
                                 }
@@ -165,14 +165,14 @@ include("header_administrador.php");
 
                             }
                         ?>
-                        
-                    
-                    </tbody>  
-                
+
+
+                    </tbody>
+
                 </table>
-            </div> 
+            </div>
         </div>
-    </div>         
+    </div>
 
 
 <?php include("footer.php"); ?>
@@ -180,14 +180,14 @@ include("header_administrador.php");
 <script>
 $("#campoEspecialidade").on("change", function(){
     var especialidadeSelecionada = $("#campoEspecialidade").val();
-    
+
     $.ajax({
         url: 'medico_options.php',
         type: 'POST',
         data:{especialidade:especialidadeSelecionada},
-        
+
         beforeSend: function(){
-            
+
             $("#campoMedico").html("Carregando....");
         },
         success: function(data){
@@ -195,7 +195,7 @@ $("#campoEspecialidade").on("change", function(){
             $("#campoMedico").html(data);
         },
         error: function(data){
-            
+
             $("#campoMedico").html("Houve erro ao carregar!!!");
         }
     })
@@ -212,13 +212,14 @@ $("#campoEspecialidade").on("change", function(){
                     type: 'POST',
                     data:{cpf:cpfDigitado},
                     beforeSend: function(){
-                    
+
                         $("#campoNome").html("Carregando....");
                     },
                     success: function(data){
-                        alert (data);
+
                         $("#campoNome").html(data);
                         if(data == "teste"){
+                          alert ("CPF não cadastrado");
                             $("#novoCadastro").css({'display':'block'});
                         }
                     },
@@ -233,4 +234,3 @@ $("#campoEspecialidade").on("change", function(){
         $("#campoDia").mask("00/00/0000", {placeholder: "__/__/____"});
     })
 </script>
-
