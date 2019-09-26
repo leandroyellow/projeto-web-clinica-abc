@@ -216,11 +216,13 @@ $("#campoEspecialidade").on("change", function(){
                         $("#campoNome").html("Carregando....");
                     },
                     success: function(data){
-
                         $("#campoNome").html(data);
+                        $("#novoCadastro").css({'display':'none'});
+                        $("#verificaAgenda").css({'display':'block'});
                         if(data == "teste"){
                           alert ("CPF não cadastrado");
                             $("#novoCadastro").css({'display':'block'});
+                            $("#verificaAgenda").css({'display':'none'});
                         }
                     },
                     error: function(data){
