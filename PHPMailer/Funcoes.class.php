@@ -40,10 +40,10 @@ class Funcoes{
 		$this->objmail->MsgHTML($html);
 		
 		if (!$this->objmail->Send()) { 
-			echo "Mailer Error: " . $this->objmail->ErrorInfo;
+			//echo "Mailer Error: " . $this->objmail->ErrorInfo;
 			header("Location: mensagem_erro.php");
 		} else {
-			echo "Mensagem enviada";
+			
 			header("Location: mensagem_enviada.php");
 		}
 

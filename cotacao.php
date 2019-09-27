@@ -56,7 +56,7 @@ if(isset($_POST['btEnviar'])){
                     <textarea class="form-control" id="campoDescricao" rows="5" name="descricao" required></textarea>
                 </div>
                 <div class="text-right form-group col-md-12">
-                    <a href="index.php" id="botao" class="btn" >Voltar</a>
+                    <a href="site.php" id="botao" class="btn" >Voltar</a>
                     <button type="submit" class="btn" id="botao" name="btEnviar">Enviar</button>
                 </div>
             </form>
