@@ -19,7 +19,7 @@ if (isset($_GET['paciente'])&&isset($_GET['medico'])&&isset($_GET['dia'])&&isset
 $sql = "DELETE FROM agenda WHERE agenda.id = $id";
 //echo $sql;
 	if ($conexao->query($sql) == true ) {
-        echo "Dado inserido com sucesso";
+        //echo "Dado inserido com sucesso";
         header("Location: clinica.php?especialidade=$especialidade&medico=$medico&paciente=$paciente&dia=$dia"  );
 //echo $especialidade;
         
@@ -35,7 +35,7 @@ $sql = "DELETE FROM agenda WHERE agenda.id = $id";
     $dia = $_GET['dia'];
     $sql = "DELETE FROM agenda WHERE agenda.id = $id";
     if ($conexao->query($sql) == true ) {
-        echo "Dado inserido com sucesso";
+        //echo "Dado inserido com sucesso";
         header("Location: consultas_agendadas.php?dia=$dia"  );
 //echo $especialidade;
         
