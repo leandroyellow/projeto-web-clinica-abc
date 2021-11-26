@@ -2,7 +2,7 @@
     $servername = "localhost";
     $database = "clinica-abc";
     $username = "leandro";
-    $password = "";
+    $password = "  ";
 
     $conexao = mysqli_connect($servername, $username, $password, $database);
 
