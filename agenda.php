@@ -3,6 +3,8 @@ require_once('config.php');
 require_once('conexao.php');
 
 
+
+
 if (isset($_GET['paciente'])&&isset($_GET['medico'])&&isset($_GET['dia'])&&isset($_GET['hora'])&&isset($_GET['especialidade'])) {
     $paciente = $_GET['paciente'];
     $medico = $_GET['medico'];
